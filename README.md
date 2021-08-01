@@ -27,8 +27,7 @@ Guidelines
 - [ ] Убедиться, что вы в slack-чате `training-qa-automation-java-2021-08`
 - [ ] [Если нет] завести аккаунт на github
 - [ ] Сделать форк [репозитория с материалами](https://github.com/eugene-krivosheyev/qa-automation-java)
-- [ ] Добавить в ваш новый репо коллабораторов:
-- в
+- [ ] Добавить в ваш новый репо своих менторов как коллабораторов
 - [ ] Установить jdk ≥8 и IntelliJ IDEA (предпочтительнее Ultimate, но и Community подойдет)
 
 Контакты
@@ -44,39 +43,6 @@ Java Application Building <sup>6 ак.ч.</sup>
 
 <details>
 <summary>вебинар 01 от 02.08.2021</summary>
-
-### Java platform overview
-- [ ] Java Platform definition
-- [ ] Basic terms: JVM, JRE, JDK
-- [ ] Sourcepath and Classpath
-
-### IDEA Demo
-- [ ] Project settings and structure: modules, sourcepath + classpath
-- [ ] Main and Test sources
-- [ ] Workspace
-- [ ] Views and hotkey switching
-- [ ] Editing sources and foreground compilation
-- [ ] Debugging methods
-- [ ] Running tests from IDE
-- [ ] Running application with run configuration and hotkey shortcut
-- [ ] Full application building from Maven view
-- [ ] Hotkey shortcuts for git workflow operations
-- [ ] Main hotkeys
-
-### Maven build lifecycle
-- [ ] Build lifecycles
-- [ ] Lifecycle phases
-- [ ] Plugins
-- [ ] Managing plugins with pom.xml
-
-### Maven dependency management
-- [ ] Dependency artifacts: JARed classes, sources, javadocs
-- [ ] Artifact repositories
-- [ ] Artifact identifying
-</details>
-
-<details>
-<summary>вебинар 02 от 06.08.2021</summary>
 
 ### Local GIT versioning workflow
 - [ ] Local repo
@@ -95,6 +61,75 @@ Java Application Building <sup>6 ак.ч.</sup>
 - [ ] Forks
 - [ ] Pull Request
 - [ ] PR workflow
+
+Practice quest
+--------------
+### Given
+- [ ] Известна учетка ментора на github
+- [ ] Установлен git (stand-alone или как компонент IDEA)
+### When
+- [ ] Заведен аккаунт на github
+- [ ] Сделан fork данного репо
+- [ ] Ментор добавлен как коллаборатор
+
+and
+- [ ] Создана рабочая ветка `dev` для реализации заданий
+- [ ] Внесены тестовые изменения
+- [ ] Заведен PR в `master`
+
+and
+- [ ] Новые изменения из данного репо перенесены себе в `master` через PR
+### Then
+- [ ] Ментор принимает PR c тестовыми изменениями
+- [ ] Вам приходит нотификация
+</details>
+
+<details>
+<summary>вебинар 02 от 06.08.2021</summary>
+
+### Java platform overview
+- [ ] Java Platform definition
+- [ ] Basic terms: JVM, JRE, JDK
+
+### Simple app lifecycle
+- [ ] source
+- [ ] compiling
+- [ ] packaging
+- [ ] running 
+- [ ] Sourcepath and Classpath
+
+### Maven build lifecycle
+- [ ] Directory layout
+- [ ] Build lifecycles
+- [ ] Lifecycle phases
+- [ ] Plugins
+- [ ] Managing plugins with pom.xml
+
+### Maven dependency management
+- [ ] Dependency artifacts: JARed classes, sources, javadocs
+- [ ] Artifact repositories
+- [ ] Artifact identifying
+
+### IDEA Demo
+- [ ] Project settings and structure: modules, sourcepath + classpath
+- [ ] Workspace
+- [ ] Views
+- [ ] Running application with run configuration
+- [ ] Git workflow
+- [ ] Maven build
+
+Practice quest
+--------------
+### Given
+- [ ] Локальный клон репозитория
+### When
+- [ ] Сгенерирован maven-проект по шаблону `mvn archetype:generate`
+- [ ] Исправлен стиль кодирования
+- [ ] Исправлена версия зависимости JUnit на пятую
+### Then
+- [ ] Корень проекта сразу в корне git репо
+- [ ] Проект успешно собирается
+- [ ] Ментор принимает PR в `master`
 </details>
 
 Java Application Development <sup>24 ак.ч.</sup>
