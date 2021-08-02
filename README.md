@@ -24,7 +24,7 @@ Guidelines
 
 Что нужно для начала
 --------------------
-- [ ] Убедиться, что вы в slack-чате `training-qa-automation-java-2021-08`
+- [x] Убедиться, что вы в slack-чате `training-qa-automation-java-2021-08`
 - [ ] [Если нет] завести аккаунт на github
 - [ ] Сделать форк [репозитория с материалами](https://github.com/eugene-krivosheyev/qa-automation-java)
 - [ ] Добавить в ваш новый репо своих менторов как коллабораторов
