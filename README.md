@@ -26,7 +26,7 @@ Guidelines
 --------------------
 - [x] Убедиться, что вы в slack-чате `training-qa-automation-java-2021-08`
 - [x] [Если нет] завести аккаунт на github
-- [ ] Сделать форк [репозитория с материалами](https://github.com/eugene-krivosheyev/qa-automation-java)
+- [x] Сделать форк [репозитория с материалами](https://github.com/eugene-krivosheyev/qa-automation-java)
 - [ ] Добавить в ваш новый репо своих менторов как коллабораторов
 - [ ] Установить jdk ≥8 и IntelliJ IDEA (предпочтительнее Ultimate, но и Community подойдет)
 
