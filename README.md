@@ -28,7 +28,7 @@ Guidelines
 - [x] [Если нет] завести аккаунт на github
 - [x] Сделать форк [репозитория с материалами](https://github.com/eugene-krivosheyev/qa-automation-java)
 - [x] Добавить в ваш новый репо своих менторов как коллабораторов
-- [ ] Установить jdk ≥8 и IntelliJ IDEA (предпочтительнее Ultimate, но и Community подойдет)
+- [x] Установить jdk ≥8 и IntelliJ IDEA (предпочтительнее Ultimate, но и Community подойдет)
 
 Контакты
 --------
