@@ -7,7 +7,6 @@ Guidelines
 Формат обучения
 ---------------
 - вебинары + самостоятельная работа над заданиями
-- даты вебинаров 02,06,09,13,16,20,23,27,30 августа, 03,06,10,13,17,20,24,27 сентября
 - время 17:30 – 20:30
 
 Вебинары
@@ -131,6 +130,10 @@ public class Printer {
 - [ ] Проект успешно собирается
 - [ ] вывод `Hello world!`
 - [ ] Ментор принимает PR в `master`
+</details>
+
+<details>
+<summary>вебинар 03 от 09.08.2021</summary>
 
 ### Maven build lifecycle
 - [ ] Directory layout
@@ -143,6 +146,7 @@ public class Printer {
 - [ ] Dependency artifacts: JARed classes, sources, javadocs
 - [ ] Artifact repositories
 - [ ] Artifact identifying
+- [ ] Test dependencies vs Prod dependencies
 
 ### IDEA Demo
 - [ ] Project settings and structure: modules, sourcepath + classpath
@@ -152,16 +156,25 @@ public class Printer {
 - [ ] Git workflow
 - [ ] Maven build
 
+### Test framework overview
+- [ ] IoC: Framework vs Library
+- [ ] JUnit as a test framework
+- [ ] Task flow
+- [ ] Test class and methods
+- [ ] Annotations
+- [ ] Assert methods
+
 Practice quest
 --------------
 ### Given
 - [ ] Локальный клон репозитория
+- [ ] В корне репо:
 ### When
 - [ ] Сгенерирован maven-проект по шаблону `mvn archetype:generate`
-- [ ] Исправлен стиль кодирования
-- [ ] Исправлена версия зависимости JUnit на пятую
+- `com.tinkoff.edu:app:1.0.0-SNAPSHOT`
 ### Then
-- [ ] Корень проекта сразу в корне git репо
+- [ ] Используется тестовая зависимость JUnit5
+- [ ] Выдержан стиль кодирования и соглашения
 - [ ] Проект успешно собирается
 - [ ] Ментор принимает PR в `master`
 </details>
@@ -170,10 +183,11 @@ Java Application Development <sup>24 ак.ч.</sup>
 ----------------------------
 
 <details>
-<summary>вебинар 03 от 09.08.2021</summary>
+<summary>вебинар 04 от 13.08.2021</summary>
 
 ### Context
-- [ ] Learning through testing
+- [ ] Learning through developing and JIT testing
+- [ ] Case: Enterprise system mock
 
 ### Java Source Code Documenting
 - [ ] Single-line comments
@@ -203,10 +217,11 @@ Java Application Development <sup>24 ак.ч.</sup>
 - [ ] Dot notation
 - [ ] Formal and factual arguments
 - [ ] Static import directive
+
 </details>
 
 <details>
-<summary>вебинар 04 от 13.08.2021</summary>
+<summary>вебинар 05 от 16.08.2021</summary>
 
 ### Variable declaration
 - [ ] Variable declaration scopes
@@ -228,10 +243,6 @@ Java Application Development <sup>24 ак.ч.</sup>
 ### Wrappers
 - [ ] Wrapper types and main features: referenced, constants, string parsing
 - [ ] Autoboxing/unboxing and performance issue
-</details>
-
-<details>
-<summary>вебинар 05 от 16.08.2021</summary>
 
 ### Type operators
 - [ ] type casting
