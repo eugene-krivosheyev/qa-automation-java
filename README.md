@@ -328,9 +328,12 @@ Practice quest
 - `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id для дальнейших коммуникаций`
 ### When application
 - [ ] Application covered with e2e tests
-- [ ] Application covered with integration tests
+- shouldGetId1WhenFirstCall
+- shouldGetIncrementedIdWhenAnyCall
+- [x] Application covered with integration tests
 ### Then
-- [ ] Покрытие по веткам ≥ 90%
+- [x] Покрытие по веткам ≥ 90%
+- [ ] Фикстура максимально реюзается
 - [ ] Проект успешно собирается
 - [ ] Выдержан стиль кодирования и соглашения
 - [ ] Ментор принимает PR в `master`
