@@ -301,7 +301,12 @@ Practice quest
 </details>
 
 <details>
-<summary>вебинар 06 от 20.08.2021</summary>
+<summary>вебинар 07 от 23.08.2021</summary>
+
+### Java Syntax for interfaces and abstract classes
+- [ ] Interfaces
+- [ ] Defender methods
+- [ ] Inheritance and constructors
 
 ### Test framework overview
 - [ ] IoC: Framework vs Library
@@ -310,6 +315,29 @@ Practice quest
 - [ ] Test class and methods
 - [ ] Annotations
 - [ ] Assert methods
+- [ ] Coverage
+
+### Test Scopes
+- [ ] Scopes
+- [ ] Test doublers
+
+Practice quest
+--------------
+### Given
+- [ ] Requirements for Loan Scoring application
+- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id для дальнейших коммуникаций`
+### When application
+- [ ] Application covered with e2e tests
+- [ ] Application covered with integration tests
+### Then
+- [ ] Покрытие по веткам ≥ 90%
+- [ ] Проект успешно собирается
+- [ ] Выдержан стиль кодирования и соглашения
+- [ ] Ментор принимает PR в `master`
+</details>
+
+<details>
+<summary>вебинар 08 от 26.08.2021</summary>
 
 ### Primitive types
 - [ ] byte
@@ -347,10 +375,6 @@ Practice quest
 - [ ] `==, !=, <, <=, >, >=`
 - [ ] Reference types issue: absence of `===` and `.equals()`
 - [ ] Ternary operator
-</details>
-
-<details>
-<summary>вебинар 07 от 23.08.2021</summary>
 
 ### Switching
 - [ ] `if`
