@@ -342,7 +342,7 @@ Practice quest
 - [ ] Ценность фикстуры и как она определяет трассу исполнения
 
 ### Object type and equality in test assertions
-- [ ] Object class
+- [ ] `java.lang.Object` class and reference types
 - [ ] Equality with `assertEquals`: `==` vs `.equals()`
 
 ### Test Coverage
@@ -396,18 +396,19 @@ Practice quest
 | Loan Type | Amount | Months | Response status
 | --------- | ------ | ------ | ---------------
 | PERSON | ≤ 10_000.0 | ≤ 12 | APPROVED
-| PERSON | > 10_000.0 | > 12 | DECLINED
+| PERSON | > 10_000.0 | > 12 | DECLINED 
 | OOO | ≤ 10_000.0 | any | DECLINED
-| OOO | > 10_000.0 | < 12 | APPROVED
+| OOO | > 10_000.0 | < 12 | APPROVED 
 | OOO | > 10_000.0 | ≥ 12 | DECLINED
 | IP | any | any | DECLINED
 
 ### When application
 - [ ] Application covered with e2e tests:
 - `shouldGetErrorWhenApplyNullRequest` (-1 return value)
-- `shouldGetErrorWhenApplyZeroAmountRequest` (-1 return value)
-- `shouldGetErrorWhenApplyZeroMonthsRequest` (-1 return value)
+- `shouldGetErrorWhenApplyZeroOrNegativeAmountRequest` (-1 return value)
+- `shouldGetErrorWhenApplyZeroOrNagativeMonthsRequest` (-1 return value)
 - tests covering business rules
+- tests covering *corner cases* for business rules
 
 ### Then
 - [ ] Покрытие по веткам ≥ 90%
