@@ -317,10 +317,6 @@ Practice quest
 - [ ] Assert methods
 - [ ] Coverage
 
-### Test Scopes
-- [ ] Scopes
-- [ ] Test doublers
-
 Practice quest
 --------------
 ### Given
@@ -342,7 +338,18 @@ Practice quest
 <details>
 <summary>вебинар 08 от 26.08.2021</summary>
 
-### Primitive types
+### Разбор ДЗ
+- [ ] Ценность фикстуры и как она определяет трассу исполнения
+
+### Object type and equality in test assertions
+- [ ] Object class
+- [ ] Equality with `assertEquals`: `==` vs `.equals()`
+
+### Test Coverage
+- [ ] Coverage types
+- [ ] Coverage tool: JaCoCo
+
+### Java Primitive types and literals
 - [ ] byte
 - [ ] int
 - [ ] short
@@ -352,29 +359,25 @@ Practice quest
 - [ ] char
 - [ ] boolean
 
-### Literals for primitives
-- [ ] literals
-
 ### Wrappers
 - [ ] Wrapper types and main features: referenced, constants, string parsing
 - [ ] Autoboxing/unboxing and performance issue
 
 ### Type operators
 - [ ] type casting
-- [ ] instanceof
+- [ ] `instanceof`
 
 ### Arithmetics operators
 - [ ] `+, -, *, /, %`
 - [ ] Typed operators: 1/3 vs 1./3
-- [ ] Arithmetic types promotion
-- [ ] ArithmeticException
-- [ ] Types Overflow and solution with BigInteger
-- [ ] FP precision loss and solution with BigDecimal
+- [ ] `ArithmeticException`
+- [ ] Types Overflow and solution with `BigInteger`
+- [ ] FP precision loss and solution with `BigDecimal`
 
 ### Logical operators
 - [ ] Type-safe
 - [ ] `&, |, !`
-- [ ] Lazy and eager form
+- [ ] Lazy and eager form: `&&, ||`
 - [ ] `==, !=, <, <=, >, >=`
 - [ ] Reference types issue: absence of `===` and `.equals()`
 - [ ] Ternary operator
@@ -382,6 +385,40 @@ Practice quest
 ### Switching
 - [ ] `if`
 - [ ] `switch` and its limitations
+
+Practice quest
+--------------
+### Given
+- [ ] Requirements for Loan Scoring application
+- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id для дальнейших коммуникаций`
+- Business rules:
+
+| Loan Type | Amount | Months | Response status
+| --------- | ------ | ------ | ---------------
+| PERSON | ≤ 10_000.0 | ≤ 12 | APPROVED
+| PERSON | > 10_000.0 | > 12 | DECLINED
+| OOO | ≤ 10_000.0 | any | DECLINED
+| OOO | > 10_000.0 | < 12 | APPROVED
+| OOO | > 10_000.0 | ≥ 12 | DECLINED
+| IP | any | any | DECLINED
+
+### When application
+- [ ] Application covered with e2e tests:
+- `shouldGetErrorWhenApplyNullRequest` (-1 return value)
+- `shouldGetErrorWhenApplyZeroAmountRequest` (-1 return value)
+- `shouldGetErrorWhenApplyZeroMonthsRequest` (-1 return value)
+- tests covering business rules
+
+### Then
+- [ ] Покрытие по веткам ≥ 90%
+- [ ] Фикстура максимально реюзается
+- [ ] Проект успешно собирается
+- [ ] Выдержан стиль кодирования и соглашения
+- [ ] Ментор принимает PR в `master`
+</details>
+
+<details>
+<summary>вебинар 09 от 30.08.2021</summary>
 
 ### Looping
 - [ ] `for`
@@ -409,10 +446,6 @@ Practice quest
 - [ ] "Immutability" vs StringBuffer/StringBuilder
 - [ ] API
 - [ ] Strings equality: `==` vs `.equals()`
-</details>
-
-<details>
-<summary>вебинар 08 от 27.08.2021</summary>
 
 ### Exception concept
 - [ ] Type information
