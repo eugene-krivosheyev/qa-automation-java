@@ -380,17 +380,12 @@ Practice quest
 - [ ] Lazy and eager form: `&&, ||`
 - [ ] `==, !=, <, <=, >, >=`
 - [ ] Reference types issue: absence of `===` and `.equals()`
-- [ ] Ternary operator
-
-### Switching
-- [ ] `if`
-- [ ] `switch` and its limitations
 
 Practice quest
 --------------
 ### Given
 - [ ] Requirements for Loan Scoring application
-- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id для дальнейших коммуникаций`
+- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id и статусом заявки для дальнейших коммуникаций`
 - Business rules:
 
 | Loan Type | Amount | Months | Response status
@@ -421,32 +416,80 @@ Practice quest
 <details>
 <summary>вебинар 09 от 30.08.2021</summary>
 
-### Looping
-- [ ] `for`
-- [ ] `do` and `while`
-- [ ] "foreach"
+### Wrappers
+- [ ] Boxing/unboxing API
+- point of static methods
+- [ ] *Auto* Boxing/unboxing
+
+### Class Object
+- [ ] Все объекты заменяемы и с ними можно работать унифицированно
+- [ ] `toString()`
+- [ ] `equals()` and `hashCode()` contract
+
+### Switching
+- [ ] `if`
+- [ ] Ternary operator
+- [ ] `switch` and its limitations
 
 ### Java Array reference type
 - [ ] Declaration
 - [ ] Initialization
-- [ ] API: addressing, length
-- [ ] Exceptions
+- empty
+- literals
 - [ ] "Immutability"
+- [ ] API: indexing operator, length
+- [ ] Exceptions
 - [ ] "foreach" cycle
 
 ### Varargs
 - [ ] Why?
 - [ ] Declaration
-- [ ] Passing
 - [ ] Using
 - [ ] Limitations
+
+### Looping
+- [ ] "foreach" loop
+- [ ] `for`
+- [ ] `do` and `while`
+- [ ] `break` and `continue` operators
 
 ### Strings
 - [ ] Declaration
 - [ ] Initialization with literal and constructor
 - [ ] "Immutability" vs StringBuffer/StringBuilder
-- [ ] API
 - [ ] Strings equality: `==` vs `.equals()`
+- [ ] String API
+- [ ] `StringBuffer` and `StringBuilder` 
+- [ ] `StringBuffer` and `StringBuilder` API
+
+Practice quest
+--------------
+### Given
+- [ ] Changed requirements for Loan Scoring application
+- `Как клиент, я хочу сделать заявку на кредит, чтобы получить ответ с уникальным случайным UUID`
+- Заявка включает ФИО
+- [ ] Added requirements for Loan Scoring application
+- `Как клиент, я хочу запросить статус заявки по ее UUID`
+- `Как менеджер, я хочу изменить статус заявки по ее UUID`
+
+### When
+- [ ] Made research for `UUID` class API
+- [ ] Business rules code switching refactored to `switch`
+- [ ] Array used Repository back
+- [ ] Application covered with e2e tests
+- tests covering *feature scenarios*
+- tests covering *corner cases*
+
+### Then
+- [ ] Покрытие по веткам ≥ 90%
+- [ ] Фикстуры максимально реюзается
+- [ ] Проект успешно собирается
+- [ ] Выдержан стиль кодирования и соглашения
+- [ ] Ментор принимает PR в `master`
+</details>
+
+<details>
+<summary>вебинар 10 от 02.09.2021</summary>
 
 ### Exception concept
 - [ ] Type information
@@ -469,72 +512,78 @@ Practice quest
 - [ ] Built-in types
 - [ ] Errors vs Exceptions
 - [ ] Checked vs Runtime exceptions
+
+### Testing alternate flows within tests
+- [ ] How JUnit5 handle exceptions in tests: new test states
+- failure
+- error
+- skipped (+assumes)
+- [ ] JUnit5 `assertThrows`
+
+Practice quest
+--------------
+### Given
+- [ ] Changed system NFRs and inner quality model for Loan Scoring application
+- Для всех операций всех компонентов добавлены проверки на null и пустоту с исключениями
+- Приложение не падает при возможных системных ошибках (арифметика, выход за границы, etc)
+- [ ] Added requirements for Loan Scoring application: *Data Validation Rules* leading to business exceptions 
+- ФИО не короче 10 и не длиннее 100 символов
+- ФИО содержит только буквы и `-`
+- Сумма не менее 0.01 и не более 999 999.99
+- Срок не менее 1 и не более 100 месяцев
+
+### When
+- [ ] Made research for `String` and `Character` API
+- [ ] Application covered with e2e tests
+- tests covering *feature scenarios*
+- tests covering *corner cases*
+
+### Then
+- [ ] Покрытие по веткам ≥ 95%
+- [ ] Фикстуры максимально реюзается
+- [ ] Проект успешно собирается
+- [ ] Выдержан стиль кодирования и соглашения
+- [ ] Ментор принимает PR в `master`
 </details>
 
 <details>
-<summary>вебинар 09 от 30.08.2021</summary>
-
-### OOAD overview
-- [ ] Encapsulation
-- [ ] Polymorphism
-- [ ] Inheritance
-
-### Lambda syntax
-- [ ] Declaring lambdas
-- [ ] Compiler types inference
-- [ ] Functional interface
-- [ ] Method reference
-</details>
-
-<details>
-<summary>вебинар 10 от 03.09.2021</summary>
-
-### Class Object
-- [ ] `toString()`
-- [ ] `equals()` and `hashCode()` contract
+<summary>вебинар 11 от 06.09.2021</summary>
 
 ### Collections API overview
 - [ ] `Set` API
 - [ ] `List` API
 - [ ] `Map` API
 
+### Collections and arrays iterating
+- [ ] `Iterator` and `for` loop
+- [ ] `foreach`
+
+### Lambda syntax
+- [ ] Declaring lambdas
+- [ ] Compiler types inference
+- [ ] Functional interface
+- [ ] Method reference
+
+### Stream API
+- [ ] Functions composition
+- [ ] Terminal and non-terminal operations
+</details>
+
+<details>
+<summary>вебинар 12 от 09.09.2021</summary>
+
 ### File IO API overview
 - [ ] `File` and `Path`
 - [ ] File IO with Stream API
 - [ ] Simple file operations with utility class `Files`
-</details>
 
-Java Automated Testing <sup>6 ак.ч.</sup>
-----------------------
-<details>
-<summary>вебинар 11 от 06.09.2021</summary>
-
-### Архитектура тестового фреймворка
-- [ ] Концепция фреймворка
-- [ ] Аннотации
-- [ ] Подключение JUnit5 в maven
-- [ ] Жизненный цикл тестового класса
-
-### Тестирование на примере "общеизвестного класса"
-- [ ] Именование тест-кейса/тест-класса и теста/тест-метода
-- [ ] Понятие трасс выполнения (flows) и граничные условия
-- [ ] Роль фикстуры
-- [ ] Тест = фиксированная трасса выполнения
-- [ ] Тестовый набор = спецификация компонента
-
-### Возможности JUnit5
-- [ ] Типизированные сравнения средствами основного фреймворка
+### Расширенные возможности JUnit5
 - [ ] Исключения
 - [ ] Таймауты
-</details>
-
-<details>
-<summary>вебинар 12 от 10.09.2021</summary>
-
-### Тестовое покрытие
-- [ ] Понятие покрытия
-- [ ] Способы расчета покрытия 
-- [ ] Анализ отчета JaCoCo
+- [ ] Параметризованные тесты
+- [ ] Test suites 
+- Теги
+- Static inner classes
 
 ### Реализация фикстуры для обеспечения поддерживаемости тестов
 - [ ] Когда и сколько раз создается объект тестового класса?
@@ -542,10 +591,16 @@ Java Automated Testing <sup>6 ак.ч.</sup>
 - [ ] Методы жизненного цикла теста
 - [ ] Fixture Builders
 
-### Как группировать тесты в наборы?
-- [ ] Зачем нужны test suites?
-- [ ] Теги
-- [ ] Запуск наборов при сборке
+### Intro to Parallelism and Concurrency
+- [ ] Threads
+- [ ] Parallelism with ThreadPools
+- [ ] Concurrency issues
+- Data Race
+- Visibility and reordering
+- [ ] Thread synchronization
+- critical section / monitor
+- locks
+- Atomics
 </details>
 
 Java REST API Testing <sup>9 ак.ч.</sup>
@@ -559,7 +614,7 @@ Java REST API Testing <sup>9 ак.ч.</sup>
 </details>
 
 <details>
-<summary>вебинар 14 от 17.09.2021</summary>
+<summary>вебинар 14 от 16.09.2021</summary>
 
 ### Введение в работу с БД
 - [ ] Обзор JDBC
@@ -582,7 +637,7 @@ Java REST API Testing <sup>9 ак.ч.</sup>
 Командный проект <sup>6 ак.ч.</sup>
 ----------------
 <details>
-<summary>вебинар 16 от 24.09.2021</summary>
+<summary>вебинар 16 от 23.09.2021</summary>
 
 - [ ] Командная работа над проектом 
 - [ ] Фидбек от инспекторов
