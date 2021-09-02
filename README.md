@@ -525,8 +525,8 @@ Practice quest
 ### Given
 - [ ] Changed system NFRs and inner quality model for Loan Scoring application
 - Для всех операций всех компонентов добавлены проверки на null и пустоту с исключениями
-- Приложение не падает при возможных системных ошибках (арифметика, выход за границы, etc)
-- [ ] Added requirements for Loan Scoring application: *Data Validation Rules* leading to business exceptions 
+- Приложение не падает при возможных системных ошибках (арифметика, выход за границы, etc) - опциональная задача
+- [ ] Added requirements for Loan Scoring application: *Data Validation Rules* leading to business exceptions. Реализовать хотя бы одну валидацию своим кастомным checked exception:
 - ФИО не короче 10 и не длиннее 100 символов
 - ФИО содержит только буквы и `-`
 - Сумма не менее 0.01 и не более 999 999.99
