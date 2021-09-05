@@ -549,14 +549,22 @@ Practice quest
 <details>
 <summary>вебинар 11 от 06.09.2021</summary>
 
-### Collections API overview
+### Collections and arrays iterating recap
+- [ ] `Iterator` and `for` loop
+- [ ] `foreach`
+
+### Key Collections API overview
 - [ ] `Set` API
 - [ ] `List` API
 - [ ] `Map` API
 
-### Collections and arrays iterating
-- [ ] `Iterator` and `for` loop
-- [ ] `foreach`
+### Object's methods used
+- [ ] `equals`
+- [ ] `hashCode`
+
+### Utility classes
+- [ ] `Collections`
+- [ ] `Comparable`, `Comparator`
 
 ### Lambda syntax
 - [ ] Declaring lambdas
@@ -567,6 +575,29 @@ Practice quest
 ### Stream API
 - [ ] Functions composition
 - [ ] Terminal and non-terminal operations
+
+Practice quest
+--------------
+### Given
+- Remaining requirements for Loan Scoring application
+- [x] `Как клиент, я хочу запросить статус заявки по ее UUID`
+- [x] `Как менеджер, я хочу изменить статус заявки по ее UUID`
+- Added new requirements for Loan Scoring application
+- [ ] _Map-backed_ repository
+- [ ] `Как менеджер, я хочу найти все заявки от ООО`
+- [x] `Как менеджер, я хочу найти сумму всех заявок от ООО`
+
+### When
+- [ ] Application covered with e2e tests
+- tests covering *feature scenarios*
+- tests covering *corner cases*
+
+### Then
+- [ ] Покрытие по веткам ≥ 95%
+- [ ] Фикстуры максимально реюзается
+- [ ] Проект успешно собирается
+- [ ] Выдержан стиль кодирования и соглашения
+- [ ] Ментор принимает PR в `master`
 </details>
 
 <details>
