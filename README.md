@@ -588,6 +588,7 @@ Practice quest
 - [x] `Как менеджер, я хочу найти сумму всех заявок от ООО`
 
 ### When
+- [ ] Made research for appropriate assertions from Hamcrest or AssertJ libraries
 - [ ] Application covered with e2e tests
 - tests covering *feature scenarios*
 - tests covering *corner cases*
