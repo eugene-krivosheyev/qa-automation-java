@@ -606,15 +606,17 @@ Practice quest
 
 ### File IO API overview
 - [ ] `File` and `Path`
-- [ ] File IO with Stream API
+- [ ] `Scanner`
 - [ ] Simple file operations with utility class `Files`
+- [ ] File IO with Streams API
 
 ### Расширенные возможности JUnit5
 - [ ] Исключения
 - [ ] Таймауты
 - [ ] Параметризованные тесты
-- [ ] Test suites 
-- Теги
+- [ ] Группировка
+- [Test suites](https://junit.org/junit5/docs/current/user-guide/#running-tests-junit-platform-runner-test-suite) 
+- [Теги](https://junit.org/junit5/docs/current/user-guide/#writing-tests-tagging-and-filtering) [и отдельный запуск](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-filter-tags)
 - Static inner classes
 
 ### Реализация фикстуры для обеспечения поддерживаемости тестов
@@ -623,16 +625,34 @@ Practice quest
 - [ ] Методы жизненного цикла теста
 - [ ] Fixture Builders
 
-### Intro to Parallelism and Concurrency
-- [ ] Threads
-- [ ] Parallelism with ThreadPools
-- [ ] Concurrency issues
-- Data Race
-- Visibility and reordering
-- [ ] Thread synchronization
-- critical section / monitor
-- locks
-- Atomics
+### Parallel tests run
+- [ ] Concurrency issues!
+- [ ] [JUnit5 support](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parallel-execution)
+- [ ] [Maven surefire plugin support](https://maven.apache.org/surefire/maven-surefire-plugin/examples/fork-options-and-parallel-execution.html)
+
+
+Practice quest
+--------------
+### Given
+- Added new requirements for Loan Scoring application
+- [ ] _File-backed_ repository
+
+### When
+- [x] Made research for appropriate assertions from Hamcrest or AssertJ libraries
+- [x] Used parameterization for legacy tests
+- [x] Used parallelism for legacy tests
+- [x] Used suites for legacy tests
+- [ ] Fixture reused at all tests
+- [ ] Application covered with e2e tests
+- tests covering *feature scenarios*
+- tests covering *corner cases*
+
+### Then
+- [ ] Покрытие по веткам ≥ 95%
+- [ ] Фикстуры максимально реюзается
+- [ ] Проект успешно собирается
+- [ ] Выдержан стиль кодирования и соглашения
+- [ ] Ментор принимает PR в `master`
 </details>
 
 Java REST API Testing <sup>9 ак.ч.</sup>
