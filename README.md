@@ -664,11 +664,41 @@ Java REST API Testing <sup>9 ак.ч.</sup>
 - [ ] Обзор [демо-приложения](https://github.com/eugene-krivosheyev/agile-practices-application) для тестирования REST API
 - [Как собрать](https://github.com/eugene-krivosheyev/agile-practices-application/blob/master/README.md)
 - Где взять готовую сборку – [релиз](https://github.com/eugene-krivosheyev/agile-practices-application/releases)
+- Запуск и остановка
 - [ ] OpenAPI and Swagger
 - Swagger UI demo
 - [OpenAPI](https://swagger.io/docs/specification/basic-structure/) дескриптор
+- [генерация из OpenAPI](https://habr.com/ru/company/jugru/blog/525298/)
 - [ ] Обзор [REST Assured](https://rest-assured.io)
+- CRUD
+- [Best Practices](https://habr.com/ru/post/421005/)
 - [ ] Обзор [Retrofit](https://square.github.io/retrofit/)
+- [CRUD](https://guides.codepath.com/android/consuming-apis-with-retrofit)
+- [Доменные объекты gj JSON Schema](https://www.jsonschema2pojo.org) 
+- [Error Handling](https://futurestud.io/tutorials/retrofit-2-simple-error-handling)
+
+Practice quest
+--------------
+### Дано
+- [ ] [Приложение с REST API и Swagger UI](https://github.com/eugene-krivosheyev/agile-practices-application)
+- account-controller: `GET accounts`
+- client-controller: `GET clients, POST client, GET client by id, DELETE client by id`
+
+### Когда исполнитель
+- [ ] Покрывает на Rest Assured сценарии
+- `GET client by id`
+- `DELETE client by id`
+- [ ] Покрывает на Retrofit сценарии
+- `GET clients`
+- `POST client`
+
+### Тогда ожидается что
+- [ ] Проект успешно собирается
+- [ ] Все тесты проходят
+- [ ] Фикстуры максимально реюзается
+- [ ] Выдержан стиль кодирования и соглашения
+### И затем
+- [ ] Ментор принимает PR в `master`
 </details>
 
 <details>
