@@ -661,8 +661,14 @@ Java REST API Testing <sup>9 ак.ч.</sup>
 <summary>вебинар 13 от 13.09.2021</summary>
 
 ### Фреймворки, ориентированные на тестирование REST API
-- [ ] Обзор Retrofit
-- [ ] Обзор REST Assured
+- [ ] Обзор [демо-приложения](https://github.com/eugene-krivosheyev/agile-practices-application) для тестирования REST API
+- [Как собрать](https://github.com/eugene-krivosheyev/agile-practices-application/blob/master/README.md)
+- Где взять готовую сборку – [релиз](https://github.com/eugene-krivosheyev/agile-practices-application/releases)
+- [ ] OpenAPI and Swagger
+- Swagger UI demo
+- [OpenAPI](https://swagger.io/docs/specification/basic-structure/) дескриптор
+- [ ] Обзор [REST Assured](https://rest-assured.io)
+- [ ] Обзор [Retrofit](https://square.github.io/retrofit/)
 </details>
 
 <details>
@@ -679,7 +685,6 @@ Java REST API Testing <sup>9 ак.ч.</sup>
 ### Тест-дублирование БД
 - [ ] На каких уровнях можно замещать БД
 - [ ] Утилиты работы с JDBC
-- [ ] Управление транзакциями
 
 ### Тест-дублирование внешних сервисов
 - [ ] На каких уровнях можно замещать внешний сервис
