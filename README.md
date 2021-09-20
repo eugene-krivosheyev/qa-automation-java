@@ -658,7 +658,7 @@ Practice quest
 Java REST API Testing <sup>9 ак.ч.</sup>
 ---------------------
 <details>
-<summary>вебинар 13 от 13.09.2021</summary>
+<summary>вебинар 13 от 20.09.2021</summary>
 
 ### Фреймворки, ориентированные на тестирование REST API
 - [ ] Обзор [демо-приложения](https://github.com/eugene-krivosheyev/agile-practices-application) для тестирования REST API
@@ -702,7 +702,7 @@ Practice quest
 </details>
 
 <details>
-<summary>вебинар 14 от 16.09.2021</summary>
+<summary>вебинар 14 от 23.09.2021</summary>
 
 ### Введение в работу с БД
 - [ ] Обзор JDBC
@@ -710,7 +710,7 @@ Practice quest
 </details>
 
 <details>
-<summary>вебинар 15 от 20.09.2021</summary>
+<summary>вебинар 15 от 27.09.2021</summary>
 
 ### Тест-дублирование БД
 - [ ] На каких уровнях можно замещать БД
@@ -724,14 +724,14 @@ Practice quest
 Командный проект <sup>6 ак.ч.</sup>
 ----------------
 <details>
-<summary>вебинар 16 от 23.09.2021</summary>
+<summary>вебинар 16 от 30.09.2021</summary>
 
 - [ ] Командная работа над проектом 
 - [ ] Фидбек от инспекторов
 </details>
 
 <details>
-<summary>вебинар 17 от 27.09.2021</summary>
+<summary>вебинар 17 от 04.10.2021</summary>
 
 - [ ] Командная работа над проектом
 - [ ] Фидбек от инспекторов
