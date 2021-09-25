@@ -9,7 +9,7 @@ RUN jhipster --no-insight jdl ./app.jdl && \
     ./mvnw -Pprod clean verify -DskipTests && \
     pwd && echo "\n----" && \
     ls && echo "\n----" && \
-    ls target
+    ls target \
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 ARG APP_VERSION_DEFAULT
