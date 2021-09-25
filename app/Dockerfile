@@ -7,7 +7,10 @@ COPY app.jdl .
 RUN mkdir -p .husky/_ && \
     chmod -R a+rwx .husky && \
     mkdir -p /home/jhipster/app/target/classes/static && \
+    mkdir -p /home/jhipster/app/target/webpack && \
     chmod -R a+rwx /home/jhipster/app && \
+    chmod -R a+rwx .git && \
+    chmod -R a+rwx /root/.npm && \
     jhipster --no-insight jdl ./app.jdl && \
     ./mvnw -Pprod clean verify
 

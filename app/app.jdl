@@ -42,7 +42,8 @@ entity Department {
 
 entity Task {
 	title String required,
-	description String
+	description String,
+	attach TextBlob
 }
 
 entity Employee {
