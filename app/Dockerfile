@@ -4,7 +4,7 @@ ENV APP_VERSION 1.0.0
 WORKDIR /home/jhipster/app
 COPY app.jdl .
 
-RUN #mkdir -p .husky/_ && \
+#RUN mkdir -p .husky/_ && \
 #    chmod -R a+rwx .husky && \
 #    mkdir -p /home/jhipster/app/target/classes/static && \
 #    mkdir -p /home/jhipster/app/target/webpack && \
@@ -21,7 +21,7 @@ WORKDIR /usr/share/app
 RUN addgroup app && \
     adduser --ingroup app --disabled-password --no-create-home app && \
     chown -R app:app . && \
-    chmod -R 700 . \
+    chmod -R 700 .
 USER app
 ENTRYPOINT ["java", "-jar", "app-1.0.0.jar", "--jhipster.security.authentication.jwt.secret={{ TODO }}"]
 COPY --from=build /build/target/app-1.0.0.jar .
