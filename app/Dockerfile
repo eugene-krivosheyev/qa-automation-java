@@ -5,8 +5,11 @@ VOLUME "$USER_HOME_DIR/.m2"
 WORKDIR /home/jhipster/app
 ENV HUSKY 0
 COPY app.jdl .
-RUN npm set-script prepare "" && \
-    jhipster --no-insight jdl ./app.jdl && \
+
+RUN mkdir .husky/_ && chmod -R a+rwx .husky
+
+RUN jhipster --no-insight --skip-git jdl ./app.jdl && \
+    npm set-script prepare "" && \
     ./mvnw -Pprod clean verify
 
 FROM adoptopenjdk/openjdk11:alpine-jre
