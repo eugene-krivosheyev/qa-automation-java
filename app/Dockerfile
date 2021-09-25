@@ -6,7 +6,7 @@ WORKDIR /home/jhipster/app
 ENV HUSKY 0
 COPY app.jdl .
 
-RUN mkdir .husky/_ && chmod -R a+rwx .husky
+RUN mkdir -p .husky/_ && chmod -R a+rwx .husky
 
 RUN jhipster --no-insight --skip-git jdl ./app.jdl && \
     npm set-script prepare "" && \
