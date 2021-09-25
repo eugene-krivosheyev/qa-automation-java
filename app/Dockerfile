@@ -6,8 +6,9 @@ WORKDIR /home/jhipster/app
 ENV HUSKY 0
 COPY app.jdl .
 
-RUN ["jhipster", "--no-insight", "--skip-git", "jdl", "./app.jdl"]
+RUN ["jhipster", "--no-insight", "jdl", "./app.jdl"]
 RUN npm set-script prepare ""
+RUN npm set-script postinstall ""
 RUN ./mvnw -Pprod clean verify
 
 FROM adoptopenjdk/openjdk11:alpine-jre
