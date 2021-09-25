@@ -6,7 +6,7 @@ ENV APP_VERSION $APP_VERSION_DEFAULT
 WORKDIR /home/jhipster/app
 COPY app.jdl .
 RUN jhipster --no-insight jdl app.jdl
-RUN ./mvnw -Pprod verify -DskipTests
+RUN /home/jhipster/app/mvnw -Pprod verify -DskipTests
 
 RUN pwd && ls && ls target
 
@@ -14,5 +14,5 @@ FROM adoptopenjdk/openjdk11:alpine-jre
 ARG APP_VERSION_DEFAULT
 ENV APP_VERSION $APP_VERSION_DEFAULT
 WORKDIR /usr/share/app
+COPY --from=build //home/jhipster/app/target/app-${APP_VERSION}.jar ./app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
-COPY --from=build /home/jhipster/app/target/app-${APP_VERSION}.jar ./app.jar
