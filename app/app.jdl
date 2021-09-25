@@ -30,34 +30,34 @@ entity Country {
 }
 
 entity Location {
-    postalCode String required minlength(6) maxlength(6),
-	streetAddress String required maxlength(200),
-	city String required maxlength(140),
-	province String
+    postalCode String unique required minlength(6) maxlength(6),
+	streetAddress String required minlength(5) maxlength(200),
+	city String required minlength(5) maxlength(140),
+	province String maxlength(140)
 }
 
 entity Department {
-	departmentName String unique required
+	departmentName String unique required minlength(5) maxlength(100)
 }
 
 entity Task {
-	title String required,
+	title String required minlength(5) maxlength(50),
 	description String,
 	attach TextBlob
 }
 
 entity Employee {
-	firstName String required,
-	lastName String required,
-	email String unique required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
-	phoneNumber String unique required pattern(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/),
+	firstName String required minlength(5) maxlength(50),
+	lastName String required minlength(5) maxlength(50),
+	email String unique required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) minlength(5) maxlength(100),
+	phone String unique required pattern(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/) minlength(5) maxlength(12),
 	hireDate Instant required,
 	salary BigDecimal
 }
 
 entity Job {
-	jobTitle String unique required,
-	minSalary BigDecimal min(12792),
+	jobTitle String unique required minlength(5) maxlength(50),
+	minSalary BigDecimal required min(12792),
 	maxSalary BigDecimal
 }
 
@@ -93,6 +93,8 @@ relationship OneToMany {
 relationship ManyToOne {
 	Employee{manager} to Employee
 }
+
+filter *
 
 paginate JobHistory, Employee with infinite-scroll
 paginate Job with pagination

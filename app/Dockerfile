@@ -1,27 +1,17 @@
 FROM jhipster/jhipster:v7.2.0 AS buid
 ENV APP_VERSION 1.0.0
-#USER root
 WORKDIR /home/jhipster/app
 COPY app.jdl .
-
-#RUN mkdir -p .husky/_ && \
-#    chmod -R a+rwx .husky && \
-#    mkdir -p /home/jhipster/app/target/classes/static && \
-#    mkdir -p /home/jhipster/app/target/webpack && \
-#    chmod -R a+rwx /home/jhipster/app && \
-#    mkdir .git && \
-#    chmod -R a+rwx .git && \
-#    chmod -R a+rwx /root/.npm && \
 RUN jhipster --no-insight jdl ./app.jdl && \
-    ./mvnw -Pprod clean verify
+    ./mvnw -Pprod clean verify -DskipTests
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 #USER root
 WORKDIR /usr/share/app
-RUN addgroup app && \
-    adduser --ingroup app --disabled-password --no-create-home app && \
-    chown -R app:app . && \
-    chmod -R 700 .
-USER app
+#RUN addgroup app && \
+#    adduser --ingroup app --disabled-password --no-create-home app && \
+#    chown -R app:app . && \
+#    chmod -R 700 .
+#USER app
 ENTRYPOINT ["java", "-jar", "app-1.0.0.jar", "--jhipster.security.authentication.jwt.secret={{ TODO }}"]
-COPY --from=build /build/target/app-1.0.0.jar .
+COPY --from=build /home/jhipster/app/target/app-1.0.0.jar .
