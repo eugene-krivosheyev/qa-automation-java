@@ -1,4 +1,4 @@
-FROM jhipster/jhipster:v6.10.5 AS buid
+FROM jhipster/jhipster:v7.2.0 AS buid
 ENV APP_VERSION 1.0.0
 #USER root
 WORKDIR /home/jhipster/app
