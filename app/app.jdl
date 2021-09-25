@@ -49,8 +49,8 @@ entity Task {
 entity Employee {
 	firstName String required minlength(5) maxlength(50),
 	lastName String required minlength(5) maxlength(50),
-	email String unique required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) minlength(5) maxlength(100),
-	phone String unique required pattern(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/) minlength(5) maxlength(12),
+	email String unique required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) minlength(5) maxlength(50),
+	phone String unique required pattern(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/),
 	hireDate Instant required,
 	salary BigDecimal
 }

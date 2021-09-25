@@ -1,13 +1,15 @@
+ARG APP_VERSION_DEFAULT=1.0.0
+
 FROM jhipster/jhipster:v7.2.0 AS buid
-ENV APP_VERSION 1.0.0
+ARG APP_VERSION_DEFAULT
+ENV APP_VERSION=$APP_VERSION_DEFAULT
 WORKDIR /home/jhipster/app
 COPY app.jdl .
 RUN jhipster --no-insight jdl ./app.jdl && \
     ./mvnw -Pprod clean verify -DskipTests
-RUN ls
-RUN ls target
 
 FROM adoptopenjdk/openjdk11:alpine-jre
+ARG APP_VERSION_DEFAULT
 #USER root
 WORKDIR /usr/share/app
 #RUN addgroup app && \
@@ -15,5 +17,5 @@ WORKDIR /usr/share/app
 #    chown -R app:app . && \
 #    chmod -R 700 .
 #USER app
-ENTRYPOINT ["java", "-jar", "app-1.0.0.jar"]
-COPY --from=build /home/jhipster/app/target/app-1.0.0.jar .
+ENTRYPOINT ["java", "-jar", "app-${APP_VERSION_DEFAULT}.jar"]
+COPY --from=build /home/jhipster/app/target/app-${APP_VERSION_DEFAULT}.jar .
