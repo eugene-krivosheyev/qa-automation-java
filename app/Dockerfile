@@ -6,7 +6,7 @@ WORKDIR /home/jhipster/app
 ENV HUSKY 0
 COPY app.jdl .
 
-RUN jhipster --no-insight --skip-git jdl ./app.jdl
+RUN ["jhipster", "--no-insight", "--skip-git", "jdl", "./app.jdl"]
 RUN npm set-script prepare ""
 RUN ./mvnw -Pprod clean verify
 
