@@ -1,5 +1,11 @@
 Build
 =====
+(for Mac only)
+```shell
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
+```
+
 ```shell
 docker build --tag tinkoff/edu/app:1.0.0 .
 ```
