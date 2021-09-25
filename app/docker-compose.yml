@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  backend:
+    image: tinkoff/edu/app:1.0.0
+    ports:
+      - "8080:8080"
+    deploy:
+      restart_policy:
+        condition: any
+    depends_on:
+      - db
+    networks:
+      app:
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db/app-db"
+      SPRING_DATASOURCE_USERNAME: app-db-admin
+      SPRING_DATASOURCE_PASSWORD: ScvuMf0kGxdUzLH4 #{{ TODO }}
+
+  db:
+    image: postgres:11-alpine
+    ports:
+      - "5432:5432"
+    deploy:
+      restart_policy:
+        condition: any
+    networks:
+      app:
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: app-db
+      POSTGRES_USER: app-db-admin
+      POSTGRES_PASSWORD: ScvuMf0kGxdUzLH4 #{{ TODO }}
+
+volumes:
+  db:
+
+networks:
+  app:
