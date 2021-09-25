@@ -3,7 +3,9 @@ ENV APP_VERSION 1.0.0
 WORKDIR /home/jhipster/app
 COPY app.jdl .
 RUN jhipster --no-insight jdl ./app.jdl && \
-    ./mvnw -Pprod clean verify -DskipTests
+    ./mvnw -Pprod clean verify -DskipTests \
+RUN ls
+RUN ls target
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 #USER root
