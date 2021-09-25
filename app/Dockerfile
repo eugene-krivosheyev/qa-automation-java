@@ -1,10 +1,12 @@
 FROM jhipster/jhipster:v7.2.0 AS buid
 ENV APP_VERSION 1.0.0
-ENV HUSKY 0
 USER root
+VOLUME "$USER_HOME_DIR/.m2"
 WORKDIR /home/jhipster/app
+ENV HUSKY 0
 COPY app.jdl .
-RUN jhipster --no-insight jdl ./app.jdl && \
+RUN npm set-script prepare "" && \
+    jhipster --no-insight jdl ./app.jdl && \
     ./mvnw -Pprod clean verify
 
 FROM adoptopenjdk/openjdk11:alpine-jre
