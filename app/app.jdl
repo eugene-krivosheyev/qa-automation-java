@@ -22,18 +22,18 @@ application {
 
 
 entity Region {
-	regionName String
+	regionName String required minlength(5) maxlength(20)
 }
 
 entity Country {
-	countryName String
+	countryName String required minlength(5) maxlength(20)
 }
 
 entity Location {
-	streetAddress String,
-	postalCode String,
-	city String,
-	stateProvince String
+	streetAddress String required maxlength(200),
+	postalCode String required minlength(6) maxlength(6),
+	city String required maxlength(140),
+	province String
 }
 
 entity Department {
@@ -41,46 +41,43 @@ entity Department {
 }
 
 entity Task {
-	title String,
+	title String required,
 	description String
 }
 
 entity Employee {
-	firstName String,
-	lastName String,
-	email String,
-	phoneNumber String,
-	hireDate Instant,
-	salary Long,
-	commissionPct Long
+	firstName String required,
+	lastName String required,
+	email String required,
+	phoneNumber String required,
+	hireDate Instant required,
+	salary Long
 }
 
 entity Job {
-	jobTitle String,
-	minSalary Long,
-	maxSalary Long
+	jobTitle String required,
+	minSalary Integer min(12792),
+	maxSalary Integer
 }
 
 entity JobHistory {
-	startDate Instant,
+	startDate Instant required,
 	endDate Instant,
 	language Language
 }
 
 enum Language {
-    FRENCH, ENGLISH, SPANISH
+    RU("RUSSIAN"), EN("ENGLISH"), ES("SPANISH")
 }
 
-relationship OneToOne {
-	Country{region} to Region
-}
 
 relationship OneToOne {
-	Location{country} to Country
-}
-
-relationship OneToOne {
-	Department{location} to Location
+	Country{region} to Region,
+	Location{country} to Country,
+	Department{location} to Location,
+    JobHistory{job} to Job,
+    JobHistory{department} to Department,
+    JobHistory{employee} to Employee
 }
 
 relationship ManyToMany {
@@ -97,9 +94,7 @@ relationship ManyToOne {
 }
 
 relationship OneToOne {
-	JobHistory{job} to Job,
-	JobHistory{department} to Department,
-	JobHistory{employee} to Employee
+
 }
 
 paginate JobHistory, Employee with infinite-scroll
