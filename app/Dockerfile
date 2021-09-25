@@ -18,5 +18,5 @@ WORKDIR /usr/share/app
 #    chown -R app:app . && \
 #    chmod -R 700 .
 #USER app
-ENTRYPOINT ["java", "-jar", "app-${APP_VERSION}.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar app-${APP_VERSION}.jar"]
 COPY --from=build /home/jhipster/app/target/app-${APP_VERSION}.jar .
