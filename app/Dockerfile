@@ -6,9 +6,6 @@ WORKDIR /home/jhipster/app
 ENV HUSKY 0
 COPY app.jdl .
 
-RUN mkdir -p .husky/_
-RUN chmod -R a+rwx .husky
-
 RUN jhipster --no-insight --skip-git jdl ./app.jdl
 RUN npm set-script prepare ""
 RUN ./mvnw -Pprod clean verify
