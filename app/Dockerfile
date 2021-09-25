@@ -4,15 +4,15 @@ ENV APP_VERSION 1.0.0
 WORKDIR /home/jhipster/app
 COPY app.jdl .
 
-RUN mkdir -p .husky/_ && \
-    chmod -R a+rwx .husky && \
-    mkdir -p /home/jhipster/app/target/classes/static && \
-    mkdir -p /home/jhipster/app/target/webpack && \
-    chmod -R a+rwx /home/jhipster/app && \
-    mkdir .git && \
-    chmod -R a+rwx .git && \
-    chmod -R a+rwx /root/.npm && \
-    jhipster --no-insight jdl ./app.jdl && \
+RUN #mkdir -p .husky/_ && \
+#    chmod -R a+rwx .husky && \
+#    mkdir -p /home/jhipster/app/target/classes/static && \
+#    mkdir -p /home/jhipster/app/target/webpack && \
+#    chmod -R a+rwx /home/jhipster/app && \
+#    mkdir .git && \
+#    chmod -R a+rwx .git && \
+#    chmod -R a+rwx /root/.npm && \
+RUN jhipster --no-insight jdl ./app.jdl && \
     ./mvnw -Pprod clean verify
 
 FROM adoptopenjdk/openjdk11:alpine-jre
