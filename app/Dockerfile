@@ -6,11 +6,12 @@ WORKDIR /home/jhipster/app
 ENV HUSKY 0
 COPY app.jdl .
 
-RUN mkdir -p .husky/_ && chmod -R a+rwx .husky
+RUN mkdir -p .husky/_
+RUN chmod -R a+rwx .husky
 
-RUN jhipster --no-insight --skip-git jdl ./app.jdl && \
-    npm set-script prepare "" && \
-    ./mvnw -Pprod clean verify
+RUN jhipster --no-insight --skip-git jdl ./app.jdl
+RUN npm set-script prepare ""
+RUN ./mvnw -Pprod clean verify
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 #USER root
