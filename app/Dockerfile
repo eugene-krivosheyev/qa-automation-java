@@ -6,7 +6,7 @@ ENV APP_VERSION $APP_VERSION_DEFAULT
 WORKDIR /home/jhipster/app
 COPY app.jdl .
 RUN jhipster --no-insight jdl ./app.jdl
-RUN ./mvnw -Pprod clean verify -DskipTests
+RUN /home/jhipster/app/mvnw -Pprod clean verify -DskipTests
 
 RUN pwd && echo "\n----" && \
     ls && echo "\n----" && \
