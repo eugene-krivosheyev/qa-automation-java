@@ -7,6 +7,8 @@ COPY app.jdl .
 
 RUN mkdir -p .husky/_ && \
     chmod -R a+rwx .husky && \
+    mkdir -p /home/jhipster/app/target/classes/static && \
+    chmod -R a+rwx /home/jhipster/app/target/classes/static && \
     jhipster --no-insight jdl ./app.jdl && \
     ./mvnw -Pprod clean verify
 
