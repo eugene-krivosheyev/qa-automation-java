@@ -76,13 +76,13 @@ relationship OneToOne {
 	Country{region} to Region,
 	Location{country} to Country,
 	Department{location} to Location,
-    JobHistory{job} to Job,
-    JobHistory{department} to Department,
-    JobHistory{employee} to Employee
+    JobHistory{job required} to Job,
+    JobHistory{department required} to Department,
+    JobHistory{employee required} to Employee
 }
 
 relationship ManyToMany {
-	Job{task(title)} to Task{job}
+	Job{task(title)} to Task{job required}
 }
 
 relationship OneToMany {
@@ -94,7 +94,7 @@ relationship ManyToOne {
 	Employee{manager} to Employee
 }
 
-filter *
+filter JobHistory, Task
 
 paginate JobHistory, Employee with infinite-scroll
 paginate Job with pagination
