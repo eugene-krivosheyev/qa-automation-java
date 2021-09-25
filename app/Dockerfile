@@ -1,4 +1,4 @@
-ARG APP_VERSION_DEFAULT=1.0.0
+ARG APP_VERSION_DEFAULT="0.0.1-SNAPSHOT"
 
 FROM jhipster/jhipster:v7.2.0 AS build
 ARG APP_VERSION_DEFAULT
@@ -11,12 +11,6 @@ RUN jhipster --no-insight jdl ./app.jdl && \
 FROM adoptopenjdk/openjdk11:alpine-jre
 ARG APP_VERSION_DEFAULT
 ENV APP_VERSION=$APP_VERSION_DEFAULT
-#USER root
 WORKDIR /usr/share/app
-#RUN addgroup app && \
-#    adduser --ingroup app --disabled-password --no-create-home app && \
-#    chown -R app:app . && \
-#    chmod -R 700 .
-#USER app
-ENTRYPOINT ["sh", "-c", "java -jar app-${APP_VERSION}.jar"]
-COPY --from=build /home/jhipster/app/target/app-${APP_VERSION}.jar .
+ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY --from=build /home/jhipster/app/target/app-${APP_VERSION}.jar ./app.jar
