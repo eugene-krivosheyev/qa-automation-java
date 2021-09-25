@@ -93,10 +93,6 @@ relationship ManyToOne {
 	Employee{manager} to Employee
 }
 
-relationship OneToOne {
-
-}
-
 paginate JobHistory, Employee with infinite-scroll
 paginate Job with pagination
 
