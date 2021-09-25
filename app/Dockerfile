@@ -5,8 +5,8 @@ ARG APP_VERSION_DEFAULT
 ENV APP_VERSION $APP_VERSION_DEFAULT
 WORKDIR /home/jhipster/app
 COPY app.jdl .
-RUN jhipster --no-insight jdl ./app.jdl
-RUN /home/jhipster/app/mvnw -Pprod clean verify -DskipTests
+RUN ["jhipster", "--no-insight", "jdl", "app.jdl"]
+RUN ["mvnw", "-Pprod", "verify", "-DskipTests"]
 
 RUN pwd && echo "\n----" && \
     ls && echo "\n----" && \
