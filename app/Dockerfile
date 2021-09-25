@@ -15,5 +15,5 @@ WORKDIR /usr/share/app
 #    chown -R app:app . && \
 #    chmod -R 700 .
 #USER app
-ENTRYPOINT ["java", "-jar", "app-1.0.0.jar", "--jhipster.security.authentication.jwt.secret={{ TODO }}"]
+ENTRYPOINT ["java", "-jar", "app-1.0.0.jar"]
 COPY --from=build /home/jhipster/app/target/app-1.0.0.jar .
