@@ -1,0 +1,32 @@
+{
+  "appApp": {
+    "employee": {
+      "home": {
+        "title": "Employees",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Employee",
+        "createOrEditLabel": "Создать или отредактировать Employee",
+        "notFound": "Employees не найдено"
+      },
+      "created": "Новый Employee создан с идентификатором {{ param }}",
+      "updated": "Employee обновлен с идентификатором {{ param }}",
+      "deleted": "Employee удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Employee {{ id }}?"
+      },
+      "detail": {
+        "title": "Employee"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "hireDate": "Hire Date",
+      "salary": "Salary",
+      "job": "Job",
+      "manager": "Manager",
+      "department": "Department"
+    }
+  }
+}

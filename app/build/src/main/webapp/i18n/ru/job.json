@@ -1,0 +1,28 @@
+{
+  "appApp": {
+    "job": {
+      "home": {
+        "title": "Jobs",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Job",
+        "createOrEditLabel": "Создать или отредактировать Job",
+        "notFound": "Jobs не найдено"
+      },
+      "created": "Новый Job создан с идентификатором {{ param }}",
+      "updated": "Job обновлен с идентификатором {{ param }}",
+      "deleted": "Job удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Job {{ id }}?"
+      },
+      "detail": {
+        "title": "Job"
+      },
+      "id": "ID",
+      "jobTitle": "Job Title",
+      "minSalary": "Min Salary",
+      "maxSalary": "Max Salary",
+      "task": "Task",
+      "employee": "Employee"
+    }
+  }
+}

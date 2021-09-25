@@ -1,0 +1,25 @@
+{
+  "appApp": {
+    "country": {
+      "home": {
+        "title": "Countries",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Country",
+        "createOrEditLabel": "Создать или отредактировать Country",
+        "notFound": "Countries не найдено"
+      },
+      "created": "Новый Country создан с идентификатором {{ param }}",
+      "updated": "Country обновлен с идентификатором {{ param }}",
+      "deleted": "Country удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Country {{ id }}?"
+      },
+      "detail": {
+        "title": "Country"
+      },
+      "id": "ID",
+      "countryName": "Country Name",
+      "region": "Region"
+    }
+  }
+}
