@@ -1,7 +1,6 @@
 FROM jhipster/jhipster:v7.2.0 AS buid
 ENV APP_VERSION 1.0.0
 USER root
-VOLUME "/root/.m2"
 WORKDIR /home/jhipster/app
 COPY app.jdl .
 
