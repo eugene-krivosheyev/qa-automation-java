@@ -13,16 +13,8 @@ export COMPOSE_DOCKER_CLI_BUILD=0
 Build
 =====
 ```shell
-app> 
-  mkdir build && \
-  cd "$_" && \
-  jhipster --no-insight jdl ../app.jdl && \
-  ./mvnw -Pprod,api-docs verify -DskipTests && \
-  cd .. && \
-  docker build --tag ekr26/tinkoff-edu-app:1.0.0 .
-
 app>
-  rm -rf build
+  docker build --tag ekr26/tinkoff-edu-app:1.0.0 .
 ```
 
 Push
