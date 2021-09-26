@@ -1,18 +1,5 @@
-ARG APP_VERSION_DEFAULT="0.0.1-SNAPSHOT"
-
-FROM jhipster/jhipster:v7.2.0 AS build
-ARG APP_VERSION_DEFAULT
-ENV APP_VERSION $APP_VERSION_DEFAULT
-WORKDIR /home/jhipster/app
-COPY app.jdl .
-RUN jhipster --no-insight jdl app.jdl
-RUN /home/jhipster/app/mvnw -Pprod verify -DskipTests
-
-RUN pwd && ls && ls target
-
-FROM adoptopenjdk/openjdk11:alpine-jre
-ARG APP_VERSION_DEFAULT
-ENV APP_VERSION $APP_VERSION_DEFAULT
+FROM adoptopenjdk/openjdk11:centos-jre
 WORKDIR /usr/share/app
-COPY --from=build //home/jhipster/app/target/app-${APP_VERSION}.jar ./app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
+ARG APP_VERSION_DEFAULT="0.0.1-SNAPSHOT"
+COPY build/target/app-${APP_VERSION_DEFAULT}.jar ./app.jar

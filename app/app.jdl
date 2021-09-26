@@ -29,6 +29,7 @@ entity Country {
 	countryName String unique required minlength(5) maxlength(20)
 }
 
+/*
 entity Location {
     postalCode String unique required minlength(6) maxlength(6),
 	streetAddress String required minlength(5) maxlength(200),
@@ -100,3 +101,4 @@ paginate JobHistory, Employee with infinite-scroll
 paginate Job with pagination
 
 service all with serviceImpl except Employee, Job
+*/
