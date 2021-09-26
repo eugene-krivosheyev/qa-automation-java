@@ -6,7 +6,7 @@ ARG APP_VERSION_DEFAULT
 ENV APP_VERSION $APP_VERSION_DEFAULT
 COPY app.jdl .
 RUN jhipster --no-insight jdl app.jdl
-RUN /home/jhipster/app/mvnw -Pprod,api-docs verify -DskipTests
+RUN ./mvnw -Pprod,api-docs verify -DskipTests
 
 FROM --platform=linux/amd64 adoptopenjdk/openjdk11:centos-jre
 WORKDIR /usr/share/app
