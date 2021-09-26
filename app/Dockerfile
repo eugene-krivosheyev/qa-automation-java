@@ -1,6 +1,6 @@
 ARG APP_VERSION_DEFAULT="0.0.1-SNAPSHOT"
 
-FROM --platform=linux/amd64 jhipster/jhipster:v7.0.0 AS build
+FROM --platform=linux/amd64 jhipster/jhipster:v7.1.0 AS build
 WORKDIR /home/jhipster/app
 ARG APP_VERSION_DEFAULT
 ENV APP_VERSION $APP_VERSION_DEFAULT
