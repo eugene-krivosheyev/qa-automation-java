@@ -3,7 +3,7 @@ version: "3.9"
 services:
   backend:
     image: ekr26/tinkoff-edu-app:1.0.0
-#    command: --jhipster.security.authentication.jwt.secret=ScvuMf0kG #{{ TODO }}
+    command: --jhipster.security.authentication.jwt.secret=ScvuMf0kG #{{ TODO }}
     ports:
       - "8080:8080"
     deploy:
