@@ -1,7 +1,7 @@
 Prerequisites
 =============
 ```shell
-sudo yum install -y java-11-openjdk-devel nodejs maven
+sudo yum install -y java-11-openjdk-devel nodejs
 sudo npm install -g generator-jhipster
 ```
 
