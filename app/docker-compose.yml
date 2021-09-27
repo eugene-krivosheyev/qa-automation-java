@@ -3,7 +3,6 @@ version: "3.9"
 services:
   backend:
     image: ekr26/tinkoff-edu-app:1.0.0
-    command: --jhipster.security.authentication.jwt.secret= #{{ TODO }}
     ports:
       - "8080:8080"
     deploy:
@@ -17,6 +16,7 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://db/app-db"
       SPRING_DATASOURCE_USERNAME: app-db-admin
       SPRING_DATASOURCE_PASSWORD: #{{ TODO }}
+      SPRING_SECURITY_USER_PASSWORD: #{{ TODO }}
 
   db:
     image: postgres:11-alpine
