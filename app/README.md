@@ -24,7 +24,7 @@ app>
   jhipster --no-insight jdl ../app.jdl && \
   ./mvnw -Pprod,api-docs verify -DskipTests && \
   cd .. && \
-  docker build --tag ekr26/tinkoff-edu-app:1.0.0 .
+  docker buildx build --platform linux/amd64 --tag ekr26/tinkoff-edu-app:1.0.0 .
 
 app>
   rm -rf build
