@@ -6,11 +6,11 @@ Guidelines
 
 Формат обучения
 ---------------
-- группа до 20 человек
+- группа до 25 человек
 - видео-лекции блоками по 20 мин для самостоятельного просмотра
 - объем видео ~3 часа в неделю
 - задания для самостоятельной проработки ~3 часа трудоемкости в неделю
-- групповая консультация раз в неделю вечером онлайн на 1.5 часа (ПТ)  
+- по запросу частников групповая консультация раз или два в неделю вечером онлайн суммарно на 2 часа в неделю 
 - разбор вопросов в slack-чате силами тренера и менторов
 - итоговая трудоемкость ~1.5 часа в день + выходные как буфер
 
@@ -455,13 +455,13 @@ Docker for QA <sup>3.5</sup>
 - [ ] Base images
 - [ ] Dockerfile structure
 
-## Orchestration <sup>0.25</sup>
+### Orchestration <sup>0.25</sup>
 - [ ] Orchestration: why?
 - [ ] `compose` vs `swarm`
 - [ ] `docker-compose.yml`
 - [ ] starting and stopping cluster
 
-## Test Containers <sup>0.5</sup>
+### Test Containers <sup>0.5</sup>
 - [ ] Test Containers: why?
 - [ ] Running DB
 - [ ] Running generic container
