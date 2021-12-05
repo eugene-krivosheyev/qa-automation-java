@@ -6,149 +6,82 @@ Guidelines
 
 Формат обучения
 ---------------
-- вебинары + самостоятельная работа над заданиями
-- время 17:30 – 20:30
-
-Вебинары
------------------------
-- ссылка на подключение доступна в приглашении в календарь
-- записи вебинаров будут доступны с вечера дня вебинара на 10 дней
-
-Самостоятельная практика
-------------------------
-- после каждого вебинара будет сформулировано задание на самостоятельную практику
-- срок выполнения – до следующего вебинара
-- работу будут оценивать инспекторы путем проведения code review
-- результаты code review будут приходить в интерфейс github и дублироваться на почту
+- группа до 20 человек
+- видео-лекции блоками по 20 мин для самостоятельного просмотра
+- объем видео ~3 часа в неделю
+- задания для самостоятельной проработки ~3 часа трудоемкости в неделю
+- групповая консультация раз в неделю вечером онлайн на 2 часа (ПТ)  
+- разбор вопросов в slack-чате силами тренера и менторов
+- итоговая трудоемкость ~2 часа в день + выходные как буфер
 
 Что нужно для начала
 --------------------
-- [ ] Убедиться, что вы в slack-чате `training-qa-automation-java-2021-08`
-- [ ] [Если нет] завести аккаунт на github
-- [ ] Сделать форк [репозитория с материалами](https://github.com/eugene-krivosheyev/qa-automation-java)
+- [ ] Убедиться, что вы в slack-чате
+- [ ] [Если нет] завести аккаунт на GitLab
+- [ ] Сделать форк данного репозитория с материалами
 - [ ] Добавить в ваш новый репо своих менторов как коллабораторов
-- [ ] Установить jdk ≥8 и IntelliJ IDEA (предпочтительнее Ultimate, но и Community подойдет)
+- [ ] Установить jdk ≥8 и IntelliJ IDEA Ultimate
 
 Контакты
 --------
-В случае вопросов пишите в slack-чат и на корпоративную почту: `a.roshchina`
+- slack-чат 
+- корпоративная почта: `a.roshchina`
 
 
-Agenda <sup>50 ак.ч.</sup>
+Agenda
 ======
 
-Java Application Building <sup>6 ак.ч.</sup>
+Java Application Building <sup>3.5</sup>
 -------------------------
 
-<details>
-<summary>вебинар 01 от 02.08.2021</summary>
-
-### Local GIT versioning workflow
+### Local GIT versioning workflow <sup>0.5</sup>
 - [ ] Local repo
 - [ ] Commit
 - [ ] Log
 - [ ] Tag
 - [ ] Branch
 
-### Remote GIT versioning workflow
+### Remote GIT versioning workflow <sup>0.5</sup>
 - [ ] Remote repo
 - [ ] Clone
 - [ ] Push
 - [ ] Pull
 
-### Managing PRs
+### Managing PRs with GitLab <sup>0.5</sup>
 - [ ] Forks
 - [ ] Pull Request
 - [ ] PR workflow
 
-Practice quest
---------------
-### Given
-- [ ] Известна учетка ментора на github
-- [ ] Установлен git (stand-alone или как компонент IDEA)
-### When
-- [ ] Заведен аккаунт на github
-- [ ] Сделан fork данного репо
-- [ ] Ментор добавлен как коллаборатор
-
-and
-- [ ] Создана рабочая ветка `dev` для реализации заданий
-- [ ] Внесены тестовые изменения
-- [ ] Заведен PR в `master`
-
-and
-- [ ] Новые изменения из данного репо перенесены себе в `master` через PR
-### Then
-- [ ] Ментор принимает PR c тестовыми изменениями
-- [ ] Вам приходит нотификация
-</details>
-
-<details>
-<summary>вебинар 02 от 06.08.2021</summary>
-
-### Java platform overview
+### Java platform overview <sup>0.5</sup>
 - [ ] Java Platform definition
 - [ ] Basic terms: JVM, JRE, JDK
 
-### Simple app lifecycle
-- [ ] source
-- [ ] compiling
-- [ ] packaging
-- [ ] running 
-- [ ] Sourcepath and Classpath
-  
-Practice quest
---------------
-### Given
-- [ ] Локальный клон репозитория
-- [ ] Исходники двух классов
-```
-import com.tinkoff.edu.Printer;
+### Simple app lifecycle <sup>0.5</sup>
+- [ ] Sources
+- [ ] Compiling
+- [ ] Packaging
+- [ ] Running 
+- [ ] sourcepath and classpath
 
-public class MyApplication {
-	public static void main(String[] args) {
-		Printer.print("Hewllo world!");
-	}
-} 
-
----
-  
-package com.tinkoff.edu;
-
-public class Printer {
-	public static void print(String message) {
-		System.out.println(message);
-	}
-}
-```
-### When
-- [ ] Папочная структура исходников src/MyApplication.java
-- [ ] Компиляция: два .class
-- [x] Разделить иcходники и бинарники: `src` и `target` 
-- [ ] Запуск приложения
-### Then
-- [ ] Проект успешно собирается
-- [ ] вывод `Hello world!`
-- [ ] Ментор принимает PR в `master`
-</details>
-
-<details>
-<summary>вебинар 03 от 09.08.2021</summary>
-
-### Maven build lifecycle
+### Maven build lifecycle <sup>0.5</sup>
 - [ ] Directory layout
 - [ ] Build lifecycles
 - [ ] Lifecycle phases
 - [ ] Plugins
 - [ ] Managing plugins with pom.xml
 
-### Maven dependency management
+### Maven dependency management <sup>0.5</sup>
 - [ ] Dependency artifacts: JARed classes, sources, javadocs
 - [ ] Artifact repositories
 - [ ] Artifact identifying
 - [ ] Test dependencies vs Prod dependencies
 
-### IDEA Demo
+---
+
+Java Application Development <sup>17</sup>
+----------------------------
+
+### IDEA Demo <sup>0.5</sup>
 - [ ] Project settings and structure: modules, sourcepath + classpath
 - [ ] Workspace
 - [ ] Views
@@ -156,200 +89,54 @@ public class Printer {
 - [ ] Git workflow
 - [ ] Maven build
 
-Practice quest
---------------
-### Given
-- [ ] Локальный клон репозитория
-- [ ] В корне репо:
-### When
-- [ ] Сгенерирован maven-проект по шаблону `mvn archetype:generate`
-- `com.tinkoff.edu:app:1.0.0-SNAPSHOT`
-### Then
-- [ ] Используется тестовая зависимость JUnit5
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Проект успешно собирается
-- [ ] Ментор принимает PR в `master`
-</details>
-
-Java Application Development <sup>24 ак.ч.</sup>
-----------------------------
-
-<details>
-<summary>вебинар 04 от 13.08.2021</summary>
-
-### Context
-- [ ] Learning through developing and JIT testing
-- [ ] Case: Loan system mock
-
-### Java Source Code Documenting
+### Java Source Code Documenting <sup>0.25</sup>
+- [ ] Source code layout
 - [ ] Single-line comments
 - [ ] Multi-line comments
-- [ ] JavaDoc comments demo
+- [ ] Downloading and working JavaDoc comments
+- [ ] Downloading and working with sources
 
-### Java Packages
+### Java Packages <sup>0.25</sup>
 - [ ] Package: why?
 - [ ] Package declaration
-- [ ] Import directive
 - [ ] Naming convention
+- [ ] Import directive
+- [ ] Encapsulation: why?
+- [ ] Visibility modifiers
 
-### Java Classes
+### Java Classes for Procedure Style <sup>0.25</sup>
 - [ ] Class: why?
 - [ ] Class declaration
-- [ ] Dynamic class loading
-- [ ] Static initialization section
 - [ ] Naming convention
+- [ ] Dynamic class loading and `static` initialization section
 - [ ] Encapsulation concept: behavior and state
 
-### Method declaration
+### Method declaration <sup>0.5</sup>
 - [ ] Method: why?
 - [ ] Method declaration
+- [ ] Naming convention
+- [ ] Visibility modifiers
 - [ ] Method body code block
+- [ ] Method arguments
 - [ ] Method variables
 - [ ] Returning values
-- [ ] Methods Overloading
-- [ ] Naming convention
+- [ ] Methods overloading
 
-### Method call
+### Method call <sup>0.5</sup>
 - [ ] Dot notation
-- [ ] Call stack
+- [ ] Static import directive
+- [ ] Call stack: why?
+- [ ] Formal and factual arguments
+- [ ] Parameter passing style `pass by value`
 
-### Variable declaration
+### Class variable declaration <sup>0.5</sup>
+- [ ] Method vs Class variables: why?
 - [ ] Declaration
+- [ ] Visibility modifiers
 - [ ] Initialization
-- [ ] Literals
 - [ ] Default initialization values for class and method variables
 
-Practice quest
---------------
-### Given
-- [ ] Requirements for Loan Scoring application
-- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id для дальнейших коммуникаций` 
-### When application
-- [ ] Application designed for testability and reuse
-- Controller
-- Service
-- Repository
-- [ ] Application implemented
-- [ ] Self-made tests implemented (with main class)
-### Then
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
-
-<details>
-<summary>вебинар 05 от 16.08.2021</summary>
-
-### Calling methods advanced
-- [ ] Static import directive
-- [ ] `final` modifier for statics
-- [ ] Formal and factual arguments
-- [ ] Parameters `Pass by value` 
-- [ ] `final` modifier for locals/params
-
-### Encapsulation: Implementing state
-- [ ] What is state
-- [ ] Variable declaration scope: static/object/local
-- [ ] local, global and object state
-- [ ] Object creation
-- [ ] Object state initialization with constructor
-- [ ] Accessors and mutators
-
-### Common state and creational patterns
-- [ ] OOP style (rich design)
-- [ ] stateful domain objects/DTO + stateless services (anemic design)
-- [ ] Immutable
-- [ ] Factory
-- [ ] DI
-
-### Enums
-- [ ] Enumerated type concept: why?
-- [ ] API
-- [ ] Using with `switch`
-
-### Polymorphism with interfaces and (abstract) classes
-- [ ] Polymorphism why's?
-- [ ] Java implementation
-- [ ] Interface
-- [ ] `final` modifier
-
-### Inheritance with (abstract) classes
-- [ ] Inheritance why's?
-- [ ] Java implementation
-- [ ] Abstract class
-- [ ] Class
-
-Practice quest
---------------
-### Given
-- [ ] Requirements for Loan Scoring application
-- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id для дальнейших коммуникаций`
-### When application
-- Application designed for testability and reuse
-- [ ] non-static Controller with Service DI
-- [ ] non-static Service with Repo DI
-- [ ] Service with Interface
-- [ ] non-static Repository with Interface
-- [ ] non-static Loan Request 
-- [ ] non-static Loan Response with encapsulated autogenerated incremental id
-- [ ] Loan Response encapsulates Response Type enum: APPROVED, DENIED
-- [ ] Self-made tests implemented (with main class)
-### Then
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
-
-<details>
-<summary>вебинар 07 от 23.08.2021</summary>
-
-### Java Syntax for interfaces and abstract classes
-- [ ] Interfaces
-- [ ] Defender methods
-- [ ] Inheritance and constructors
-
-### Test framework overview
-- [ ] IoC: Framework vs Library
-- [ ] JUnit as a test framework
-- [ ] Task flow
-- [ ] Test class and methods
-- [ ] Annotations
-- [ ] Assert methods
-- [ ] Coverage
-
-Practice quest
---------------
-### Given
-- [ ] Requirements for Loan Scoring application
-- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id для дальнейших коммуникаций`
-### When application
-- [ ] Application covered with e2e tests
-- shouldGetId1WhenFirstCall
-- shouldGetIncrementedIdWhenAnyCall
-- [x] Application covered with integration tests
-### Then
-- [x] Покрытие по веткам ≥ 90%
-- [ ] Фикстура максимально реюзается
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
-
-<details>
-<summary>вебинар 08 от 26.08.2021</summary>
-
-### Разбор ДЗ
-- [ ] Ценность фикстуры и как она определяет трассу исполнения
-
-### Object type and equality in test assertions
-- [ ] `java.lang.Object` class and reference types
-- [ ] Equality with `assertEquals`: `==` vs `.equals()`
-
-### Test Coverage
-- [ ] Coverage types
-- [ ] Coverage tool: JaCoCo
-
-### Java Primitive types and literals
+### Java Primitive types and its literals <sup>0.5</sup>
 - [ ] byte
 - [ ] int
 - [ ] short
@@ -359,79 +146,66 @@ Practice quest
 - [ ] char
 - [ ] boolean
 
-### Wrappers
-- [ ] Wrapper types and main features: referenced, constants, string parsing
-- [ ] Autoboxing/unboxing and performance issue
+### Variable declaration modifiers <sup>0.25</sup>
+- [ ] `final` modifier for variables
+- [ ] Local variables type inference with `var`
 
-### Type operators
-- [ ] type casting
+---
+
+### Type operators <sup>0.25</sup>
+- [ ] Auto type casting
+- [ ] type casting operator
 - [ ] `instanceof`
 
-### Arithmetics operators
+### Arithmetics operators <sup>0.5</sup>
 - [ ] `+, -, *, /, %`
 - [ ] Typed operators: 1/3 vs 1./3
 - [ ] `ArithmeticException`
 - [ ] Types Overflow and solution with `BigInteger`
 - [ ] FP precision loss and solution with `BigDecimal`
 
-### Logical operators
+### Logical operators <sup>0.5</sup>
 - [ ] Type-safe
 - [ ] `&, |, !`
 - [ ] Lazy and eager form: `&&, ||`
 - [ ] `==, !=, <, <=, >, >=`
-- [ ] Reference types issue: absence of `===` and `.equals()`
+- [ ] Reference types equality issue: absence of `===` and `.equals()`
 
-Practice quest
---------------
-### Given
-- [ ] Requirements for Loan Scoring application
-- `Как клиент банка, я хочу сделать запрос на кредит и получить ответ с уникальным id и статусом заявки для дальнейших коммуникаций`
-- Business rules:
-
-| Loan Type | Amount | Months | Response status
-| --------- | ------ | ------ | ---------------
-| PERSON | ≤ 10_000.0 | ≤ 12 | APPROVED
-| PERSON | > 10_000.0 | > 12 | DECLINED 
-| OOO | ≤ 10_000.0 | any | DECLINED
-| OOO | > 10_000.0 | < 12 | APPROVED 
-| OOO | > 10_000.0 | ≥ 12 | DECLINED
-| IP | any | any | DECLINED
-
-### When application
-- [ ] Application covered with e2e tests:
-- `shouldGetErrorWhenApplyNullRequest` (-1 return value)
-- `shouldGetErrorWhenApplyZeroOrNegativeAmountRequest` (-1 return value)
-- `shouldGetErrorWhenApplyZeroOrNagativeMonthsRequest` (-1 return value)
-- tests covering business rules
-- tests covering *corner cases* for business rules
-
-### Then
-- [ ] Покрытие по веткам ≥ 90%
-- [ ] Фикстура максимально реюзается
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
-
-<details>
-<summary>вебинар 09 от 30.08.2021</summary>
-
-### Wrappers
-- [ ] Boxing/unboxing API
-- point of static methods
-- [ ] *Auto* Boxing/unboxing
-
-### Class Object
-- [ ] Все объекты заменяемы и с ними можно работать унифицированно
-- [ ] `toString()`
-- [ ] `equals()` and `hashCode()` contract
-
-### Switching
+### Switching <sup>0.5</sup>
 - [ ] `if`
 - [ ] Ternary operator
 - [ ] `switch` and its limitations
 
-### Java Array reference type
+### Looping <sup>0.5</sup>
+- [ ] `for`
+- [ ] `do` and `while`
+- [ ] `break` and `continue` operators
+- [ ] "foreach" loop for varargs
+
+### Varargs <sup>0.25</sup>
+- [ ] Why?
+- [ ] Declaration
+- [ ] Using
+- [ ] Limitations
+
+---
+
+### Reference types <sup>0.5</sup>
+- [ ] Reference: why?
+- [ ] What types are references?
+- [ ] Memory layout
+- [ ] Garbage collection
+- [ ] `null` literal value
+- [ ] Local reference variables and GC
+- [ ] `final` issue with reference types
+- [ ] Immutable types vs `final`
+
+### Enums <sup>0.25</sup>
+- [ ] Enumerated type concept: why?
+- [ ] API
+- [ ] Using with `switch`
+
+### Arrays <sup>0.5</sup>
 - [ ] Declaration
 - [ ] Initialization
 - empty
@@ -439,332 +213,350 @@ Practice quest
 - [ ] "Immutability"
 - [ ] API: indexing operator, length
 - [ ] Exceptions
-- [ ] "foreach" cycle
+- [ ] varargs as arrays
+- [ ] iteration loop with `for`
+- [ ] `foreach` loop
 
-### Varargs
-- [ ] Why?
-- [ ] Declaration
-- [ ] Using
-- [ ] Limitations
-
-### Looping
-- [ ] "foreach" loop
-- [ ] `for`
-- [ ] `do` and `while`
-- [ ] `break` and `continue` operators
-
-### Strings
+### Strings <sup>0.5</sup>
 - [ ] Declaration
 - [ ] Initialization with literal and constructor
-- [ ] "Immutability" vs StringBuffer/StringBuilder
 - [ ] Strings equality: `==` vs `.equals()`
-- [ ] String API
-- [ ] `StringBuffer` and `StringBuilder` 
+- [ ] Immutability vs StringBuffer/StringBuilder
+- [ ] `String` API
 - [ ] `StringBuffer` and `StringBuilder` API
 
-Practice quest
---------------
-### Given
-- [ ] Changed requirements for Loan Scoring application
-- `Как клиент, я хочу сделать заявку на кредит, чтобы получить ответ с уникальным случайным UUID`
-- Заявка включает ФИО
-- [ ] Added requirements for Loan Scoring application
-- `Как клиент, я хочу запросить статус заявки по ее UUID`
-- `Как менеджер, я хочу изменить статус заявки по ее UUID`
+### Wrappers <sup>0.5</sup>
+- [ ] Wrapper types: why?
+- [ ] Wrapper types: referenced but immutable
+- [ ] Wrappers API
+- [ ] Autoboxing/unboxing and performance issue
 
-### When
-- [ ] Made research for `UUID` class API
-- [ ] Business rules code switching refactored to `switch`
-- [ ] Array used Repository back
-- [ ] Application covered with e2e tests
-- tests covering *feature scenarios*
-- tests covering *corner cases*
+### Custom Type Objects <sup>0.5</sup>
+- [ ] Objects: why?
+- [ ] Object/instance variable declaration scope
+- [ ] Object/instance method declaration scope
+- [ ] Encapsulation and visibility modifiers
+- [ ] Encapsulated state accessors and mutators
+- [ ] Immutable objects
 
-### Then
-- [ ] Покрытие по веткам ≥ 90%
-- [ ] Фикстуры максимально реюзается
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
+### Common creational patterns <sup>0.5</sup>
+- [ ] Object creation with `new`
+- [ ] Object state initialization with constructor
+- [ ] Constructors overloading
+- [ ] Factory method
 
-<details>
-<summary>вебинар 10 от 02.09.2021</summary>
+---
 
-### Exception concept
+### Polymorphism with interfaces and (abstract) classes <sup>0.5</sup>
+- [ ] Polymorphism: why?
+- [ ] Java implementation: how it looks in source code
+- [ ] Interfaces
+- [ ] Implementing interfaces
+
+### `Object` type <sup>0.5</sup>
+- [ ] `java.lang.Object` class as reference type
+- [ ] Все объекты заменяемы и с ними можно работать унифицированно
+- [ ] Equality: `==` vs `.equals()`
+- [ ] `equals()` and `hashCode()` contract
+- [ ] `toString()`
+- [ ] `clone()`
+
+### Inheritance with (abstract) classes <sup>0.5</sup>
+- [ ] Inheritance: why?
+- [ ] Java implementation: how it looks in source code
+- [ ] Abstract classes
+- [ ] Classes for code reuse
+- [ ] `final` modifier
+
+### Defender methods <sup>0.25</sup>
+- [ ] Defender methods: why?
+
+### Code reuse: inheritance vs delegation <sup>0.5</sup>
+- [ ] Delegation: why?
+- [ ] Delegation: how?
+- [ ] DI pattern
+- [ ] Method DI
+- [ ] Constructor and setter DI
+
+---
+
+### Exception concept <sup>0.25</sup>
 - [ ] Type information
 - [ ] Object data information
+- [ ] `throw` operator
 - [ ] Methods call stack information
 
-### Throwing and handling exceptions
+### Handling exceptions <sup>0.25</sup>
 - [ ] creating exception instance
-- [ ] `throw` operator
-- [ ] Methods call stack tracing
 - [ ] `try` section
 - [ ] `catch` section
 - [ ] `finally` section
 
-### Syntax sugar
+### Syntax sugar <sup>0.25</sup>
 - [ ] multi-catch
 - [ ] try-with-resources
 
-### Exceptions type system
+### Exceptions type system <sup>0.5</sup>
 - [ ] Built-in types
 - [ ] Errors vs Exceptions
 - [ ] Checked vs Runtime exceptions
 
-### Testing alternate flows within tests
-- [ ] How JUnit5 handle exceptions in tests: new test states
-- failure
-- error
-- skipped (+assumes)
-- [ ] JUnit5 `assertThrows`
+### Generics <sup>0.5</sup>
+- [ ] Generics: why?
+- [ ] Generic methods
+- [ ] Generic classes and interfaces
 
-Practice quest
---------------
-### Given
-- [ ] Changed system NFRs and inner quality model for Loan Scoring application
-- Для всех операций всех компонентов добавлены проверки на null и пустоту с исключениями
-- Приложение не падает при возможных системных ошибках (арифметика, выход за границы, etc) - опциональная задача
-- [ ] Added requirements for Loan Scoring application: *Data Validation Rules* leading to business exceptions. Реализовать хотя бы одну валидацию своим кастомным checked exception:
-- ФИО не короче 10 и не длиннее 100 символов
-- ФИО содержит только буквы и `-`
-- Сумма не менее 0.01 и не более 999 999.99
-- Срок не менее 1 и не более 100 месяцев
+### Key Collections API overview <sup>0.5</sup>
+- [ ] `Collection` API
+- [ ] `Set` API and implementations
+- [ ] `List` API  and implementations
+- [ ] non-collection `Map` API and implementations
+- [ ] `Object`'s methods used: `equals` and `hashCode` contract
 
-### When
-- [ ] Made research for `String` and `Character` API
-- [ ] Application covered with e2e tests
-- tests covering *feature scenarios*
-- tests covering *corner cases*
-
-### Then
-- [ ] Покрытие по веткам ≥ 95%
-- [ ] Фикстуры максимально реюзается
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
-
-<details>
-<summary>вебинар 11 от 06.09.2021</summary>
-
-### Collections and arrays iterating recap
+### Collections API and iterating <sup>0.25</sup>
 - [ ] `Iterator` and `for` loop
 - [ ] `foreach`
 
-### Key Collections API overview
-- [ ] `Set` API
-- [ ] `List` API
-- [ ] `Map` API
-
-### Object's methods used
-- [ ] `equals`
-- [ ] `hashCode`
-
-### Utility classes
+### Utility classes <sup>0.25</sup>
 - [ ] `Collections`
 - [ ] `Comparable`, `Comparator`
 
-### Lambda syntax
+---
+
+### Lambda syntax <sup>0.5</sup>
 - [ ] Declaring lambdas
 - [ ] Compiler types inference
 - [ ] Functional interface
 - [ ] Method reference
 
-### Stream API
+### Stream API <sup>0.5</sup>
 - [ ] Functions composition
 - [ ] Terminal and non-terminal operations
 
-Practice quest
---------------
-### Given
-- Remaining requirements for Loan Scoring application
-- [x] `Как клиент, я хочу запросить статус заявки по ее UUID`
-- [x] `Как менеджер, я хочу изменить статус заявки по ее UUID`
-- Added new requirements for Loan Scoring application
-- [ ] _Map-backed_ repository
-- [ ] `Как менеджер, я хочу найти все заявки от ООО`
-- [x] `Как менеджер, я хочу найти сумму всех заявок от ООО`
-
-### When
-- [ ] Made research for appropriate assertions from Hamcrest or AssertJ libraries
-- [ ] Application covered with e2e tests
-- tests covering *feature scenarios*
-- tests covering *corner cases*
-
-### Then
-- [ ] Покрытие по веткам ≥ 95%
-- [ ] Фикстуры максимально реюзается
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
-
-<details>
-<summary>вебинар 12 от 09.09.2021</summary>
-
-### File IO API overview
+### File IO API overview <sup>0.5</sup>
 - [ ] `File` and `Path`
 - [ ] `Scanner`
 - [ ] Simple file operations with utility class `Files`
 - [ ] File IO with Streams API
 
-### Расширенные возможности JUnit5
-- [ ] Исключения
-- [ ] Таймауты
-- [ ] Параметризованные тесты
-- [ ] Группировка
-- [Test suites](https://junit.org/junit5/docs/current/user-guide/#running-tests-junit-platform-runner-test-suite) 
-- [Теги](https://junit.org/junit5/docs/current/user-guide/#writing-tests-tagging-and-filtering) [и отдельный запуск](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-filter-tags)
-- Static inner classes
+### Reflection API and Annotations <sup>0.5</sup>
+- [ ] Reflection API overview
+- [ ] Annotations: why?
+- [ ] Compiler annotations
+- [ ] Checkers annotations
 
-### Реализация фикстуры для обеспечения поддерживаемости тестов
-- [ ] Когда и сколько раз создается объект тестового класса?
-- [ ] Как максимально реюзать фикстуры?
-- [ ] Методы жизненного цикла теста
+### Java frameworks overview <sup>0.5</sup>
+- [ ] IoC: Framework vs Library
+- [ ] Object creation and DI
+- [ ] Framework configuration: config files and annotations
+
+---
+
+Developing autotests with JUnit <sup>4</sup>
+-------------------------------
+
+### JUnit framework overview <sup>0.5</sup>
+- [ ] Task flow
+- [ ] Test class and methods
+- [ ] Annotations
+- [ ] Assertions
+
+### Test design <sup>0.5</sup>
+- [ ] Test Case and Test method naming
+- [ ] Code path
+- [ ] Input and State
+- [ ] Fixture
+- [ ] Test structure
+
+### Fixture reuse <sup>0.5</sup>
+- [ ] How many test instances?
+- [ ] How to reuse fixture?
+- [ ] JUnit test case lifecycle methods
 - [ ] Fixture Builders
 
-### Parallel tests run
-- [ ] Concurrency issues!
-- [ ] [JUnit5 support](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parallel-execution)
-- [ ] [Maven surefire plugin support](https://maven.apache.org/surefire/maven-surefire-plugin/examples/fork-options-and-parallel-execution.html)
+### Testing alternate flows within tests <sup>0.5</sup>
+- [ ] Test states
+- failure
+- error
+- skipped (+assumes)
+- [ ] JUnit5 `assertThrows`
 
+### Test Coverage <sup>0.5</sup>
+- [ ] Coverage types
+- [ ] Coverage tool: JaCoCo
+- [ ] Running from Maven build
 
-Practice quest
---------------
-### Given
-- Added new requirements for Loan Scoring application
-- [ ] _File-backed_ repository
+### Advanced assertions <sup>0.5</sup>
+- [ ] JUnit assertions combinator
+- [ ] AssertJ library
+- [ ] Hamcrest library
 
-### When
-- [x] Made research for appropriate assertions from Hamcrest or AssertJ libraries
-- [x] Used parameterization for legacy tests
-- [x] Used parallelism for legacy tests
-- [x] Used suites for legacy tests
-- [ ] Fixture reused at all tests
-- [ ] Application covered with e2e tests
-- tests covering *feature scenarios*
-- tests covering *corner cases*
+### Advanced JUnit <sup>0.5</sup>
+- [ ] Timeouts
+- [ ] Parameterized tests
+- [ ] Suites
+- Nested test classes
+- [Test suites](https://junit.org/junit5/docs/current/user-guide/#running-tests-junit-platform-runner-test-suite)
+- [Tags](https://junit.org/junit5/docs/current/user-guide/#writing-tests-tagging-and-filtering) [и отдельный запуск](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-filter-tags)
 
-### Then
-- [ ] Покрытие по веткам ≥ 95%
-- [ ] Фикстуры максимально реюзается
-- [ ] Проект успешно собирается
-- [ ] Выдержан стиль кодирования и соглашения
-- [ ] Ментор принимает PR в `master`
-</details>
+### Unit tests overview <sup>0.5</sup>
+- [ ] Test scopes
+- [ ] Unit tests with stubs and mocks
 
-Java REST API Testing <sup>9 ак.ч.</sup>
+---
+
+Docker for QA <sup>3.5</sup>
+-------------
+
+### Application overview <sup>0.5</sup>
+- [ ] What is DB
+- [ ] What is backend
+- [ ] What is API
+- [ ] What is client
+- [ ] Configurations used
+- [ ] Overview of [demo application](https://github.com/eugene-krivosheyev/agile-practices-application)
+- [ ] [How to build](https://github.com/eugene-krivosheyev/agile-practices-application/blob/master/README.md)
+- [ ] [Built release](https://github.com/eugene-krivosheyev/agile-practices-application/releases)
+
+### Docker overview <sup>0.5</sup>
+- [ ] Docker: why?
+- [ ] Image: why?
+- [ ] Registry: why?
+- [ ] Container: why?
+- [ ] Containers vs VMs
+
+### Docker Image <sup>0.5</sup>
+- [ ] Images naming and tags
+- [ ] `ls`
+- [ ] `pull`
+- [ ] `rm`, `prune`
+- [ ] immutability and r/w-layer
+
+### Docker container <sup>0.5</sup>
+- [ ] Containers naming
+- [ ] `ls`
+- [ ] `create`
+- [ ] `start`
+- [ ] `stop`
+- [ ] ports
+- [ ] mounts
+
+### Configuration externalization <sup>0.25</sup>
+- [ ] Externalization: why?
+- [ ] How to externalize configuration: 3 patterns
+
+### Troubleshooting <sup>0.25</sup>
+- [ ] `log`
+- [ ] `exec`
+
+### Dockerizing own application <sup>0.5</sup>
+- [ ] `build`
+- [ ] Base images
+- [ ] Dockerfile structure
+
+## Orchestration <sup>0.25</sup>
+- [ ] Orchestration: why?
+- [ ] `compose` vs `swarm`
+- [ ] `docker-compose.yml`
+- [ ] starting and stopping cluster
+
+## Test Containers <sup>0.5</sup>
+- [ ] Test Containers: why?
+- [ ] Running DB
+- [ ] Running generic container
+
+---
+
+Java REST API Testing <sup>3</sup>
 ---------------------
-<details>
-<summary>вебинар 13 от 20.09.2021</summary>
 
-### Фреймворки, ориентированные на тестирование REST API
-- [ ] Обзор [демо-приложения](https://github.com/eugene-krivosheyev/agile-practices-application) для тестирования REST API
-- [Как собрать](https://github.com/eugene-krivosheyev/agile-practices-application/blob/master/README.md)
-- Где взять готовую сборку – [релиз](https://github.com/eugene-krivosheyev/agile-practices-application/releases)
-- Запуск и остановка
+### HTTP overview <sup>0.5</sup>
+- [ ] HTTP: why? 
+- [ ] Request: methods, headers
+- [ ] Response: codes, content-types
+
+### REST overview <sup>0.5</sup>
+- [ ] API principles: why?
+- [ ] REST principles
 - [ ] OpenAPI and Swagger
-- Swagger UI demo
-- [OpenAPI](https://swagger.io/docs/specification/basic-structure/) дескриптор
-- [генерация из OpenAPI](https://habr.com/ru/company/jugru/blog/525298/)
-- [ ] Обзор [REST Assured](https://rest-assured.io)
-- CRUD
-- [Best Practices](https://habr.com/ru/post/421005/)
-- [ ] Обзор [Retrofit](https://square.github.io/retrofit/)
-- [CRUD](https://guides.codepath.com/android/consuming-apis-with-retrofit)
-- [Доменные объекты gj JSON Schema](https://www.jsonschema2pojo.org) 
-- [Error Handling](https://futurestud.io/tutorials/retrofit-2-simple-error-handling)
 
-Practice quest
---------------
-### Дано
-- [ ] [Приложение с REST API и Swagger UI](https://github.com/eugene-krivosheyev/agile-practices-application)
-- account-controller: `GET accounts`
-- client-controller: `GET clients, POST client, GET client by id, DELETE client by id`
+### REST Assured <sup>1</sup>
+- [ ] [Overview](https://rest-assured.io)
+- [ ] [Best Practices](https://habr.com/ru/post/421005/)
 
-### Когда исполнитель
-- [ ] Покрывает на Rest Assured сценарии
-- `GET client by id`
-- `DELETE client by id`
-- [ ] Покрывает на Retrofit сценарии
-- `GET clients`
-- `POST client`
+### Retrofit <sup>1</sup>
+- [ ] [Overview](https://square.github.io/retrofit/)
+- [ ] [CRUD](https://guides.codepath.com/android/consuming-apis-with-retrofit)
+- [ ] [Domain objects vs JSON Schema](https://www.jsonschema2pojo.org) 
+- [ ] [Error Handling](https://futurestud.io/tutorials/retrofit-2-simple-error-handling)
 
-### Тогда ожидается что
-- [ ] Проект успешно собирается
-- [ ] Все тесты проходят
-- [ ] Фикстуры максимально реюзается
-- [ ] Выдержан стиль кодирования и соглашения
-### И затем
-- [ ] Ментор принимает PR в `master`
-</details>
+---
 
-<details>
-<summary>вебинар 14 от 23.09.2021</summary>
+Testing DB applications <sup>3</sup>
+-----------------------
 
-### Введение в работу с БД
-- [ ] Обзор JDBC
-- Драйвер
-- Соединение
-- Запрос
-- Подготовленный запрос
-- Результат
-- Закрытие ресурсов
-- [ ] Обзор JPA
-- Задачи JPA
-- JPA провайдеры
-- Конфигурация
-- Сущности
-- EM API
-- JPA транзакции
-- OQL запросы
+### DBMS overview <sup>0.5</sup>
+- [ ] Application testing architecture
+- [ ] Test scopes
+- [ ] Testing stateful applications
+- [ ] Test fixture patterns
 
-Practice quest
---------------
-### Дано
-- [ ] [Приложение с REST API и Swagger UI](https://github.com/eugene-krivosheyev/agile-practices-application)
-- account-controller: `GET accounts`
-- client-controller: `GET clients, POST client, GET client by id, DELETE client by id`
-- [ ] Приложение запускается с профилем внешней БД
-- сервер derby на localhost
+### SQL intro <sup>0.5</sup>
+- [ ] DDL vs DML
+- [ ] inserts
+- [ ] updates
+- [ ] selects
+- [ ] joins
 
-### Когда исполнитель
-- [ ] Покрывает на Rest Assured сценарии
-- `GET client by id`
-- `DELETE client by id`
-- [ ] Покрывает на Retrofit сценарии
-- `GET clients`
-- `POST client`
-### И обеспечивает полную изоляцию тестов и отсутствие побочных эффектов
-- [ ] Каждый тестовый сценарий готовит необходимые данные в БД
-- [ ] Каждый тестовый сценарий очищает БД от своих данных – подготовленных и созданных приложением
-### С использованием технологий
-- Тесты на операции c Account: JDBC
-- Тесты на операции с Client: JPA 
+### JDBC intro <sup>1</sup>
+- [ ] Driver
+- [ ] Connection
+- [ ] Statement
+- [ ] ResultSet
+- [ ] JDBC Transactions
+- [ ] Resource closing
 
-### Тогда ожидается что
-- [ ] Проект успешно собирается
-- [ ] Все тесты проходят
-- [ ] Фикстуры максимально реюзается
-- [ ] Выдержан стиль кодирования и соглашения
-### И затем
-- [ ] Ментор принимает PR в `master`
-</details>
+### JPA intro <sup>1</sup>
+- [ ] JPA: why?
+- [ ] Architecture
+- [ ] Providers
+- [ ] Configuration
+- [ ] Defining Entity
+- [ ] Defining Mappings
+- [ ] EM API
+- [ ] JPA Transactions
+- [ ] JPA Queries
 
-Командный проект <sup>6 ак.ч.</sup>
+---
+
+Building CI/CD pipeline with GitLab <sup>1.5</sup> 
+-----------------------------------
+
+### CI/CD overview <sup>0.5</sup>
+- [ ] Why CI/CD?
+- [ ] Pipeline overview
+- [ ] IaaC
+
+### GitLab CI pipeline running and monitoring <sup>0.5</sup>
+
+### GitLab CI pipeline developing <sup>0.5</sup>
+
+---
+
+Командный проект <sup>6</sup>
 ----------------
-<details>
-<summary>вебинар 15 от 27.09.2021</summary>
 
-- [ ] Командная работа над проектом 
-- [ ] Фидбек от инспекторов
-</details>
+### Given GitLab repo
+- Java REST API backend codebase
+- DDL
 
-<details>
-<summary>вебинар 16 от 30.09.2021</summary>
+### When attendees
+- Develop maven build script
+- Make backend application and DB dockerized 
+- Develop GitLab build pipeline
+- Develop REST API autotests with DB fixtures
+- Find and fix bugs in backend java code
+- Make PRs for code review
 
-- [ ] Командная работа над проектом
-- [ ] Фидбек от инспекторов
-</details>
+### Then mentors
+- Review and feedback PRs
