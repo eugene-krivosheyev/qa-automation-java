@@ -28,10 +28,11 @@ Guidelines
 - корпоративная почта: `a.roshchina`
 
 
-Agenda
+Agenda <sup>42 часа видео</sup>
 ======
+14 недель = 3.5 мес
 
-Java Application Building <sup>3.5 часов видео</sup>
+Java Application Building <sup>3.5</sup>
 -------------------------
 
 ### Local GIT versioning workflow <sup>0.5</sup>
