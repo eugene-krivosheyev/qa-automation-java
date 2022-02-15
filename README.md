@@ -28,8 +28,9 @@ Guidelines
 - корпоративная почта: `a.roshchina`
 
 
-Agenda <sup>16 недель</sup>
+Agenda <sup>14 недель</sup>
 ======
+28 ак.ч.
 
 Java Application Building <sup>1 вебинар, 1 неделя</sup>
 -------------------------
