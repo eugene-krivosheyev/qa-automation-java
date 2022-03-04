@@ -1,5 +1,5 @@
 class Application {
     public static void main(String[] args) {
-        ConsolePrinter.print("Hello world!");
+        ConsolPrinter.print("Hello world!");
     }
 }
