@@ -35,45 +35,80 @@ Agenda <sup>14 недель</sup>
 Java Application Building <sup>1 вебинар, 1 неделя</sup>
 -------------------------
 
-### Local GIT versioning workflow <sup>0.2 часа</sup>
+### Local GIT versioning workflow <sup>15 мин</sup>
+- [ ] Why VCS?
 - [ ] Local repo
 - [ ] Commit
+- content: files A/M/D
+- hash/id
+- message
 - [ ] Branch
+- `git log`
 
-### Remote GIT versioning workflow <sup>0.2</sup>
+### Remote GIT versioning workflow <sup>15</sup>
 - [ ] Remote repo
+- alias: `origin`
 - [ ] Clone
+- mirror branches
 - [ ] Push
 - [ ] Pull
 
-### Managing PRs with GitLab <sup>0.1</sup>
+### Managing PRs with GitHub <sup>10</sup>
+- [ ] [PR workflow](https://www.earthdatascience.org/images/earth-analytics/git-version-control/git-fork-emphasis.png)
 - [ ] Forks
-- [ ] Pull Request
-- [ ] PR workflow
+- [ ] Pull Requests
+- one-way
+- another-way
 
-### Java platform overview <sup>0.1</sup>
+### Git reference
+- [basic commands cheatsheet](https://www.atlassian.com/ru/git/tutorials/atlassian-git-cheatsheet)
+- [tutorial](https://www.atlassian.com/ru/git/tutorials/setting-up-a-repository)
+
+### Java platform overview <sup>10</sup>
 - [ ] Java Platform definition
 - [ ] Basic terms: JVM, JRE, JDK
+- [ ] Installation
+- [Oracle website](https://www.oracle.com/java/technologies/downloads/)
+- [Adoptium](https://adoptium.net) builds
+- your lovely package manager: `openjdk11`
 
-### Simple app lifecycle <sup>0.1</sup>
+### Simple app lifecycle <sup>10</sup>
 - [ ] Sources
+- sourcepath
+- classpath
 - [ ] Compiling
+- compile errors
 - [ ] Packaging
-- [ ] Running 
+- jar tool
+- [ ] Running
+- classpath
+- exceptions
 
-### Maven build lifecycle <sup>0.2</sup>
-- [ ] Directory layout
-- [ ] Build lifecycles
+### Maven build lifecycle <sup>20</sup>
+- [ ] Minimum Directory layout
+```shell
+├── pom.xml
+└── src
+  └── main
+      └── java
+          ├── Application.java
+          └── ConsolePrinter.java
+```
+- [ ] Build lifecycles: 3
 - [ ] Lifecycle phases
-- [ ] Plugins 
-- [ ] Managing plugins with pom.xml
-- [ ] Default plugins
+- [ ] Plugins
+- Default plugins
+- Managing plugins with pom.xml
 
-### Maven dependency management <sup>0.1</sup>
+### Maven dependency management <sup>10</sup>
 - [ ] Dependency artifacts: JARed classes, sources, javadocs
 - [ ] Artifact repositories
 - [ ] Artifact identifying
 - [ ] Test dependencies vs Prod dependencies
+
+### Maven reference
+- [maven lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#lifecycle-reference)
+- [maven cheatsheet](https://www.jrebel.com/blog/maven-cheat-sheet)
 
 ---
 
