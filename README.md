@@ -36,7 +36,7 @@ Java Application Building <sup>1 вебинар, 1 неделя</sup>
 -------------------------
 
 ### Local GIT versioning workflow <sup>15 мин</sup>
-- [ ] Why VCS?
+- [ ] Why VCS? cool!!!!!
 - [ ] Local repo
 - [ ] Commit
 - content: files A/M/D
