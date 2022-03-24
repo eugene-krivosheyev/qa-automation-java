@@ -1,3 +1,5 @@
+package com.tcs.edu.printer;
+
 /**
  * ConsolePrinter class prints variable at console
  * <p>
