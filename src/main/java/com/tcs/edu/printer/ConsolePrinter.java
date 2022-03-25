@@ -1,3 +1,5 @@
+package com.tcs.edu.printer;
+
 /**
  *The {@code ConsolePrinter} contains methods for user-defined output to the console.
  *
