@@ -167,10 +167,10 @@ Hello world!
 ------
 - [ ] Добавить для класса `Application` директиву `package com.tcs.edu`
 - [ ] Добавить для класса `ConsolePrinter` директиву `package com.tcs.edu.printer`
-- [ ] В классе `Application` использовать второй класс по его полному имени: добавить директиву `import ConsolePrinter`
+- [ ] В классе `Application` использовать второй класс по его полному имени: добавить директиву `import com.tcs.edu.printer.ConsolePrinter`
 - [ ] Выполните из консоли запуск приложения
 ```shell
- java -classpath target/app-1.0-SNAPSHOT.jar Application
+ java -classpath target/app-1.0-SNAPSHOT.jar com.tcs.edu.Application
 ```
 
 Как проверить
