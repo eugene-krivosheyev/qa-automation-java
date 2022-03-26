@@ -1,3 +1,5 @@
+package com.tcs.edu.printer;
+
 /**
  * Output information to the console window
  *
