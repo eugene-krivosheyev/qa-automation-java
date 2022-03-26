@@ -12,9 +12,9 @@ public class TimestampMessageDecorator {
      * Add timestamp before massage
      *
      * @param message text string
+     * @return String
      */
     public static String decorate(String message) {
-        message = Instant.now() + " " + message;
-        return message;
+        return Instant.now() + " " + message;
     }
 }
