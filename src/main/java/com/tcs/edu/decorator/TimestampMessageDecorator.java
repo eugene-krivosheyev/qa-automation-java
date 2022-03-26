@@ -11,7 +11,7 @@ public class TimestampMessageDecorator {
     /**
      * Add timestamp before massage
      *
-     * @param message test string
+     * @param message text string
      */
     public static String decorate(String message) {
         message = Instant.now() + " " + message;
