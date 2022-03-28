@@ -10,6 +10,7 @@ import static java.time.Instant.now;
  * @author Alexey Fomin
  */
 public class TimestampMessageDecorator {
+
     /**
      * Method decorate add timestamp before message
      * <p>
