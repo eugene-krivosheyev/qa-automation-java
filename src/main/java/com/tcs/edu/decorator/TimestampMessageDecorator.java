@@ -14,6 +14,8 @@ public class TimestampMessageDecorator {
      * @return The <code>String</code> decorated with a timestamp
      */
     public static String decorate(String message){
-        return now() + " " + message;
+        String decoratedMessage;
+        decoratedMessage = now() + " " + message;
+        return decoratedMessage;
     }
 }
