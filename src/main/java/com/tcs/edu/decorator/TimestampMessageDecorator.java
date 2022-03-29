@@ -6,14 +6,16 @@ import java.time.Instant;
  * Class for message decoration with timestamp
  */
 public class TimestampMessageDecorator {
+    static int messageCount;
     /**
      * Method for message decoration with timestamp
      * @param message string for decoration
      * @return decorated message
      */
     public static String decorate(String message) {
+        messageCount++;
         String decoratedMessage;
-        decoratedMessage = Instant.now() + " " + message;
+        decoratedMessage = messageCount + " " + Instant.now() + " " + message;
         return decoratedMessage;
     }
 }
