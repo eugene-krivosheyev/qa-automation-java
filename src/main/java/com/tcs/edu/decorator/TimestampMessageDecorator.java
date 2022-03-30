@@ -20,6 +20,7 @@ public class TimestampMessageDecorator {
      * @return String with now timestamp
      */
     public static String decorate(String message) {
-        return now() + " " + message;
+        var decoratedMessage = now() + " " + message;
+        return decoratedMessage;
     }
 }
