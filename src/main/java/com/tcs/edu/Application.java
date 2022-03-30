@@ -1,12 +1,12 @@
 package com.tcs.edu;
 
-import com.tcs.edu.decorator.TimestampMessageDecorator;
+import static com.tcs.edu.decorator.TimestampMessageDecorator.*;
 import com.tcs.edu.printer.ConsolePrinter;
 
 class Application {
     public static void main(String[] args) {
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
+        for (var i = 0; i<3; i++){
+            ConsolePrinter.print(decorate("Hello world!"));
+        }
     }
 }
