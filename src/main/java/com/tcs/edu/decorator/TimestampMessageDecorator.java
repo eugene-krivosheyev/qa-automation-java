@@ -22,7 +22,7 @@ public class TimestampMessageDecorator {
      * @return String with now timestamp and messageCount
      */
     public static String decorate(String message) {
-        var decoratedMessage = messageCount + " " + now() + " " + message;
+        final var decoratedMessage = messageCount + " " + now() + " " + message;
         return decoratedMessage;
     }
 }
