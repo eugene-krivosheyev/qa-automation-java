@@ -19,9 +19,8 @@ public class TimestampMessageDecorator {
      * @return The <code>String</code> decorated with a timestamp
      */
     public static String decorate(String message){
-        String decoratedMessage;
         messageCount++;
-        decoratedMessage = messageCount + " " + now() + " " + message;
+        final var decoratedMessage = messageCount + " " + now() + " " + message;
         return decoratedMessage;
     }
 }
