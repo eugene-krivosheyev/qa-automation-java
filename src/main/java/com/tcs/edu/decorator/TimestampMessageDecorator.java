@@ -23,9 +23,14 @@ public class TimestampMessageDecorator {
      * не изменяет входящие параметры.
      *
      * В процедуре используется поясняющая переменная decoratedMessage для повешыния читабельности.
+     * Глобальная переменная messageCount нужна для фиксации колиества вызова процедуры decorate
      */
+
+    static Integer messageCount = 0;
+
     public static String decorate(String message) {
-        String decoratedMessage = Instant.now() + " " + message;
+        messageCount++;
+        String decoratedMessage = messageCount + " " + Instant.now() + " " + message;
         return decoratedMessage;
     }
 }
