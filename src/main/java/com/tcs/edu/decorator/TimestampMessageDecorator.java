@@ -21,8 +21,11 @@ public class TimestampMessageDecorator {
      *
      * Побочные эффекты отсуствуют, процедура {@link com.tcs.edu.decorator.TimestampMessageDecorator#decorate(String)}
      * не изменяет входящие параметры.
+     *
+     * В процедуре используется поясняющая переменная decoratedMessage для повешыния читабельности.
      */
     public static String decorate(String message) {
-        return Instant.now() + " " + message;
+        String decoratedMessage = Instant.now() + " " + message;
+        return decoratedMessage;
     }
 }
