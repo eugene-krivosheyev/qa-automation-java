@@ -15,6 +15,7 @@ public class TimestampMessageDecorator {
      * @return String
      */
     public static String decorate(String message) {
-        return Instant.now() + " " + message;
+        String decoratedMessage = Instant.now() + " " + message;
+        return decoratedMessage;
     }
 }
