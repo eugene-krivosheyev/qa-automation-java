@@ -8,17 +8,18 @@ import java.time.Instant;
  * @author k.s.savelev
  */
 public class TimestampMessageDecorator {
+
+    static Integer messageCount = 0;
+
     /**
      * Add timestamp before massage
      *
      * @param message text string
      * @return String
      */
-    static Integer messageCount = 0;
-
     public static String decorate(String message) {
         messageCount++;
-        String decoratedMessage =  messageCount + " " + Instant.now() + " " + message;
+        var decoratedMessage =  messageCount + " " + Instant.now() + " " + message;
 
         return decoratedMessage;
     }
