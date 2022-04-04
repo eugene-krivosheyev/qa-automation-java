@@ -191,22 +191,28 @@ Java Application Development <sup>9</sup>
 ### Type operators <sup>0.1</sup>
 - [ ] Auto type casting
 - [ ] type casting operator
+- [ ] Method overloading recap
 
 ### Arithmetics operators <sup>0.1</sup>
 - [ ] `+, -, *, /, %`
+- [ ] `ArithmeticException` for integer types
 - [ ] Typed operators: 1/3 vs 1./3
-- [ ] `ArithmeticException`
+- [ ] `+` as String concatenation 
+
+### Arithmetics type issues
+- [ ] Overflow
+- [ ] Precision loss
 
 ### Logical operators <sup>0.3</sup>
 - [ ] Type-safe
 - [ ] `&, |, !`
 - [ ] Lazy and eager form: `&&, ||`
 - [ ] `==, !=, <, <=, >, >=`
-- [ ] Reference types equality issue: absence of `===` and `.equals()`
+- [ ] Reference types equality issue: absence of `===` and `.equals()` instead
 
 ### Switching <sup>0.5</sup>
-- [ ] `if`
 - [ ] Ternary operator
+- [ ] `if`
 - [ ] `switch` and its limitations
 
 ---
