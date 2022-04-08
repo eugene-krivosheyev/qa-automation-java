@@ -6,5 +6,8 @@ class Application {
         ConsolePrinter.print(decorate("Hello world!"));
         ConsolePrinter.print(decorate("Hello world!"));
         ConsolePrinter.print(decorate("Hello world!"));
+        ConsolePrinter.print(decorate("Hello world!"));
+        ConsolePrinter.print(decorate("Hello world!"));
+        ConsolePrinter.print(decorate("Hello world!"));
     }
 }
