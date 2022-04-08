@@ -12,11 +12,11 @@ public class TimestampMessageDecorator {
     /**
      * <code>PAGE_SIZE</code> is a fixed message count per page.
      */
-    public final static int PAGE_SIZE = 2;
+    public static final int PAGE_SIZE = 2;
     /**
      * <code>PAGE_DELIMITER</code> appends to the last string of the page.
      */
-    public final static String PAGE_DELIMITER = "\n---";
+    public static final String PAGE_DELIMITER = "\n---";
     /**
      * <code>messageCount</code> stores the number of {@link #decorate(String)} calls.
      */
