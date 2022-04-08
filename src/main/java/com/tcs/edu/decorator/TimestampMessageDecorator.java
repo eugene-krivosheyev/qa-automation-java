@@ -6,6 +6,7 @@ import java.time.Instant;
  * Class for message decoration with timestamp
  */
 public class TimestampMessageDecorator {
+    private static final int PAGE_SIZE = 2;
     static int messageCount;
     /**
      * Method for message decoration with timestamp
@@ -14,7 +15,10 @@ public class TimestampMessageDecorator {
      */
     public static String decorate(String message) {
         messageCount++;
-        final var decoratedMessage = String.format("%d %s %s", messageCount, Instant.now(), message);
+        var decoratedMessage = String.format("%d %s %s", messageCount, Instant.now(), message);
+        if (messageCount % PAGE_SIZE == 0) {
+            decoratedMessage += "\n---";
+        }
         return decoratedMessage;
     }
 }
