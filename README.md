@@ -217,6 +217,11 @@ Java Application Development <sup>9</sup>
 
 ---
 
+### Enums <sup>0.2</sup>
+- [ ] Enumerated type concept: why?
+- [ ] API
+- [ ] Using with `switch`
+
 ### Looping <sup>0.5</sup>
 - [ ] `for`
 - [ ] `do` and `while`
@@ -229,6 +234,8 @@ Java Application Development <sup>9</sup>
 - [ ] Using
 - [ ] Limitations
 
+---
+
 ### Reference types <sup>0.4</sup>
 - [ ] Reference: why?
 - [ ] What types are references?
@@ -237,13 +244,6 @@ Java Application Development <sup>9</sup>
 - [ ] `null` literal value
 - [ ] `final` issue with reference types
 - [ ] Immutable types vs `final`
-
----
-
-### Enums <sup>0.2</sup>
-- [ ] Enumerated type concept: why?
-- [ ] API
-- [ ] Using with `switch`
 
 ### Arrays <sup>0.3</sup>
 - [ ] Declaration
