@@ -11,6 +11,7 @@ import static java.time.Instant.now;
  */
 public class TimestampMessageDecorator {
 
+    private static int PAGE_SIZE = 0;
     public static int messageCount = 0;
 
     /**
@@ -19,10 +20,16 @@ public class TimestampMessageDecorator {
      * This class add now time before any message and messageCount counter before text
      *
      * @param message -- text to print
-     * @return String with now timestamp and messageCount
+     * @return String with now timestamp and messageCount. When return 2nd message, func return '---' string
      */
     public static String decorate(String message) {
-        final var decoratedMessage = messageCount + " " + now() + " " + message;
-        return decoratedMessage;
+        final var decoratedMessage = String.format("%d %s %s", messageCount, now(), message);
+        if (PAGE_SIZE % 2 == 0 && PAGE_SIZE != 0) {
+            PAGE_SIZE++;
+            return "---" + "\n" + decoratedMessage;
+        } else {
+            PAGE_SIZE++;
+            return decoratedMessage;
+        }
     }
 }
