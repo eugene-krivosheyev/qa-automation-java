@@ -1,5 +1,9 @@
 package com.tcs.edu.printer;
 
+import static com.tcs.edu.decorator.MessageService.process;
+
+import com.tcs.edu.decorator.Severity;
+
 /**
  * ConsolePrinter class prints variable at console
  * <p>
@@ -14,9 +18,9 @@ public class ConsolePrinter {
      * <p>
      * Print method print any string variable at console
      *
-     * @param message -- text to print
+     * //@param message -- text to print
      */
-    public static void print(String message) {
-        System.out.println(message);
+    public static void print(Severity severity, String decoratedMessage) {
+        System.out.println(process(severity, decoratedMessage));
     }
 }

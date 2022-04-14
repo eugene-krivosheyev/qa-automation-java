@@ -2,6 +2,8 @@ package com.tcs.edu.decorator;
 
 import static java.time.Instant.now;
 
+import java.time.Instant;
+
 /**
  * TimestampMessageDecorator work with string messages
  * <p>
@@ -12,7 +14,7 @@ import static java.time.Instant.now;
 public class TimestampMessageDecorator {
 
     private static int PAGE_SIZE = 0;
-    public static int messageCount = 0;
+    public static int messageCount = 1;
 
     /**
      * Method decorate add timestamp and counter before message
