@@ -6,7 +6,12 @@ import com.tcs.edu.decorator.TimestampMessageDecorator;
 
 public class MessageService {
 
-    public static void ProcessMessage(Severity severity, String message) {
+    public static void ProcessMessage(Severity severity, String message, String... messages) {
+
         ConsolePrinter.print(TimestampMessageDecorator.decorate(SeverityDecorator.decorate(severity,message)));
+
+        for (String messageItem: messages) {
+            ConsolePrinter.print(TimestampMessageDecorator.decorate(SeverityDecorator.decorate(severity,messageItem)));
+        }
     }
 }
