@@ -11,11 +11,12 @@ public class TimestampMessageDecorator {
     /**
      * Method for message decoration with timestamp
      * @param message string for decoration
+     * @param severity severity of message
      * @return decorated message
      */
-    public static String decorate(String message) {
+    public static String decorate(Severity severity, String message) {
         messageCount++;
-        var decoratedMessage = String.format("%d %s %s", messageCount, Instant.now(), message);
+        var decoratedMessage = MessageService.concatenate(severity, messageCount, message);
         if (messageCount % PAGE_SIZE == 0) {
             decoratedMessage += "\n---";
         }
