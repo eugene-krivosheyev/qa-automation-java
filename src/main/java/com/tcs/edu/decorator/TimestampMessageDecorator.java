@@ -1,37 +1,26 @@
 package com.tcs.edu.decorator;
 
-import static java.time.Instant.now;
-
+import static com.tcs.edu.decorator.MessageService.messageCount;
 import java.time.Instant;
 
 /**
- * TimestampMessageDecorator work with string messages
+ * TimestampMessageDecorator работает со строками
  * <p>
- * This class add timestamp and counter before any message
+ * Этот класс доабвляет счетчик сообщений и значение текущего времени к сообщению
  *
  * @author Alexey Fomin
  */
 public class TimestampMessageDecorator {
 
-    private static int PAGE_SIZE = 0;
-    public static int messageCount = 1;
-
     /**
-     * Method decorate add timestamp and counter before message
+     * Метод доабвляет счетчик и текущее время
      * <p>
      * This class add now time before any message and messageCount counter before text
      *
-     * @param message -- text to print
-     * @return String with now timestamp and messageCount. When return 2nd message, func return '---' string
+     * @param message -- текст для печати
+     * @return Строка со счетчиком, текущем временем с переданной строкой message
      */
     public static String decorate(String message) {
-        final var decoratedMessage = String.format("%d %s %s", messageCount, now(), message);
-        if (PAGE_SIZE % 2 == 0 && PAGE_SIZE != 0) {
-            PAGE_SIZE++;
-            return "---" + "\n" + decoratedMessage;
-        } else {
-            PAGE_SIZE++;
-            return decoratedMessage;
-        }
+        return String.format("%d %s %s", messageCount, Instant.now(), message);
     }
 }
