@@ -16,7 +16,9 @@ public class TimestampMessageDecorator {
     /**
      * Процедура {@link com.tcs.edu.decorator.TimestampMessageDecorator#decorate(String)} возвращает новую строку
      * состоящую из текущего времени, которое берётся
-     * из метода {@link Instant#now()} и входящего параметра
+     * из метода {@link Instant#now()} и входящего параметра,
+     * также процедура добавляет к новой строке специальный символ переноса если вызов процедуры является кратным
+     * константе PAGE_SIZE.
      * @param message ожидаемый на вход для исполнения процедуры, должен быть представлен типом String.
      *
      * Побочные эффекты отсуствуют, процедура {@link com.tcs.edu.decorator.TimestampMessageDecorator#decorate(String)}
@@ -24,6 +26,8 @@ public class TimestampMessageDecorator {
      *
      * В процедуре используется поясняющая переменная decoratedMessage для повешыния читабельности.
      * Глобальная переменная messageCount нужна для фиксации колиества вызова процедуры decorate
+     *
+     * В процедуре используется константа PAGE_SIZE, которая
      */
 
     static Integer messageCount = 0;
