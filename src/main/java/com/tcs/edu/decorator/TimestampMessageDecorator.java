@@ -15,6 +15,6 @@ public class TimestampMessageDecorator {
      * @return The <code>String</code> decorated with a timestamp
      */
     public static String decorate(String message) {
-        return String.format("%s %s", message, now());
+        return String.format("%s %s", now(), message);
     }
 }
