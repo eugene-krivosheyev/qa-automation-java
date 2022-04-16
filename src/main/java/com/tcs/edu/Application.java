@@ -1,13 +1,14 @@
 package com.tcs.edu;
 
-import static com.tcs.edu.decorator.TimestampMessageDecorator.*;
-
-import com.tcs.edu.printer.ConsolePrinter;
+import static com.tcs.edu.service.MessageService.process;
+import static com.tcs.edu.decorator.Severity.*;
 
 class Application {
     public static void main(String[] args) {
-        for (var i = 0; i < 6; i++) {
-            ConsolePrinter.print(decorate("Hello world!"));
-        }
+        process(MAJOR, "Greetings!");
+        process(REGULAR, "Nihao!", "Hey!");
+        process(MINOR, "Hello!", "Hi!", "Howdy!");
+        //не выводит ничего
+        process(MAJOR);
     }
 }
