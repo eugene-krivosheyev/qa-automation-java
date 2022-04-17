@@ -1,13 +1,10 @@
-import com.tcs.edu.printer.ConsolePrinter;
-import static com.tcs.edu.decorator.TimestampMessageDecorator.decorate;
+import com.tcs.edu.decorator.Severity;
+import com.tcs.edu.printer.MessageService;
+
 
 class Application {
     public static void main(String[] args) {
-        ConsolePrinter.print(decorate("Hello world!"));
-        ConsolePrinter.print(decorate("Hello world!"));
-        ConsolePrinter.print(decorate("Hello world!"));
-        ConsolePrinter.print(decorate("Hello world!"));
-        ConsolePrinter.print(decorate("Hello world!"));
-        ConsolePrinter.print(decorate("Hello world!"));
+        MessageService.process(Severity.MINOR, "Hello world!", "Hello world!", "Hello world!",
+                "Hello world!", "Hello world!", "Hello world!");
     }
 }
