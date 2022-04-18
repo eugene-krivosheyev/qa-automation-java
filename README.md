@@ -237,11 +237,15 @@ Java Application Development <sup>9</sup>
 ---
 
 ### Reference types <sup>0.4</sup>
-- [ ] Reference: why?
-- [ ] What types are references?
+- [ ] Custom (non-primitive) types
+- Enum
+- Interface
+- Class
+- [ ] Class as structure template
+- [ ] Reference anatomy and `new` operator
 - [ ] Stack and heap
 - [ ] Garbage collection concept
-- [ ] `null` literal value
+- [ ] `null` literal value and NPE
 - [ ] `final` issue with reference types
 - [ ] Immutable types vs `final`
 
@@ -250,7 +254,7 @@ Java Application Development <sup>9</sup>
 - [ ] Initialization
 - empty
 - literals
-- [ ] "Immutability"
+- [ ] "Immutability" with size
 - [ ] API: indexing operator, length
 - [ ] Exceptions
 - [ ] `foreach` loop
@@ -261,12 +265,16 @@ Java Application Development <sup>9</sup>
 - [ ] Initialization with literal and constructor
 - [ ] Strings equality: `==` vs `.equals()`
 - [ ] `String` API
+- [ ] Immutability
 
 ### Wrappers <sup>0.2</sup>
 - [ ] Wrapper types: why?
 - [ ] Wrapper types: referenced but immutable
 - [ ] Wrappers API
 - [ ] Autoboxing/unboxing and performance issue
+
+### Immutability <sup>0.1</sup>
+- [ ] Why immutability?
 
 ---
 
