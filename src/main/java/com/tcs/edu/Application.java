@@ -6,11 +6,11 @@ import static com.tcs.edu.decorator.Severity.*;
 
 class Application {
     public static void main(String[] args) {
-        MessageService.ProcessMessage(MINOR, "Hello world");
-        MessageService.ProcessMessage(REGULAR, "Hello world");
-        MessageService.ProcessMessage(REGULAR, "Hello world");
-        MessageService.ProcessMessage(MAJOR, "Hello world");
-        MessageService.ProcessMessage(MINOR, "Hello world");
-        MessageService.ProcessMessage(MAJOR, "Hello world");
+        MessageService.processMessage(MINOR, "Hello world");
+        MessageService.processMessage(REGULAR, "Hello world");
+        MessageService.processMessage(REGULAR, "Hello world");
+        MessageService.processMessage(MAJOR, "Hello world");
+        MessageService.processMessage(MINOR, "Hello world");
+        MessageService.processMessage(MAJOR, "Hello world");
     }
 }
