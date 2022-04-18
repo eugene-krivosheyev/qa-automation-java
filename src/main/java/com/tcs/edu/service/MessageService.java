@@ -23,7 +23,7 @@ public class MessageService {
      * @param message  <code>String</code> to be proceeded. Disables calling without messages.
      * @param messages <code>Strings</code> to be proceeded to print.
      */
-    public static void print(final Severity severity, final String message, final String... messages) {
+    public static void print(Severity severity, String message, String... messages) {
         process(severity, message);
         for (String currentMessage : messages) {
             process(severity, currentMessage);
@@ -39,7 +39,7 @@ public class MessageService {
      * @param severity       A parameter to denote the implication and the impact of the defect on the functionality
      * @param currentMessage <code>String</code> to be proceeded to print
      */
-    private static void process(final Severity severity, String currentMessage) {
+    private static void process(Severity severity, String currentMessage) {
         messageCount++;
         currentMessage = TimestampMessageDecorator.decorate(currentMessage);
         currentMessage = SeverityMessageDecorator.decorate(severity, currentMessage);
