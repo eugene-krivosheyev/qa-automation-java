@@ -29,4 +29,20 @@ public class MessageService {
             }
         }
     }
+    public static void print(Severity severity, MessageOrder messageOrder, String ...messages) {
+        if (MessageOrder.ASC.equals(messageOrder)) {
+            for (int i = 0; i < messages.length; i++) {
+                if (messages[i] != null) {
+                    ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                }
+            }
+        } else {
+            for (int i = messages.length - 1; i >= 0; i--) {
+                if (messages[i] != null) {
+                    ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                }
+            }
+        }
+
+    }
 }
