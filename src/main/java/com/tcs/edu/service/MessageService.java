@@ -6,6 +6,9 @@ import com.tcs.edu.decorator.SeverityMessageDecorator;
 import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.printer.ConsolePrinter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MessageService {
     /**
      * <code>messageCount</code> stores the proceeded line number
@@ -24,9 +27,37 @@ public class MessageService {
      * @param messages <code>Strings</code> to be proceeded to print.
      */
     public static void print(Severity severity, String message, String... messages) {
+        if (severity == null) {
+            return;
+        }
         process(severity, message);
         for (String currentMessage : messages) {
             process(severity, currentMessage);
+        }
+    }
+
+    public static void print(Severity severity, MessageOrder order, String message, String... messages) {
+        if (severity == null) {
+            return;
+        }
+        switch (order) {
+            case ASC: {
+                print(severity, message, messages);
+                break;
+            }
+            case DESC: {
+                printReverse(severity, message, messages);
+                break;
+            }
+        }
+    }
+
+    private static void printReverse(Severity severity, String message, String... messages) {
+        ArrayList<String> messageList = new ArrayList<>();
+        messageList.add(message);
+        messageList.addAll(Arrays.asList(messages));
+        for (int i = messageList.size(); i > 0; i--) {
+            process(severity, messageList.get(i - 1));
         }
     }
 
@@ -40,6 +71,10 @@ public class MessageService {
      * @param currentMessage <code>String</code> to be proceeded to print
      */
     private static void process(Severity severity, String currentMessage) {
+        //7.1 awaiting for try/catch
+        if (currentMessage == null) {
+            return;
+        }
         messageCount++;
         currentMessage = TimestampMessageDecorator.decorate(currentMessage);
         currentMessage = SeverityMessageDecorator.decorate(severity, currentMessage);
@@ -48,4 +83,5 @@ public class MessageService {
         }
         ConsolePrinter.print(messageCount + " " + currentMessage);
     }
+
 }
