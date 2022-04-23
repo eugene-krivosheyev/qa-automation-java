@@ -1,25 +1,37 @@
 package com.tcs.edu;
 
-import static com.tcs.edu.decorator.MessageService.process;
-import static com.tcs.edu.decorator.Severity.values;
-
-import com.tcs.edu.decorator.Severity;
-import java.util.Random;
+import static com.tcs.edu.decorator.Doubling.*;
+import static com.tcs.edu.decorator.MessageService.createMessage;
+import static com.tcs.edu.decorator.MessageOrder.*;
+import static com.tcs.edu.decorator.Severity.*;
 
 class Application {
 
     public static void main(String[] args) {
 
-        for (int i = 0; i < 5; i++) {
-            Severity severity = values()[new Random().nextInt(values().length)];
+        // Хочу оставить эту часть кода для историчности
 
-            process(severity, "Hello world!-ex1");
-        }
+//        for (int i = 0; i < 5; i++) {
+//            Severity severity = values()[new Random().nextInt(values().length)];
+//
+//            process(severity, "Hello world!-ex1");
+//        }
+//
+//        for (int i = 0; i < 2; i++) {
+//            Severity severity = values()[new Random().nextInt(values().length)];
+//
+//            process(severity, "Hello world!_ex2_1st_message", "Hello world!_ex2_2nd_message", null, "123");
+//        }
 
-        for (int i = 0; i < 2; i++) {
-            Severity severity = values()[new Random().nextInt(values().length)];
-
-            process(severity, "Hello world!_ex2_1st_message", "Hello world!_ex2_2nd_message");
-        }
+        // по убыванию
+        createMessage(MINOR, DESC, "sort ascending", "1!", "2!");
+        // по возрастанию
+        createMessage(REGULAR, ASC, "3!", "4!");
+        // без дублирования
+        createMessage(MINOR, DESC, DISTINCT, "1!", "2!", "3!", "2!");
+        // с дублированием
+        createMessage(MAJOR, ASC, DOUBLES, "1!", "2!", "3!", "2!");
     }
+
+
 }
