@@ -54,14 +54,14 @@ public class MessageService {
     }
 
     /**
-     * @param doubles Presence of repeated messages.
+     * @param doubling Presence of repeated messages.
      * @see #print(Severity, String, String...)
      */
-    public static void print(Severity severity, Doubling doubles, String message, String... messages) {
+    public static void print(Severity severity, Doubling doubling, String message, String... messages) {
         if (severity == null) {
             return;
         }
-        switch (doubles) {
+        switch (doubling) {
             case DOUBLES: {
                 print(severity, message, messages);
                 break;
@@ -74,15 +74,15 @@ public class MessageService {
     }
 
     /**
-     * @param doubles Presence of repeated messages.
+     * @param doubling Presence of repeated messages.
      * @param order   Defines the order in which messages are printed.
      * @see #print(Severity, String, String...)
      */
-    public static void print(Severity severity, MessageOrder order, Doubling doubles, String message, String... messages) {
+    public static void print(Severity severity, MessageOrder order, Doubling doubling, String message, String... messages) {
         if (severity == null) {
             return;
         }
-        switch (doubles) {
+        switch (doubling) {
             case DOUBLES: {
                 print(severity, order, message, messages);
                 break;
