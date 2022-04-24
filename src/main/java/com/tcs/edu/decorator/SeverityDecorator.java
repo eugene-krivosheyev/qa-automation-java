@@ -8,24 +8,21 @@ package com.tcs.edu.decorator;
 public class SeverityDecorator {
 
     /**
-     * map string severity level: MINOR -> (), REGULAR -> (!), MAJOR -> (!!!)
+     * map string severity level
      *
-     * @param severity enum
-     * @return String
+     * @param severity - enum, type severity
+     * @return String - level
      */
     public static String mapSeverity(Severity severity) {
-        String severityString = null;
         switch (severity) {
             case MINOR:
-                severityString = "()";
-                break;
+                return "()";
             case REGULAR:
-                severityString = "(!)";
-                break;
+                return "(!)";
             case MAJOR:
-                severityString = "(!!!)";
-                break;
+                return "(!!!)";
+            default:
+                return "";
         }
-        return severityString;
     }
 }

@@ -5,7 +5,7 @@ import com.tcs.edu.decorator.SeverityDecorator;
 import com.tcs.edu.decorator.TimestampMessageDecorator;
 
 /**
- * API
+ * API massage service
  *
  * @author k.s.savelev
  */
@@ -14,16 +14,12 @@ public class MessageService {
     /**
      * Main application method. Decorating and print a message
      *
-     * @param severity enum
-     * @param message  String
-     * @param messages vararg String
+     * @param severity - enum, level massage
+     * @param messages vararg, text massage
      */
-    public static void process(Severity severity, String message, String... messages) {
-        final String severityString = SeverityDecorator.mapSeverity(severity);
-
-        ConsolePrinter.print(TimestampMessageDecorator.decorate(message + severityString));
+    public static void print(Severity severity, String... messages) {
         for (String current : messages) {
-            ConsolePrinter.print(TimestampMessageDecorator.decorate(current + severityString));
+            System.out.println(TimestampMessageDecorator.decorate(current + SeverityDecorator.mapSeverity(severity)));
         }
     }
 }
