@@ -3,14 +3,17 @@ package com.tcs.edu;
 import static com.tcs.edu.service.MessageService.print;
 import static com.tcs.edu.decorator.Severity.*;
 import static com.tcs.edu.service.MessageOrder.*;
+import static com.tcs.edu.service.Doubling.*;
 
 
 class Application {
     public static void main(String[] args) {
-        //1 параметр не может быть нулом
         print(MAJOR, "Privet", "Salut", null);
         print(null, "Nihao!", "Hey!");
-        print(MINOR, ASC,"Hello!", "Hi!", "Howdy!");
-        print(REGULAR, DESC,"Zdravstvuite", null, "Ciao", "Qu");
+        print(MINOR, ASC, "Hello!", "Hi!", "Howdy!");
+        print(REGULAR, DESC, "Zdravstvuite", null, null, "Ciao");
+        print(REGULAR, DISTINCT, "Repeat", null, "Unique", "Repeat", "Repeat", null);
+        print(MINOR, DESC, DISTINCT, "Double", "Distinct", "Distinct", "Double", "Test");
+        print(MINOR, DESC, DISTINCT, null);
     }
 }

@@ -6,9 +6,6 @@ import com.tcs.edu.decorator.SeverityMessageDecorator;
 import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.printer.ConsolePrinter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class MessageService {
     /**
      * <code>messageCount</code> stores the proceeded line number
@@ -36,6 +33,10 @@ public class MessageService {
         }
     }
 
+    /**
+     * @param order Defines the order in which messages are printed.
+     * @see #print(Severity, String, String...)
+     */
     public static void print(Severity severity, MessageOrder order, String message, String... messages) {
         if (severity == null) {
             return;
@@ -52,14 +53,118 @@ public class MessageService {
         }
     }
 
-    private static void printReverse(Severity severity, String message, String... messages) {
-        ArrayList<String> messageList = new ArrayList<>();
-        messageList.add(message);
-        messageList.addAll(Arrays.asList(messages));
-        for (int i = messageList.size(); i > 0; i--) {
-            process(severity, messageList.get(i - 1));
+    /**
+     * @param doubles Presence of repeated messages.
+     * @see #print(Severity, String, String...)
+     */
+    public static void print(Severity severity, Doubling doubles, String message, String... messages) {
+        if (severity == null) {
+            return;
+        }
+        switch (doubles) {
+            case DOUBLES: {
+                print(severity, message, messages);
+                break;
+            }
+            case DISTINCT: {
+                printUnique(severity, message, messages);
+                break;
+            }
         }
     }
+
+    /**
+     * @param doubles Presence of repeated messages.
+     * @param order   Defines the order in which messages are printed.
+     * @see #print(Severity, String, String...)
+     */
+    public static void print(Severity severity, MessageOrder order, Doubling doubles, String message, String... messages) {
+        if (severity == null) {
+            return;
+        }
+        switch (doubles) {
+            case DOUBLES: {
+                print(severity, order, message, messages);
+                break;
+            }
+            case DISTINCT: {
+                printUniqueReverse(severity, message, messages);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Layer to print incoming data in reverse order.
+     *
+     * @see #print(Severity, String, String...)
+     */
+    private static void printReverse(Severity severity, String message, String... messages) {
+        String[] messagesList = concatMessageToArray(message, messages);
+        for (int i = messagesList.length; i > 0; i--) {
+            process(severity, messagesList[i - 1]);
+        }
+    }
+
+    /**
+     * Layer for printing unique messages from incoming data.
+     *
+     * @see #print(Severity, String, String...)
+     */
+    private static void printUnique(Severity severity, String message, String... messages) {
+        String[] messagesList = concatMessageToArray(message, messages);
+        String[] temp = new String[messagesList.length];
+        for (int i = 0; i < messages.length; i++) {
+            boolean flag = true;
+            for (int k = 0; k < messages.length; k++) {
+                if (messagesList[i] == null || messagesList[i].equals(temp[k])) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                process(severity, messagesList[i]);
+                temp[i] = messagesList[i];
+            }
+        }
+    }
+
+    /**
+     * Layer for printing unique messages from incoming data in reverse order.
+     *
+     * @see #print(Severity, String, String...)
+     */
+    private static void printUniqueReverse(Severity severity, String message, String... messages) {
+        String[] messagesList = concatMessageToArray(message, messages);
+        String[] temp = new String[messagesList.length];
+        for (int i = messages.length; i >= 0; i--) {
+            boolean flag = true;
+            for (int k = messages.length; k >= 0; k--) {
+                if (messagesList[i] == null || messagesList[i].equals(temp[k])) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                process(severity, messagesList[i]);
+                temp[i] = messagesList[i];
+            }
+        }
+    }
+
+    /**
+     * Adds a string to an array of strings
+     *
+     * @param message  - String to be put in array
+     * @param messages - array of Strings
+     */
+    private static String[] concatMessageToArray(String message, String... messages) {
+        String[] messagesList = new String[messages.length + 1];
+        messagesList[0] = message;
+        System.arraycopy(messages, 0, messagesList, 1, messages.length);
+        return messagesList;
+    }
+
 
     /**
      * Side effect on global {@link #messageCount} - increment.
@@ -81,7 +186,8 @@ public class MessageService {
         if (messageCount % PAGE_SIZE == 0) {
             currentMessage = PaginationDecorator.decorate(currentMessage);
         }
-        ConsolePrinter.print(messageCount + " " + currentMessage);
+        currentMessage = messageCount + " " + currentMessage;
+        ConsolePrinter.print(currentMessage);
     }
 
 }
