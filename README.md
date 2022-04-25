@@ -280,11 +280,13 @@ Java Application Development <sup>9</sup>
 
 ### Custom Type Objects <sup>0.5</sup>
 - [ ] Objects: why?
+- [ ] Class: why?
 - [ ] Object/instance variable declaration scope
 - [ ] Object/instance method declaration scope
 - [ ] Encapsulation and visibility modifiers
 - [ ] Encapsulated state accessors and mutators
 - [ ] Immutable objects
+- [ ] VO/DTO patterns
 
 ### Creating objects <sup>0.2</sup>
 - [ ] Object creation with `new`
@@ -296,6 +298,10 @@ Java Application Development <sup>9</sup>
 - [ ] Java implementation: how it looks in source code
 - [ ] Interfaces
 - [ ] Implementing interfaces
+
+### DI *
+- [ ] DI: Why?
+- [ ] Constructor Injection implementation
 
 ---
 
