@@ -5,7 +5,6 @@ import static com.tcs.edu.decorator.Severity.*;
 import static com.tcs.edu.service.MessageOrder.*;
 import static com.tcs.edu.service.Doubling.*;
 
-
 class Application {
     public static void main(String[] args) {
         print(MAJOR, "Privet", "Salut", null);

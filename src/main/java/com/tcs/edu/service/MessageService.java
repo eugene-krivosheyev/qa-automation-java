@@ -135,7 +135,6 @@ public class MessageService {
         return messagesList;
     }
 
-
     /**
      * Side effect on global {@link #messageCount} - increment.
      * Glues a decorated string with an ordinal number.
@@ -156,8 +155,7 @@ public class MessageService {
         if (messageCount % PAGE_SIZE == 0) {
             currentMessage = PaginationDecorator.decorate(currentMessage);
         }
-        currentMessage = messageCount + " " + currentMessage;
-        ConsolePrinter.print(currentMessage);
+        ConsolePrinter.print(messageCount + " " + currentMessage);
     }
 
 }
