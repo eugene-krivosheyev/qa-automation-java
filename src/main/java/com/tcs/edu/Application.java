@@ -15,5 +15,7 @@ class Application {
         print(REGULAR, DISTINCT, "Repeat", null, "Unique", "Repeat", "Repeat", null);
         print(MINOR, DESC, DISTINCT, "Double", "Distinct", "Distinct", "Double", "Test");
         print(MINOR, DESC, DISTINCT, null);
+        print(MAJOR, ASC, DISTINCT, "1", "2", "2", "3", "1");
+        print(MAJOR, ASC, DOUBLES, "*", "*");
     }
 }

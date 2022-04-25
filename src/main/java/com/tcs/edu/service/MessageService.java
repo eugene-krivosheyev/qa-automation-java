@@ -24,9 +24,6 @@ public class MessageService {
      * @param messages <code>Strings</code> to be proceeded to print.
      */
     public static void print(Severity severity, String message, String... messages) {
-        if (severity == null) {
-            return;
-        }
         process(severity, message);
         for (String currentMessage : messages) {
             process(severity, currentMessage);
@@ -38,18 +35,13 @@ public class MessageService {
      * @see #print(Severity, String, String...)
      */
     public static void print(Severity severity, MessageOrder order, String message, String... messages) {
-        if (severity == null) {
-            return;
-        }
-        switch (order) {
-            case ASC: {
-                print(severity, message, messages);
-                break;
+        if (order == MessageOrder.DESC) {
+            messages = concatMessageToArray(message, messages);
+            for (String currentMessage : filterReverse(messages)) {
+                process(severity, currentMessage);
             }
-            case DESC: {
-                printReverse(severity, message, messages);
-                break;
-            }
+        } else {
+            print(severity, message, messages);
         }
     }
 
@@ -58,98 +50,76 @@ public class MessageService {
      * @see #print(Severity, String, String...)
      */
     public static void print(Severity severity, Doubling doubling, String message, String... messages) {
-        if (severity == null) {
-            return;
-        }
-        switch (doubling) {
-            case DOUBLES: {
-                print(severity, message, messages);
-                break;
+        if (doubling == Doubling.DISTINCT) {
+            messages = concatMessageToArray(message, messages);
+            for (String currentMessage : filterUnique(messages)) {
+                process(severity, currentMessage);
             }
-            case DISTINCT: {
-                printUnique(severity, message, messages);
-                break;
-            }
+        } else {
+            print(severity, message, messages);
         }
     }
 
     /**
      * @param doubling Presence of repeated messages.
-     * @param order   Defines the order in which messages are printed.
+     * @param order    Defines the order in which messages are printed.
      * @see #print(Severity, String, String...)
      */
     public static void print(Severity severity, MessageOrder order, Doubling doubling, String message, String... messages) {
-        if (severity == null) {
-            return;
-        }
-        switch (doubling) {
-            case DOUBLES: {
-                print(severity, order, message, messages);
-                break;
+        if (order == MessageOrder.DESC && doubling == Doubling.DISTINCT) {
+            messages = concatMessageToArray(message, messages);
+            messages = filterUnique(messages);
+            for (String currentMessage : filterReverse(messages)) {
+                process(severity, currentMessage);
             }
-            case DISTINCT: {
-                printUniqueReverse(severity, message, messages);
-                break;
-            }
+        } else if (order == MessageOrder.DESC && doubling == Doubling.DOUBLES) {
+            print(severity, order, message, messages);
+        } else if (order == MessageOrder.ASC && doubling == Doubling.DISTINCT) {
+            print(severity, doubling, message, messages);
+        } else {
+            print(severity, message, messages);
         }
     }
 
     /**
-     * Layer to print incoming data in reverse order.
+     * Returns array passed in reverse order.
      *
-     * @see #print(Severity, String, String...)
+     * @param messages array of <code>String</>s to filter
+     * @return filtered array of <code>String</>s
      */
-    private static void printReverse(Severity severity, String message, String... messages) {
-        String[] messagesList = concatMessageToArray(message, messages);
-        for (int i = messagesList.length; i > 0; i--) {
-            process(severity, messagesList[i - 1]);
+    private static String[] filterReverse(String[] messages) {
+        String[] reversedList = new String[messages.length];
+        int reversedIndex = 0;
+        for (int i = messages.length; i > 0; i--) {
+            reversedList[reversedIndex++] = messages[i - 1];
         }
+        return reversedList;
     }
 
     /**
-     * Layer for printing unique messages from incoming data.
+     * Returns array passed without duplicated messages.
      *
-     * @see #print(Severity, String, String...)
+     * @param messages array of <code>String</>s to filter
+     * @return filtered array of <code>String</>s
      */
-    private static void printUnique(Severity severity, String message, String... messages) {
-        String[] messagesList = concatMessageToArray(message, messages);
-        String[] temp = new String[messagesList.length];
-        for (int i = 0; i < messages.length; i++) {
+    private static String[] filterUnique(String[] messages) {
+        String[] tempList = new String[messages.length];
+        String[] uniqueList = new String[messages.length];
+        int lastIndex = messages.length - 1;
+        for (int i = 0; i < lastIndex; i++) {
             boolean flag = true;
-            for (int k = 0; k < messages.length; k++) {
-                if (messagesList[i] == null || messagesList[i].equals(temp[k])) {
+            for (int k = 0; k < lastIndex; k++) {
+                if (messages[i] == null || messages[i].equals(tempList[k])) {
                     flag = false;
                     break;
                 }
             }
             if (flag) {
-                process(severity, messagesList[i]);
-                temp[i] = messagesList[i];
+                uniqueList[i] = messages[i];
+                tempList[i] = messages[i];
             }
         }
-    }
-
-    /**
-     * Layer for printing unique messages from incoming data in reverse order.
-     *
-     * @see #print(Severity, String, String...)
-     */
-    private static void printUniqueReverse(Severity severity, String message, String... messages) {
-        String[] messagesList = concatMessageToArray(message, messages);
-        String[] temp = new String[messagesList.length];
-        for (int i = messages.length; i >= 0; i--) {
-            boolean flag = true;
-            for (int k = messages.length; k >= 0; k--) {
-                if (messagesList[i] == null || messagesList[i].equals(temp[k])) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag) {
-                process(severity, messagesList[i]);
-                temp[i] = messagesList[i];
-            }
-        }
+        return uniqueList;
     }
 
     /**
@@ -177,7 +147,7 @@ public class MessageService {
      */
     private static void process(Severity severity, String currentMessage) {
         //7.1 awaiting for try/catch
-        if (currentMessage == null) {
+        if (currentMessage == null || severity == null) {
             return;
         }
         messageCount++;
