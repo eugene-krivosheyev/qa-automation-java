@@ -24,10 +24,7 @@ public class MessageService {
      * @param messages <code>Strings</code> to be proceeded to print.
      */
     public static void print(Severity severity, String message, String... messages) {
-        process(severity, message);
-        for (String currentMessage : messages) {
-            process(severity, currentMessage);
-        }
+        process(severity, concatMessageToArray(message, messages));
     }
 
     /**
@@ -35,14 +32,8 @@ public class MessageService {
      * @see #print(Severity, String, String...)
      */
     public static void print(Severity severity, MessageOrder order, String message, String... messages) {
-        if (order == MessageOrder.DESC) {
-            messages = concatMessageToArray(message, messages);
-            for (String currentMessage : filterReverse(messages)) {
-                process(severity, currentMessage);
-            }
-        } else {
-            print(severity, message, messages);
-        }
+        messages = processReverse(order, concatMessageToArray(message, messages));
+        process(severity, messages);
     }
 
     /**
@@ -50,14 +41,8 @@ public class MessageService {
      * @see #print(Severity, String, String...)
      */
     public static void print(Severity severity, Doubling doubling, String message, String... messages) {
-        if (doubling == Doubling.DISTINCT) {
-            messages = concatMessageToArray(message, messages);
-            for (String currentMessage : filterUnique(messages)) {
-                process(severity, currentMessage);
-            }
-        } else {
-            print(severity, message, messages);
-        }
+        messages = processUnique(doubling, concatMessageToArray(message, messages));
+        process(severity, messages);
     }
 
     /**
@@ -66,60 +51,60 @@ public class MessageService {
      * @see #print(Severity, String, String...)
      */
     public static void print(Severity severity, MessageOrder order, Doubling doubling, String message, String... messages) {
-        if (order == MessageOrder.DESC && doubling == Doubling.DISTINCT) {
-            messages = concatMessageToArray(message, messages);
-            messages = filterUnique(messages);
-            for (String currentMessage : filterReverse(messages)) {
-                process(severity, currentMessage);
+        messages = processReverse(order, concatMessageToArray(message, messages));
+        messages = processUnique(doubling, messages);
+        process(severity, messages);
+    }
+
+    /**
+     * Outputs an array in the passed order.
+     *
+     * @param messages array of <code>String</>s to filter
+     * @param order    the order of messages in the transmitted array
+     * @return filtered array of <code>String</>s
+     */
+    private static String[] processReverse(MessageOrder order, String[] messages) {
+        if (order == MessageOrder.DESC) {
+            String[] reversedList = new String[messages.length];
+            int reversedIndex = 0;
+            for (int i = messages.length; i > 0; i--) {
+                reversedList[reversedIndex++] = messages[i - 1];
             }
-        } else if (order == MessageOrder.DESC && doubling == Doubling.DOUBLES) {
-            print(severity, order, message, messages);
-        } else if (order == MessageOrder.ASC && doubling == Doubling.DISTINCT) {
-            print(severity, doubling, message, messages);
+            return reversedList;
         } else {
-            print(severity, message, messages);
+            return messages;
         }
     }
 
     /**
-     * Returns array passed in reverse order.
+     * Returns array passed with or without duplicated messages depending on {@link Doubling} passed.
      *
      * @param messages array of <code>String</>s to filter
+     * @param doubles  {@link Doubling} filter type
      * @return filtered array of <code>String</>s
      */
-    private static String[] filterReverse(String[] messages) {
-        String[] reversedList = new String[messages.length];
-        int reversedIndex = 0;
-        for (int i = messages.length; i > 0; i--) {
-            reversedList[reversedIndex++] = messages[i - 1];
-        }
-        return reversedList;
-    }
-
-    /**
-     * Returns array passed without duplicated messages.
-     *
-     * @param messages array of <code>String</>s to filter
-     * @return filtered array of <code>String</>s
-     */
-    private static String[] filterUnique(String[] messages) {
-        String[] tempList = new String[messages.length];
-        String[] uniqueList = new String[messages.length];
-        int lastIndex = messages.length - 1;
-        for (int i = 0; i < lastIndex; i++) {
-            boolean flag = true;
-            for (int k = 0; k < lastIndex; k++) {
-                if (messages[i] == null || messages[i].equals(tempList[k])) {
-                    flag = false;
-                    break;
+    private static String[] processUnique(Doubling doubles, String[] messages) {
+        if (doubles == Doubling.DISTINCT) {
+            String[] tempList = new String[messages.length];
+            String[] uniqueList = new String[messages.length];
+            int lastIndex = messages.length - 1;
+            for (int i = 0; i < lastIndex; i++) {
+                boolean flag = true;
+                for (int k = 0; k < lastIndex; k++) {
+                    if (messages[i] == null || messages[i].equals(tempList[k])) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    uniqueList[i] = messages[i];
+                    tempList[i] = messages[i];
                 }
             }
-            if (flag) {
-                uniqueList[i] = messages[i];
-                tempList[i] = messages[i];
-            }
+            return uniqueList;
+        } else {
+            return messages;
         }
-        return uniqueList;
     }
 
     /**
@@ -136,26 +121,29 @@ public class MessageService {
     }
 
     /**
-     * Side effect on global {@link #messageCount} - increment.
-     * Glues a decorated string with an ordinal number.
+     * Side effect on global {@link #messageCount} - increment for each message passed in.
+     * Glues an each decorated string with an ordinal number.
      * Includes pagination. The page size is determined by {@link #PAGE_SIZE}.
      * Prints out the result.
      *
-     * @param severity       A parameter to denote the implication and the impact of the defect on the functionality
-     * @param currentMessage <code>String</code> to be proceeded to print
+     * @param messages array of <code>Strings</code> to be proceeded to print
      */
-    private static void process(Severity severity, String currentMessage) {
-        //7.1 awaiting for try/catch
-        if (currentMessage == null || severity == null) {
+    private static void process(Severity severity, String[] messages) {
+        if (severity == null) {
             return;
         }
-        messageCount++;
-        currentMessage = TimestampMessageDecorator.decorate(currentMessage);
-        currentMessage = SeverityMessageDecorator.decorate(severity, currentMessage);
-        if (messageCount % PAGE_SIZE == 0) {
-            currentMessage = PaginationDecorator.decorate(currentMessage);
+        for (String message : messages) {
+            if (message == null) {
+                continue;
+            }
+            messageCount++;
+            message = TimestampMessageDecorator.decorate(message);
+            message = SeverityMessageDecorator.decorate(severity, message);
+            if (messageCount % PAGE_SIZE == 0) {
+                message = PaginationDecorator.decorate(message);
+            }
+            ConsolePrinter.print(messageCount + " " + message);
         }
-        ConsolePrinter.print(messageCount + " " + currentMessage);
     }
-
 }
+
