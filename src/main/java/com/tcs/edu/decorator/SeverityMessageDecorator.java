@@ -1,33 +1,33 @@
 package com.tcs.edu.decorator;
 
+import com.tcs.edu.domain.Message;
+
 /**
- * The {@code SeverityMessageDecorator} is used to add severity label to the <code>String</code>.
+ * The {@code SeverityMessageDecorator} is used to add severity label to the <code>Message</code> body.
  *
  * @author Zakhar Starokozhev
  */
-public class SeverityMessageDecorator {
+public class SeverityMessageDecorator implements MessageDecorator {
     /**
-     * Adds a space-delimited hard coded severity label to the the string passed.
-     *
-     * @param message The <code>String</code> to be decorated
-     * @return The <code>String</code> decorated with severity label
+     * Adds a space-delimited hard coded severity label to the the message body.
      */
-    public static String decorate(Severity severity, String message) {
-        switch (severity) {
+    public Message decorate(Message message) {
+        String body = message.getBody();
+        switch (message.getSeverity()) {
             case MINOR: {
-                message += " ()";
+                body += " ()";
                 break;
             }
             case REGULAR: {
-                message += " (!)";
+                body += " (!)";
                 break;
             }
             case MAJOR: {
-                message += " (!!!)";
+                body += " (!!!)";
                 break;
             }
         }
-        return message;
+        return new Message(message.getSeverity(), body);
     }
 }
 
