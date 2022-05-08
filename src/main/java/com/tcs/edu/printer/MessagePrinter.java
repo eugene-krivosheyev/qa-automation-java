@@ -7,7 +7,7 @@ import com.tcs.edu.domain.Message;
  *
  * @author Zakhar Starokozhev
  */
-public interface Printer {
+public interface MessagePrinter {
     /**
      * @param message The <code>Message</code> to be printed
      */

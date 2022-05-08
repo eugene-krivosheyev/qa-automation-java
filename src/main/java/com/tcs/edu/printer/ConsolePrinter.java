@@ -7,7 +7,7 @@ import com.tcs.edu.domain.Message;
  *
  * @author Zakhar Starokozhev
  */
-public class ConsolePrinter implements Printer {
+public class ConsolePrinter implements MessagePrinter {
     public void print(Message message) {
         System.out.println(message.getBody());
     }
