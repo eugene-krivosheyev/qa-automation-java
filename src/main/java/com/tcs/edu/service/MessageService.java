@@ -18,7 +18,7 @@ public interface MessageService {
      * @param order Defines the order in which messages are printed.
      * @see #process(Message, Message...)
      */
-    void process(MessageOrder order, Message message, Message... messages);
+    void process(Order order, Message message, Message... messages);
 
     /**
      * @param doubling Presence of repeated messages.
@@ -32,5 +32,5 @@ public interface MessageService {
      * @param order    Defines the order in which messages are printed.
      * @see #process(Message, Message...)
      */
-    void process(MessageOrder order, Doubling doubling, Message message, Message... messages);
+    void process(Order order, Doubling doubling, Message message, Message... messages);
 }

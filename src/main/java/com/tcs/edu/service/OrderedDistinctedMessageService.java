@@ -32,7 +32,7 @@ public class OrderedDistinctedMessageService implements MessageService {
         proceedToPrint(messages);
     }
 
-    public void process(MessageOrder order, Message message, Message... messages) {
+    public void process(Order order, Message message, Message... messages) {
         messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
         proceedToPrint(processReverse(order, messages));
     }
@@ -42,7 +42,7 @@ public class OrderedDistinctedMessageService implements MessageService {
         proceedToPrint(processUnique(doubling, messages));
     }
 
-    public void process(MessageOrder order, Doubling doubling, Message message, Message... messages) {
+    public void process(Order order, Doubling doubling, Message message, Message... messages) {
         messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
         messages = processReverse(order, messages);
         proceedToPrint(processUnique(doubling, messages));
@@ -69,8 +69,8 @@ public class OrderedDistinctedMessageService implements MessageService {
      * @param order    the order of messages in the transmitted array
      * @return filtered array of <code>Message</>s
      */
-    private Message[] processReverse(MessageOrder order, Message[] messages) {
-        if (order == MessageOrder.DESC) {
+    private Message[] processReverse(Order order, Message[] messages) {
+        if (order == Order.DESC) {
             Message[] reversedList = new Message[messages.length];
             int reversedIndex = 0;
             for (int i = messages.length; i > 0; i--) {

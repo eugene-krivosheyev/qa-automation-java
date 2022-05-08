@@ -11,8 +11,8 @@ import com.tcs.edu.service.OrderedDistinctedMessageService;
 import static com.tcs.edu.decorator.Severity.*;
 import static com.tcs.edu.service.Doubling.DISTINCT;
 import static com.tcs.edu.service.Doubling.DOUBLES;
-import static com.tcs.edu.service.MessageOrder.ASC;
-import static com.tcs.edu.service.MessageOrder.DESC;
+import static com.tcs.edu.service.Order.ASC;
+import static com.tcs.edu.service.Order.DESC;
 
 class Application {
     public static void main(String[] args) {
