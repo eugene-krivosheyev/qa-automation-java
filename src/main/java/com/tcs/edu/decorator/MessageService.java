@@ -1,9 +1,12 @@
 package com.tcs.edu.decorator;
 
+import static com.tcs.edu.decorator.Doubling.DEFAULT;
 import static com.tcs.edu.decorator.Doubling.DISTINCT;
 import static com.tcs.edu.decorator.PostfixDecorator.getPostfixSeverity;
 import static com.tcs.edu.decorator.TimestampMessageDecorator.decorate;
 import static com.tcs.edu.printer.ConsolePrinter.print;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class MessageService {
 
@@ -40,7 +43,7 @@ public class MessageService {
      * @param messages еще сообщения
      */
     public static void createMessage(Severity severity, MessageOrder messageOrder, String message, String... messages) {
-        createMessage(severity, messageOrder, DISTINCT, message, messages);
+        createMessage(severity, messageOrder, DEFAULT, message, messages);
     }
 
     /**
@@ -55,8 +58,8 @@ public class MessageService {
      */
     public static void createMessage(Severity severity, MessageOrder messageOrder, Doubling doubling, String message,
         String... messages) {
-        printMessage(severity, message);
-        String[] refactoredMessages = refactorMessage(doubling, messages);
+        String[] allMessages = Stream.concat(Stream.of(message), Stream.of(messages)).toArray(String[]::new);
+        String[] refactoredMessages = refactorMessage(doubling, allMessages);
         String[] sortedMessages = sortMessages(messageOrder, refactoredMessages);
         printMessages(severity, sortedMessages);
     }
@@ -104,12 +107,9 @@ public class MessageService {
         if (messages != null) {
             String[] refactorMessages = new String[messages.length];
             switch (doubling) {
-                case DOUBLES: {
-                    refactorMessages = new String[messages.length * 2];
-                    for (int i = 0, j = 0; i <= messages.length - 1; i++, j = j + 2) {
-                        refactorMessages[j] = messages[i];
-                        refactorMessages[j + 1] = messages[i];
-                    }
+                case DOUBLES:
+                case DEFAULT : {
+                    refactorMessages =  messages;
                 }
                 break;
                 case DISTINCT: {

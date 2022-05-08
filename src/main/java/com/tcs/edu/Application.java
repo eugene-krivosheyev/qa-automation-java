@@ -26,11 +26,11 @@ class Application {
         // по убыванию
         createMessage(MINOR, DESC, "sort ascending", "1!", "2!");
         // по возрастанию
-        createMessage(REGULAR, ASC, "3!", "4!");
+        createMessage(REGULAR, DESC, "3!", "4!");
         // без дублирования
-        createMessage(MINOR, DESC, DISTINCT, "1!", "2!", "3!", "2!");
+        createMessage(MINOR, DESC, DOUBLES, "1!", "2!", "3!", "2!");
         // с дублированием
-        createMessage(MAJOR, ASC, DOUBLES, "1!", "2!", "3!", "2!");
+        createMessage(MAJOR, ASC, DISTINCT, "1!", "2!", "3!", "2!");
     }
 
 
