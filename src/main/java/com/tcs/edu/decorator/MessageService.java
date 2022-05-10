@@ -1,5 +1,6 @@
 package com.tcs.edu.decorator;
 
+import com.tcs.edu.domain.Message;
 import com.tcs.edu.printer.ConsolePrinter;
 import java.time.Instant;
 import java.util.Arrays;
@@ -100,6 +101,56 @@ public class MessageService {
         }
     }
 
-
+    public static void print(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
+        if (Doubling.DOUBLES.equals(doubling)) {
+            if (MessageOrder.ASC.equals(messageOrder)) {
+                for (int i = 0; i < messages.length; i++) {
+                    if (messages[i] != null) {
+                        ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                    }
+                }
+            } else {
+                for (int i = messages.length - 1; i >= 0; i--) {
+                    if (messages[i] != null) {
+                        ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                    }
+                }
+            }
+        } else {
+            if (MessageOrder.ASC.equals(messageOrder)) {
+                if (messages[0] != null) {
+                    ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[0].getSeverity(), messages[0].getBody()));
+                }
+                for (int i = 1; i < messages.length; i++) {
+                    if (messages[i] != null) {
+                        for (int j = 0; j < i; j++) {
+                            if (messages[j] != null && messages[i].getBody().equals(messages[j].getBody()) && messages[i].getSeverity().equals(messages[j].getSeverity())) {
+                                break;
+                            }
+                            if (j == i - 1) {
+                                ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                            }
+                        }
+                    }
+                }
+            } else {
+                if (messages[messages.length - 1] != null) {
+                    ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[messages.length - 1].getSeverity(), messages[messages.length - 1].getBody()));
+                }
+                for (int i = messages.length - 2; i >= 0; i--) {
+                    if (messages[i] != null) {
+                        for (int j = messages.length - 1; j > i; j--) {
+                            if (messages[i].equals(messages[j])) {
+                                break;
+                            }
+                            if (j - 1 == i) {
+                                ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }
