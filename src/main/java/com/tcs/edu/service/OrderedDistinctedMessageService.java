@@ -1,18 +1,21 @@
 package com.tcs.edu.service;
 
 import com.tcs.edu.decorator.MessageDecorator;
-import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.domain.Doubling;
 import com.tcs.edu.domain.MessageOrder;
 import com.tcs.edu.domain.Severity;
-import com.tcs.edu.printer.ConsolePrinter;
 import com.tcs.edu.printer.Printer;
 
 public class OrderedDistinctedMessageService implements MessageService {
 
-    Printer printer = new ConsolePrinter();
-    MessageDecorator messageDecorator = new TimestampMessageDecorator();
+    Printer printer;
+    MessageDecorator messageDecorator;
+
+    public OrderedDistinctedMessageService(Printer printer, MessageDecorator messageDecorator) {
+        this.printer = printer;
+        this.messageDecorator = messageDecorator;
+    }
 
     public void print(Severity severity, String ...messages) {
         for (String message : messages) {

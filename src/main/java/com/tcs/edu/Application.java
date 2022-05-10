@@ -1,15 +1,20 @@
 package com.tcs.edu;
+import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.domain.Doubling;
 import com.tcs.edu.domain.MessageOrder;
 import com.tcs.edu.domain.Severity;
+import com.tcs.edu.printer.ConsolePrinter;
 import com.tcs.edu.service.MessageService;
 import com.tcs.edu.service.OrderedDistinctedMessageService;
 
 class Application {
     public static void main(String[] args) {
 
-        MessageService messageService = new OrderedDistinctedMessageService();
+        MessageService messageService = new OrderedDistinctedMessageService(
+                new ConsolePrinter(),
+                new TimestampMessageDecorator()
+        );
         messageService.print(MessageOrder.ASC,
                 Doubling.DISTINCT,
                 new Message("Hello world! 0", Severity.MINOR),
