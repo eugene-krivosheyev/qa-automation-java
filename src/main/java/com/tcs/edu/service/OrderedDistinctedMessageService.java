@@ -1,73 +1,62 @@
-package com.tcs.edu.decorator;
+package com.tcs.edu.service;
 
+import com.tcs.edu.decorator.MessageDecorator;
+import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.domain.Message;
+import com.tcs.edu.domain.Doubling;
+import com.tcs.edu.domain.MessageOrder;
+import com.tcs.edu.domain.Severity;
 import com.tcs.edu.printer.ConsolePrinter;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import com.tcs.edu.printer.Printer;
 
-public class MessageService {
+public class OrderedDistinctedMessageService implements MessageService {
 
-    public static String severityValue(Severity severity) {
-        switch(severity) {
-            case MINOR:
-                return "()";
-            case REGULAR:
-                return "(!)";
-            case MAJOR:
-                return "(!!!)";
-            default:
-                return "";
-        }
-    }
+    Printer printer = new ConsolePrinter();
+    MessageDecorator messageDecorator = new TimestampMessageDecorator();
 
-    public static String concatenate(Severity severity, int messageCount, String message) {
-        return String.format("%d %s %s %s", messageCount, Instant.now(), message, severityValue(severity));
-    }
-
-    public static void print(Severity severity, String ...messages) {
+    public void print(Severity severity, String ...messages) {
         for (String message : messages) {
             if (message != null) {
-                ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, message));
+                printer.print(messageDecorator.decorate(severity, message));
             }
         }
     }
-    public static void print(Severity severity, MessageOrder messageOrder, String ...messages) {
+    public void print(Severity severity, MessageOrder messageOrder, String ...messages) {
         if (MessageOrder.ASC.equals(messageOrder)) {
             for (int i = 0; i < messages.length; i++) {
                 if (messages[i] != null) {
-                    ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                    printer.print(messageDecorator.decorate(severity, messages[i]));
                 }
             }
         } else {
             for (int i = messages.length - 1; i >= 0; i--) {
                 if (messages[i] != null) {
-                    ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                    printer.print(messageDecorator.decorate(severity, messages[i]));
                 }
             }
         }
 
     }
 
-    public static void print(Severity severity, MessageOrder messageOrder, Doubling doubling, String ...messages) {
+    public void print(Severity severity, MessageOrder messageOrder, Doubling doubling, String ...messages) {
         if (Doubling.DOUBLES.equals(doubling)) {
             if (MessageOrder.ASC.equals(messageOrder)) {
                 for (int i = 0; i < messages.length; i++) {
                     if (messages[i] != null) {
-                        ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                        printer.print(messageDecorator.decorate(severity, messages[i]));
                     }
                 }
             } else {
                 for (int i = messages.length - 1; i >= 0; i--) {
                     if (messages[i] != null) {
-                        ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                        printer.print(messageDecorator.decorate(severity, messages[i]));
                     }
                 }
             }
         } else {
             if (MessageOrder.ASC.equals(messageOrder)) {
                 if (messages[0] != null) {
-                    ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[0]));
+                    printer.print(messageDecorator.decorate(severity, messages[0]));
                 }
                 for (int i = 1; i < messages.length; i++) {
                     if (messages[i] != null) {
@@ -76,14 +65,14 @@ public class MessageService {
                                 break;
                             }
                             if (j == i - 1) {
-                                ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                                printer.print(messageDecorator.decorate(severity, messages[i]));
                             }
                         }
                     }
                 }
             } else {
                 if (messages[messages.length - 1] != null) {
-                    ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[messages.length - 1]));
+                    printer.print(messageDecorator.decorate(severity, messages[messages.length - 1]));
                 }
                 for (int i = messages.length - 2; i >= 0; i--) {
                     if (messages[i] != null) {
@@ -92,7 +81,7 @@ public class MessageService {
                                 break;
                             }
                             if (j - 1 == i) {
-                                ConsolePrinter.print(TimestampMessageDecorator.decorate(severity, messages[i]));
+                                printer.print(messageDecorator.decorate(severity, messages[i]));
                             }
                         }
                     }
@@ -101,25 +90,26 @@ public class MessageService {
         }
     }
 
-    public static void print(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
+    @Override
+    public void print(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
         if (Doubling.DOUBLES.equals(doubling)) {
             if (MessageOrder.ASC.equals(messageOrder)) {
                 for (int i = 0; i < messages.length; i++) {
                     if (messages[i] != null) {
-                        ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                        printer.print(messageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
                     }
                 }
             } else {
                 for (int i = messages.length - 1; i >= 0; i--) {
                     if (messages[i] != null) {
-                        ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                        printer.print(messageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
                     }
                 }
             }
         } else {
             if (MessageOrder.ASC.equals(messageOrder)) {
                 if (messages[0] != null) {
-                    ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[0].getSeverity(), messages[0].getBody()));
+                    printer.print(messageDecorator.decorate(messages[0].getSeverity(), messages[0].getBody()));
                 }
                 for (int i = 1; i < messages.length; i++) {
                     if (messages[i] != null) {
@@ -128,14 +118,14 @@ public class MessageService {
                                 break;
                             }
                             if (j == i - 1) {
-                                ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                                printer.print(messageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
                             }
                         }
                     }
                 }
             } else {
                 if (messages[messages.length - 1] != null) {
-                    ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[messages.length - 1].getSeverity(), messages[messages.length - 1].getBody()));
+                    printer.print(messageDecorator.decorate(messages[messages.length - 1].getSeverity(), messages[messages.length - 1].getBody()));
                 }
                 for (int i = messages.length - 2; i >= 0; i--) {
                     if (messages[i] != null) {
@@ -144,7 +134,7 @@ public class MessageService {
                                 break;
                             }
                             if (j - 1 == i) {
-                                ConsolePrinter.print(TimestampMessageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
+                                printer.print(messageDecorator.decorate(messages[i].getSeverity(), messages[i].getBody()));
                             }
                         }
                     }

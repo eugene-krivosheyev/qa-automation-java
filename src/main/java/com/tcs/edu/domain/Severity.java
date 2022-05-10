@@ -1,4 +1,4 @@
-package com.tcs.edu.decorator;
+package com.tcs.edu.domain;
 
 /**
  * MessageService is responsible for String representation of Severity
