@@ -305,6 +305,13 @@ Java Application Development <sup>9</sup>
 
 ---
 
+### OOAD recap with JDBC example
+- [ ] Encapsulation
+- [ ] Polymorphism
+- [ ] Creator DP
+- [ ] Factory Method DP
+- [ ] DI DP
+
 ### Defender methods concept <sup>0.1</sup>
 - [ ] Defender methods: why?
 
