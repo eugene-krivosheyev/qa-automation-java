@@ -2,6 +2,8 @@ package com.tcs.edu.decorator;
 
 import com.tcs.edu.domain.Message;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * The {@code TypographicMessageDecorator}
  * is used to add current line number to the <code>Message</code> body
@@ -13,7 +15,7 @@ public class TypographicMessageDecorator implements MessageDecorator {
     /**
      * <code>messageCount</code> stores the proceeded line number
      */
-    private static int messageCount;
+    private static final AtomicInteger messageCount = new AtomicInteger(1);
     /**
      * <code>PAGE_SIZE</code> is a fixed message count per page before delimiter appends.
      */
@@ -30,9 +32,8 @@ public class TypographicMessageDecorator implements MessageDecorator {
      * and decorates the last one by {@link TypographicMessageDecorator#PAGE_DELIMITER}
      */
     public Message decorate(Message message) {
-        messageCount++;
-        String body = String.format("%d %s", messageCount, message.getBody());
-        if (messageCount % PAGE_SIZE == 0) {
+        String body = String.format("%d %s", messageCount.getAndIncrement(), message.getBody());
+        if (messageCount.get() % PAGE_SIZE == 0) {
             body = String.format("%s %s", body, PAGE_DELIMITER);
         }
         return new Message(message.getSeverity(), body);
