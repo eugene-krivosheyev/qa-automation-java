@@ -7,7 +7,7 @@ package com.tcs.edu.service;
  *
  * @author Zakhar Starokozhev
  */
-public enum MessageOrder {
+public enum Order {
     ASC,
     DESC
 }
