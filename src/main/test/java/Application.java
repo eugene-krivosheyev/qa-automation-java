@@ -24,9 +24,9 @@ class Application {
         Message message4 = new Message();
         //-----------------------------------------------------------------------------------------
         service.process(message1, message2, message3);
-        service.process(new Message(), null);
-        service.process(DESC, message1, null, message2, message3);
+        service.process(new Message(), null);//невалидный
+        service.process(DESC, message1, null, message2, message3);//невалидный
         service.process(DISTINCT, message2, message3, message3, message4, message2, message1);
-        service.process(ASC, DOUBLES, null, message2, message3, message2, null);
+        service.process(ASC, DOUBLES, null, message2, message3, message2, null);//невалидный
     }
 }

@@ -14,7 +14,7 @@ import java.util.Objects;
  *
  * @author Zakhar Starokozhev
  */
-public class OrderedDistinctedMessageService implements MessageService {
+public final class OrderedDistinctedMessageService extends ValidatedMessageService implements MessageService {
     private final MessageDecorator decorator;
     private final MessagePrinter printer;
 
@@ -28,23 +28,33 @@ public class OrderedDistinctedMessageService implements MessageService {
     }
 
     public void process(Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
-        proceedToPrint(messages);
+        if (!isArgsValid(message, messages)) {
+            return;
+        }
+        proceedToPrint(concatMessageToArray(message, messages));
     }
 
     public void process(Order order, Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
+        if (!isArgsValid(message, messages)) {
+            return;
+        }
+        messages = concatMessageToArray(message, messages);
         proceedToPrint(processReverse(order, messages));
     }
 
     public void process(Doubling doubling, Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
+        if (!isArgsValid(message, messages)) {
+            return;
+        }
+        messages = concatMessageToArray(message, messages);
         proceedToPrint(processUnique(doubling, messages));
     }
 
     public void process(Order order, Doubling doubling, Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
-        messages = processReverse(order, messages);
+        if (!isArgsValid(message, messages)) {
+            return;
+        }
+        messages = processReverse(order, concatMessageToArray(message, messages));
         proceedToPrint(processUnique(doubling, messages));
     }
 
