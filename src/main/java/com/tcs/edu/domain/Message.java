@@ -18,8 +18,8 @@ public class Message {
      * @param body  {@link String} - content itself
      */
     public Message(Severity level, String body) {
-        this.severityLevel = Objects.requireNonNull(level, "Message severity must be not NULL");
-        this.body = Objects.requireNonNull(body, "Message body must be not NULL");
+        this.severityLevel = level;
+        this.body = body;
     }
 
     public Message(String body) {
@@ -52,7 +52,7 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return body.equals(message.body) && severityLevel == message.severityLevel;
+        return Objects.equals(body, message.body) && severityLevel == message.severityLevel;
     }
 
     @Override

@@ -125,7 +125,7 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
 
     private void proceedToPrint(Message... messages) {
         for (Message message : messages) {
-            if (message == null) {
+            if (!isMessageValid(message)) {
                 continue;
             }
             message = new SeverityMessageDecorator().decorate(message);
