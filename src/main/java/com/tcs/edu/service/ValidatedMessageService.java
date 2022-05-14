@@ -4,7 +4,15 @@ import com.tcs.edu.domain.Message;
 
 public abstract class ValidatedMessageService {
     public final boolean isArgsValid(Message message, Message... messages) {
-        return (messages != null && isMessageValid(message));
+        if (messages != null && isMessageValid(message)) {
+            for (Message current : messages) {
+                if (!isMessageValid(current)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     public final boolean isMessageValid(Message message) {
