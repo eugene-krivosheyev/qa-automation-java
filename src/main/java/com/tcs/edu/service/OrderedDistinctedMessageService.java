@@ -28,14 +28,20 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
     }
 
     public void process(Message message, Message... messages) {
-        if (!isArgsValid(message, messages)) {
+        try {
+            isArgsValid(messages);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return;
         }
         proceedToPrint(concatMessageToArray(message, messages));
     }
 
     public void process(Order order, Message message, Message... messages) {
-        if (!isArgsValid(message, messages)) {
+        try {
+            isArgsValid(messages);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return;
         }
         messages = concatMessageToArray(message, messages);
@@ -43,7 +49,10 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
     }
 
     public void process(Doubling doubling, Message message, Message... messages) {
-        if (!isArgsValid(message, messages)) {
+        try {
+            isArgsValid(messages);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return;
         }
         messages = concatMessageToArray(message, messages);
@@ -51,7 +60,11 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
     }
 
     public void process(Order order, Doubling doubling, Message message, Message... messages) {
-        if (!isArgsValid(message, messages)) {
+        try {
+            isArgsValid(messages);
+            isArgValid(message);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return;
         }
         messages = processReverse(order, concatMessageToArray(message, messages));
@@ -125,7 +138,9 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
 
     private void proceedToPrint(Message... messages) {
         for (Message message : messages) {
-            if (!isMessageValid(message)) {
+            try {
+                isArgValid(message);
+            } catch (IllegalArgumentException e) {
                 continue;
             }
             message = new SeverityMessageDecorator().decorate(message);

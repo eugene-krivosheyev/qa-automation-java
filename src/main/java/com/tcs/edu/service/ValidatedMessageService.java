@@ -2,21 +2,33 @@ package com.tcs.edu.service;
 
 import com.tcs.edu.domain.Message;
 
+/**
+ * Checks the messaging service to process valid values
+ *
+ * @author Zakhar Starokozhev
+ */
 public abstract class ValidatedMessageService {
-    public final boolean isArgsValid(Message message, Message... messages) {
-        if (messages != null && isMessageValid(message)) {
-            for (Message current : messages) {
-                if (!isMessageValid(current)) {
-                    return false;
-                }
+    /**
+     * @param messages Array of <code>Messages</code> to be validated.
+     */
+    public final boolean isArgsValid(Message... messages) {
+        if (messages != null) {
+            for (Message message : messages) {
+                isArgValid(message);
             }
             return true;
         }
-        return false;
+        throw new IllegalArgumentException("Null passed instead of Messages...");
     }
 
-    public final boolean isMessageValid(Message message) {
-        return (message != null && message.getBody() != null && message.getSeverity() != null);
+    /**
+     * @param message Specific <code>Message</code> to be validated.
+     */
+    public final boolean isArgValid(Message message) {
+        if (message == null || message.getBody() == null || message.getSeverity() == null) {
+            throw new IllegalArgumentException("Current Message contains null");
+        }
+        return true;
     }
 
 }
