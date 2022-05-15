@@ -29,8 +29,10 @@ class Application {
         service.process(message1, message2, message3);
         service.process(new Message(), null); //невалидный
         service.process(DESC, message1, null, message2, message3); //невалидный
+        service.process(DESC, message1, message2, message3);
         service.process(DISTINCT, message2, message3, message3, message4, message2, message1);
         service.process(ASC, DOUBLES, null, message2, message3, message2, null); //невалидный
+        service.process(ASC, DOUBLES,  message2, message3, message2);
         //-----------------------------------------------------------------------------------------
         Message message3equal = new Message(MINOR, "Третий");
         Message message3unequal1 = new Message(REGULAR, "Третий");

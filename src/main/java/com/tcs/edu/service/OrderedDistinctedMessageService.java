@@ -1,12 +1,15 @@
 package com.tcs.edu.service;
 
 import com.tcs.edu.decorator.MessageDecorator;
-import com.tcs.edu.decorator.TypographicMessageDecorator;
 import com.tcs.edu.decorator.SeverityMessageDecorator;
+import com.tcs.edu.decorator.TypographicMessageDecorator;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.printer.MessagePrinter;
 
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * {@code OrderedDistinctedMessageService} processes decorated messages with typography and severity labels to print.
@@ -29,9 +32,9 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
 
     public void process(Message message, Message... messages) {
         try {
+            isArgValid(message);
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             return;
         }
         proceedToPrint(concatMessageToArray(message, messages));
@@ -39,9 +42,9 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
 
     public void process(Order order, Message message, Message... messages) {
         try {
+            isArgValid(message);
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             return;
         }
         messages = concatMessageToArray(message, messages);
@@ -50,9 +53,9 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
 
     public void process(Doubling doubling, Message message, Message... messages) {
         try {
+            isArgValid(message);
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             return;
         }
         messages = concatMessageToArray(message, messages);
@@ -61,10 +64,9 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
 
     public void process(Order order, Doubling doubling, Message message, Message... messages) {
         try {
-            isArgsValid(messages);
             isArgValid(message);
+            isArgsValid(messages);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             return;
         }
         messages = processReverse(order, concatMessageToArray(message, messages));
@@ -114,21 +116,11 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
      */
     private Message[] processUnique(Doubling doubles, Message[] messages) {
         if (doubles == Doubling.DISTINCT) {
-            Message[] tempList = new Message[messages.length];
-            Message[] uniqueList = new Message[messages.length];
-            int lastIndex = messages.length - 1;
-            for (int i = 0; i <= lastIndex; i++) {
-                boolean flag = true;
-                for (int k = 0; k <= lastIndex; k++) {
-                    if (messages[i] == null || messages[i].equals(tempList[k])) {
-                        flag = false;
-                        break;
-                    }
-                }
-                if (flag) {
-                    uniqueList[i] = messages[i];
-                    tempList[i] = messages[i];
-                }
+            Set<Message> set = new LinkedHashSet<>(Arrays.asList(messages));
+            Message[] uniqueList = new Message[set.size()];
+            int i = 0;
+            for (Message message : set) {
+                uniqueList[i++] = message;
             }
             return uniqueList;
         } else {
@@ -138,11 +130,6 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
 
     private void proceedToPrint(Message... messages) {
         for (Message message : messages) {
-            try {
-                isArgValid(message);
-            } catch (IllegalArgumentException e) {
-                continue;
-            }
             message = new SeverityMessageDecorator().decorate(message);
             message = decorator.decorate(message);
             message = new TypographicMessageDecorator().decorate(message);
