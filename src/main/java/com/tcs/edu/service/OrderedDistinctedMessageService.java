@@ -7,7 +7,7 @@ import com.tcs.edu.domain.MessageOrder;
 import com.tcs.edu.domain.Severity;
 import com.tcs.edu.printer.Printer;
 
-public class OrderedDistinctedMessageService implements MessageService {
+public class OrderedDistinctedMessageService extends ValidatedService implements MessageService {
 
     Printer printer;
     MessageDecorator messageDecorator;
@@ -95,6 +95,9 @@ public class OrderedDistinctedMessageService implements MessageService {
 
     @Override
     public void print(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
+        if (!isArgsValid(messages)) {
+            return;
+        }
         if (Doubling.DOUBLES.equals(doubling)) {
             if (MessageOrder.ASC.equals(messageOrder)) {
                 for (int i = 0; i < messages.length; i++) {
