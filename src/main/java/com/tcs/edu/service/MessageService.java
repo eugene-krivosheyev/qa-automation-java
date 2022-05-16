@@ -9,28 +9,23 @@ import com.tcs.edu.domain.Message;
  */
 public interface MessageService {
     /**
-     * @param message  <code>Message</code> to be proceeded. Disables calling without messages.
      * @param messages <code>Messages</code> to be proceeded.
      */
-    void process(Message message, Message... messages);
+    void process(Message... messages);
 
     /**
      * @param order Defines the order in which messages are printed.
-     * @see #process(Message, Message...)
      */
-    void process(Order order, Message message, Message... messages);
+    void process(Order order, Message... messages);
 
     /**
      * @param doubling Presence of repeated messages.
-     * @see #process(Message, Message...)
      */
-    void process(Doubling doubling, Message message, Message... messages);
-
+    void process(Doubling doubling, Message... messages);
 
     /**
      * @param doubling Presence of repeated messages.
      * @param order    Defines the order in which messages are printed.
-     * @see #process(Message, Message...)
      */
-    void process(Order order, Doubling doubling, Message message, Message... messages);
+    void process(Order order, Doubling doubling, Message... messages);
 }

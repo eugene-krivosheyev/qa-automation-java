@@ -30,61 +30,26 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
         this.printer = Objects.requireNonNull(printer, "Service printer must be not NULL");
     }
 
-    public void process(Message message, Message... messages) {
+    public void process(Message... messages) {
         try {
-            isArgValid(message);
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
             return;
         }
-        proceedToPrint(concatMessageToArray(message, messages));
+        proceedToPrint(messages);
     }
 
-    public void process(Order order, Message message, Message... messages) {
-        try {
-            isArgValid(message);
-            isArgsValid(messages);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        messages = concatMessageToArray(message, messages);
-        proceedToPrint(processReverse(order, messages));
+    public void process(Order order, Message... messages) {
+        process(processReverse(order, messages));
     }
 
-    public void process(Doubling doubling, Message message, Message... messages) {
-        try {
-            isArgValid(message);
-            isArgsValid(messages);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        messages = concatMessageToArray(message, messages);
-        proceedToPrint(processUnique(doubling, messages));
+    public void process(Doubling doubling, Message... messages) {
+        process(processUnique(doubling, messages));
     }
 
-    public void process(Order order, Doubling doubling, Message message, Message... messages) {
-        try {
-            isArgValid(message);
-            isArgsValid(messages);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        messages = processReverse(order, concatMessageToArray(message, messages));
-        proceedToPrint(processUnique(doubling, messages));
-    }
-
-
-    /**
-     * Adds a <code>Message</> to an array of <code>Message</>s
-     *
-     * @param message  <code>Message</>s to be put in array
-     * @param messages array of <code>Message</>s
-     */
-    private Message[] concatMessageToArray(Message message, Message... messages) {
-        Message[] messagesList = new Message[messages.length + 1];
-        messagesList[0] = message;
-        System.arraycopy(messages, 0, messagesList, 1, messages.length);
-        return messagesList;
+    public void process(Order order, Doubling doubling, Message... messages) {
+        messages = processReverse(order, messages);
+        process(processUnique(doubling, messages));
     }
 
     /**
