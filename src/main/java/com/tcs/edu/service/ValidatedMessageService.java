@@ -11,12 +11,12 @@ public abstract class ValidatedMessageService {
     /**
      * @param messages Array of <code>Messages</code> to be validated.
      */
-    public final boolean isArgsValid(Message... messages) {
+    public final void isArgsValid(Message... messages) {
         if (messages != null) {
             for (Message message : messages) {
                 isArgValid(message);
             }
-            return true;
+            return;
         }
         throw new IllegalArgumentException("Null passed instead of Messages...");
     }
@@ -24,11 +24,10 @@ public abstract class ValidatedMessageService {
     /**
      * @param message Specific <code>Message</code> to be validated.
      */
-    public final boolean isArgValid(Message message) {
+    public final void isArgValid(Message message) {
         if (message == null || message.getBody() == null || message.getSeverity() == null) {
-            throw new IllegalArgumentException("Current Message contains null");
+            throw new IllegalArgumentException("Current Message value contains null");
         }
-        return true;
     }
 
 }
