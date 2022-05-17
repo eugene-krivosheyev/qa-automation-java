@@ -1,3 +1,5 @@
+package com.tcs.edu;
+
 import com.tcs.edu.decorator.MessageDecorator;
 import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.domain.Message;
