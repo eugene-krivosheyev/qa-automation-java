@@ -33,7 +33,7 @@ public class TypographicMessageDecorator implements MessageDecorator {
      */
     public Message decorate(Message message) {
         String body = String.format("%d %s", messageCount.getAndIncrement(), message.getBody());
-        if (messageCount.get() % PAGE_SIZE == 0) {
+        if (messageCount.get() % PAGE_SIZE == 1) {
             body = String.format("%s %s", body, PAGE_DELIMITER);
         }
         return new Message(message.getSeverity(), body);

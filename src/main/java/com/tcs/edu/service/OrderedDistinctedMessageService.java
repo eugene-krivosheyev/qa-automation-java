@@ -1,12 +1,15 @@
 package com.tcs.edu.service;
 
 import com.tcs.edu.decorator.MessageDecorator;
-import com.tcs.edu.decorator.TypographicMessageDecorator;
 import com.tcs.edu.decorator.SeverityMessageDecorator;
+import com.tcs.edu.decorator.TypographicMessageDecorator;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.printer.MessagePrinter;
 
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * {@code OrderedDistinctedMessageService} processes decorated messages with typography and severity labels to print.
@@ -14,7 +17,7 @@ import java.util.Objects;
  *
  * @author Zakhar Starokozhev
  */
-public class OrderedDistinctedMessageService implements MessageService {
+public final class OrderedDistinctedMessageService extends ValidatedMessageService implements MessageService {
     private final MessageDecorator decorator;
     private final MessagePrinter printer;
 
@@ -27,39 +30,26 @@ public class OrderedDistinctedMessageService implements MessageService {
         this.printer = Objects.requireNonNull(printer, "Service printer must be not NULL");
     }
 
-    public void process(Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
+    public void process(Message... messages) {
+        try {
+            isArgsValid(messages);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
         proceedToPrint(messages);
     }
 
-    public void process(Order order, Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
-        proceedToPrint(processReverse(order, messages));
+    public void process(Order order, Message... messages) {
+        process(processReverse(order, messages));
     }
 
-    public void process(Doubling doubling, Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
-        proceedToPrint(processUnique(doubling, messages));
+    public void process(Doubling doubling, Message... messages) {
+        process(processUnique(doubling, messages));
     }
 
-    public void process(Order order, Doubling doubling, Message message, Message... messages) {
-        messages = messages != null ? concatMessageToArray(message, messages) : new Message[]{message};
+    public void process(Order order, Doubling doubling, Message... messages) {
         messages = processReverse(order, messages);
-        proceedToPrint(processUnique(doubling, messages));
-    }
-
-
-    /**
-     * Adds a <code>Message</> to an array of <code>Message</>s
-     *
-     * @param message  <code>Message</>s to be put in array
-     * @param messages array of <code>Message</>s
-     */
-    private Message[] concatMessageToArray(Message message, Message... messages) {
-        Message[] messagesList = new Message[messages.length + 1];
-        messagesList[0] = message;
-        System.arraycopy(messages, 0, messagesList, 1, messages.length);
-        return messagesList;
+        process(processUnique(doubling, messages));
     }
 
     /**
@@ -91,21 +81,11 @@ public class OrderedDistinctedMessageService implements MessageService {
      */
     private Message[] processUnique(Doubling doubles, Message[] messages) {
         if (doubles == Doubling.DISTINCT) {
-            Message[] tempList = new Message[messages.length];
-            Message[] uniqueList = new Message[messages.length];
-            int lastIndex = messages.length - 1;
-            for (int i = 0; i <= lastIndex; i++) {
-                boolean flag = true;
-                for (int k = 0; k <= lastIndex; k++) {
-                    if (messages[i] == null || messages[i].equals(tempList[k])) {
-                        flag = false;
-                        break;
-                    }
-                }
-                if (flag) {
-                    uniqueList[i] = messages[i];
-                    tempList[i] = messages[i];
-                }
+            Set<Message> set = new LinkedHashSet<>(Arrays.asList(messages));
+            Message[] uniqueList = new Message[set.size()];
+            int i = 0;
+            for (Message message : set) {
+                uniqueList[i++] = message;
             }
             return uniqueList;
         } else {
@@ -115,9 +95,6 @@ public class OrderedDistinctedMessageService implements MessageService {
 
     private void proceedToPrint(Message... messages) {
         for (Message message : messages) {
-            if (message == null) {
-                continue;
-            }
             message = new SeverityMessageDecorator().decorate(message);
             message = decorator.decorate(message);
             message = new TypographicMessageDecorator().decorate(message);
