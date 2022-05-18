@@ -11,21 +11,21 @@ public interface MessageService {
     /**
      * @param messages <code>Messages</code> to be proceeded.
      */
-    void process(Message... messages);
+    void process(Message... messages) throws LogException;
 
     /**
      * @param order Defines the order in which messages are printed.
      */
-    void process(Order order, Message... messages);
+    void process(Order order, Message... messages) throws LogException;
 
     /**
      * @param doubling Presence of repeated messages.
      */
-    void process(Doubling doubling, Message... messages);
+    void process(Doubling doubling, Message... messages) throws LogException;
 
     /**
      * @param doubling Presence of repeated messages.
      * @param order    Defines the order in which messages are printed.
      */
-    void process(Order order, Doubling doubling, Message... messages);
+    void process(Order order, Doubling doubling, Message... messages) throws LogException;
 }

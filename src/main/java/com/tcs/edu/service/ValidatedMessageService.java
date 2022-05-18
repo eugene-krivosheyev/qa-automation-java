@@ -13,6 +13,9 @@ public abstract class ValidatedMessageService {
      */
     public final void isArgsValid(Message... messages) {
         if (messages != null) {
+            if (messages.length == 0) {
+                throw new IllegalArgumentException("Empty Messages passed");
+            }
             for (Message message : messages) {
                 isArgValid(message);
             }
@@ -25,8 +28,12 @@ public abstract class ValidatedMessageService {
      * @param message Specific <code>Message</code> to be validated.
      */
     public final void isArgValid(Message message) {
-        if (message == null || message.getBody() == null || message.getSeverity() == null) {
+        if (message == null) {
+            throw new IllegalArgumentException("Null passed instead of Message");
+        } else if (message.getBody() == null || message.getSeverity() == null) {
             throw new IllegalArgumentException("Current Message value contains null");
+        } else if (message.getBody().isEmpty()) {
+            throw new IllegalArgumentException("Empty message passed");
         }
     }
 

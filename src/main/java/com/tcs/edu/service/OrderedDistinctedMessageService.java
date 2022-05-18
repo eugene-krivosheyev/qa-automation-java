@@ -30,24 +30,24 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
         this.printer = Objects.requireNonNull(printer, "Service printer must be not NULL");
     }
 
-    public void process(Message... messages) {
+    public void process(Message... messages) throws LogException {
         try {
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
-            return;
+            throw new LogException("Message processing error", e);
         }
         proceedToPrint(messages);
     }
 
-    public void process(Order order, Message... messages) {
+    public void process(Order order, Message... messages) throws LogException {
         process(processReverse(order, messages));
     }
 
-    public void process(Doubling doubling, Message... messages) {
+    public void process(Doubling doubling, Message... messages) throws LogException {
         process(processUnique(doubling, messages));
     }
 
-    public void process(Order order, Doubling doubling, Message... messages) {
+    public void process(Order order, Doubling doubling, Message... messages) throws LogException {
         messages = processReverse(order, messages);
         process(processUnique(doubling, messages));
     }
