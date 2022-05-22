@@ -5,6 +5,7 @@ import com.tcs.edu.domain.Message;
 import com.tcs.edu.domain.Doubling;
 import com.tcs.edu.domain.MessageOrder;
 import com.tcs.edu.domain.Severity;
+import com.tcs.edu.exception.LogException;
 import com.tcs.edu.printer.Printer;
 
 public class OrderedDistinctedMessageService extends ValidatedService implements MessageService {
@@ -95,8 +96,10 @@ public class OrderedDistinctedMessageService extends ValidatedService implements
 
     @Override
     public void print(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
-        if (!isArgsValid(messages)) {
-            return;
+        try {
+            isArgsValid(messages);
+        } catch (IllegalArgumentException e) {
+            throw new LogException("Massages to print are invalid", e);
         }
         if (Doubling.DOUBLES.equals(doubling)) {
             if (MessageOrder.ASC.equals(messageOrder)) {
