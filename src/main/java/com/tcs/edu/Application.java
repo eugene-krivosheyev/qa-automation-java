@@ -32,28 +32,33 @@ class Application {
             service.process(ASC, DOUBLES, message2, message3, message2);
             service.process(DISTINCT, message2, message3, message3, message4, message2);
         } catch (Exception e) {
-            System.out.println("Нештатное поведение");
+            System.out.println("Нештатное поведение " + e.getMessage());
+            e.printStackTrace();
         }
         //-----------------------------------------------------------------------------------------
         try {
             service.process();
         } catch (LogException e) {
-            e.printStackTrace();
+            testExceptionLog(e);
         }
         try {
             service.process(DESC, message1, new Message(""), message2, message3);
         } catch (LogException e) {
-            e.printStackTrace();
+            testExceptionLog(e);
         }
         try {
             service.process(ASC, DOUBLES, null, message2, message3, message2);
         } catch (LogException e) {
-            e.printStackTrace();
+            testExceptionLog(e);
         }
         try {
             service.process(ASC, DOUBLES, new Message(null, "Тест"), message2, message3, message2);
         } catch (LogException e) {
-            e.printStackTrace();
+            testExceptionLog(e);
         }
+    }
+
+    private static void testExceptionLog(Exception e) {
+        System.out.println(e.getMessage() + " -> " + e.getCause().getMessage());
     }
 }
