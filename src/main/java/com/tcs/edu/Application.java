@@ -5,11 +5,9 @@ import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.printer.ConsolePrinter;
 import com.tcs.edu.printer.MessagePrinter;
+import com.tcs.edu.service.LogException;
 import com.tcs.edu.service.MessageService;
 import com.tcs.edu.service.OrderedDistinctedMessageService;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.tcs.edu.decorator.Severity.*;
 import static com.tcs.edu.service.Doubling.DISTINCT;
@@ -28,26 +26,39 @@ class Application {
         Message message3 = new Message(MINOR, "Третий");
         Message message4 = new Message();
         //-----------------------------------------------------------------------------------------
-        service.process(message1, message2, message3);
-        service.process(new Message(), null); //невалидный
-        service.process(DESC, message1, null, message2, message3); //невалидный
-        service.process(DESC, message1, message2, message3);
-        service.process(DISTINCT, message2, message3, message3, message4, message2, message1);
-        service.process(ASC, DOUBLES, null, message2, message3, message2, null); //невалидный
-        service.process(ASC, DOUBLES,  message2, message3, message2);
+        try {
+            service.process(message1, message2, message3);
+            service.process(DESC, message1, message2, message3);
+            service.process(ASC, DOUBLES, message2, message3, message2);
+            service.process(DISTINCT, message2, message3, message3, message4, message2);
+        } catch (Exception e) {
+            System.out.println("Нештатное поведение " + e.getMessage());
+            e.printStackTrace();
+        }
         //-----------------------------------------------------------------------------------------
-        Message message3equal = new Message(MINOR, "Третий");
-        Message message3unequal1 = new Message(REGULAR, "Третий");
-        Message message3unequal2 = new Message(MINOR, "третий");
+        try {
+            service.process();
+        } catch (LogException e) {
+            testExceptionLog(e);
+        }
+        try {
+            service.process(DESC, message1, new Message(""), message2, message3);
+        } catch (LogException e) {
+            testExceptionLog(e);
+        }
+        try {
+            service.process(ASC, DOUBLES, null, message2, message3, message2);
+        } catch (LogException e) {
+            testExceptionLog(e);
+        }
+        try {
+            service.process(ASC, DOUBLES, new Message(null, "Тест"), message2, message3, message2);
+        } catch (LogException e) {
+            testExceptionLog(e);
+        }
+    }
 
-        System.out.println("== by equals " + message3.equals(message3equal));
-        System.out.println("!= by equals " + !message3.equals(message3unequal1));
-        System.out.println("!= by equals " + !message3.equals(message3unequal2));
-
-        System.out.println("== by hashcode " + (message3equal.hashCode() == message3.hashCode()));
-
-        Map<Message, String> map = new HashMap<>();
-        map.put(message3, "Check");
-        System.out.println("== hashmap " + "Check".equals(map.get(message3equal)));
+    private static void testExceptionLog(Exception e) {
+        System.out.println(e.getMessage() + " -> " + e.getCause().getMessage());
     }
 }
