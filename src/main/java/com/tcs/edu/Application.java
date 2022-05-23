@@ -1,16 +1,16 @@
 package com.tcs.edu;
 
-import com.tcs.edu.decorator.TimestampMessageDecorator;
-import com.tcs.edu.printer.ConsolePrinter;
+import com.tcs.edu.printer.MessageService;
+
+import static com.tcs.edu.decorator.Severity.*;
 
 class Application {
     public static void main(String[] args) {
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-        ConsolePrinter.print(TimestampMessageDecorator.decorate("Hello world!"));
-
+        MessageService.processMessage(MINOR, "Hello world");
+        MessageService.processMessage(REGULAR, "Hello world");
+        MessageService.processMessage(REGULAR, "Hello world");
+        MessageService.processMessage(MAJOR, "Hello world");
+        MessageService.processMessage(MINOR, "Hello world");
+        MessageService.processMessage(MAJOR, "Hello world");
     }
 }
