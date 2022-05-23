@@ -27,9 +27,16 @@ public class TimestampMessageDecorator {
      */
 
     static Integer messageCount = 0;
+    static final Integer PAGE_SIZE = 2;
 
     public static String decorate(String message) {
         messageCount++;
+
+        if (messageCount % PAGE_SIZE == 0) {
+            final var decoratedMessage = String.format("%d %s %s\n---", messageCount, Instant.now(), message);
+            return decoratedMessage;
+        }
+
         final var decoratedMessage = String.format("%d %s %s", messageCount, Instant.now(), message);
         return decoratedMessage;
     }
