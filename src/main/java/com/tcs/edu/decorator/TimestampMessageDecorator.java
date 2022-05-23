@@ -30,7 +30,7 @@ public class TimestampMessageDecorator {
 
     public static String decorate(String message) {
         messageCount++;
-        String decoratedMessage = messageCount + " " + Instant.now() + " " + message;
+        var decoratedMessage = messageCount + " " + Instant.now() + " " + message;
         return decoratedMessage;
     }
 }
