@@ -6,5 +6,5 @@ import com.tcs.edu.domain.MessageOrder;
 
 public interface MessageService {
 
-    void print(MessageOrder messageOrder, Doubling doubling, Message... messages);
+    void log(MessageOrder messageOrder, Doubling doubling, Message... messages);
 }

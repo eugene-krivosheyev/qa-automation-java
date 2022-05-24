@@ -1,0 +1,29 @@
+package com.tcs.edu.service;
+
+import com.tcs.edu.decorator.MessageDecorator;
+import com.tcs.edu.domain.Doubling;
+import com.tcs.edu.domain.Message;
+import com.tcs.edu.domain.MessageOrder;
+import com.tcs.edu.exception.LogException;
+
+public class RepositoryMessageService extends ValidatedService implements MessageService {
+
+    private MessageRepository messageRepository;
+
+    public RepositoryMessageService(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
+
+    @Override
+    public void log(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
+        try {
+            isArgsValid(messages);
+        } catch (IllegalArgumentException e) {
+            throw new LogException("Massages to print are invalid", e);
+        }
+        for (Message message : messages) {
+            isArgValid(message);
+            messageRepository.create(message);
+        }
+    }
+}

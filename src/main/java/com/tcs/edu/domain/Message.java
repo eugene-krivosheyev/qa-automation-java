@@ -1,14 +1,24 @@
 package com.tcs.edu.domain;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Message {
+    UUID id;
     String body;
     Severity severity;
 
     public Message(String body, Severity severity) {
         this.body = body;
         this.severity = severity;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getBody() {
@@ -32,18 +42,19 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return Objects.equals(body, message.body) && severity == message.severity;
+        return Objects.equals(id, message.id) && Objects.equals(body, message.body) && severity == message.severity;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(body, severity);
+        return Objects.hash(id, body, severity);
     }
 
     @Override
     public String toString() {
         return "Message{" +
-                "body='" + body + '\'' +
+                "id=" + id +
+                ", body='" + body + '\'' +
                 ", severity=" + severity +
                 '}';
     }

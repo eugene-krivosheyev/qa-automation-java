@@ -8,4 +8,10 @@ public abstract class ValidatedService {
             throw new IllegalArgumentException("Messages cannot be null");
         }
     }
+
+    public void isArgValid(Message message) {
+        if (message == null) {
+            throw new IllegalArgumentException("Message cannot be null");
+        }
+    }
 }

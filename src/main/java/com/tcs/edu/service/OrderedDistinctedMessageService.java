@@ -95,7 +95,7 @@ public class OrderedDistinctedMessageService extends ValidatedService implements
     }
 
     @Override
-    public void print(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
+    public void log(MessageOrder messageOrder, Doubling doubling, Message ...messages) {
         try {
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
