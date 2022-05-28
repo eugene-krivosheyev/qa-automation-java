@@ -387,14 +387,15 @@ Developing autotests with JUnit <sup>1</sup>
 -------------------------------
 
 ### JUnit framework overview <sup>0.1</sup>
-- [ ] Task flow
+- [ ] Maven test dependency for JUnit5 Jupiter 
+- [ ] JUnit is a Framework 
 - [ ] Test class and methods
 - [ ] Annotations
-- [ ] Assertions
+- [ ] Built-in Assertions
 
 ### Test design <sup>0.4</sup>
 - [ ] Test Case and Test method naming
-- [ ] Code path
+- [ ] Code execution path
 - [ ] Input and State
 - [ ] Fixture
 - [ ] Test structure
@@ -413,16 +414,16 @@ Developing autotests with JUnit <sup>1</sup>
 - [ ] JUnit5 `assertThrows`
 
 ### Advanced assertions <sup>0.1</sup>
-- [ ] JUnit assertions combinator
-- [ ] AssertJ library
-- [ ] Hamcrest library
+- [ ] [JUnit assertions combinator `assertAll`](https://www.javaguides.net/2018/09/junit-5-assertall-example.html)
+- [x] [Hamcrest matchers library](http://hamcrest.org/JavaHamcrest/tutorial)
+- [x] [AssertJ fluent API library](https://assertj.github.io/doc/)
 
 ### Advanced JUnit <sup>0.1</sup>
-- [ ] Parameterized tests
-- [ ] Suites
-- Nested test classes
+- [x] Suites
+- [Nested test classes](https://junit.org/junit5/docs/current/user-guide/#writing-tests-nested)
 - [Test suites](https://junit.org/junit5/docs/current/user-guide/#running-tests-junit-platform-runner-test-suite)
 - [Tags](https://junit.org/junit5/docs/current/user-guide/#writing-tests-tagging-and-filtering) [и отдельный запуск](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-filter-tags)
+- [x] [Parameterized tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests)
 
 ---
 
