@@ -15,8 +15,8 @@ services:
     environment:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://db/app-db"
       SPRING_DATASOURCE_USERNAME: app-db-admin
-      SPRING_DATASOURCE_PASSWORD: #{{ TODO }}
-      SPRING_SECURITY_USER_PASSWORD: #{{ TODO }}
+      SPRING_DATASOURCE_PASSWORD: P@ssw0rd
+      SPRING_SECURITY_USER_PASSWORD: P@ssw0rd
 
   db:
     image: postgres:11-alpine
@@ -32,7 +32,7 @@ services:
     environment:
       POSTGRES_DB: app-db
       POSTGRES_USER: app-db-admin
-      POSTGRES_PASSWORD: #{{ TODO }}
+      POSTGRES_PASSWORD: P@ssw0rd
 
 volumes:
   db:

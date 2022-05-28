@@ -6,58 +6,69 @@ sudo npm install -g generator-jhipster
 ```
 
 ```shell
-cd app
+cd app.codegen
 ```
 
 (for Mac only)
 ```shell
-export DOCKER_BUILDKIT=0
-export COMPOSE_DOCKER_CLI_BUILD=0
+export DOCKER_BUILDKIT=0 && export COMPOSE_DOCKER_CLI_BUILD=0
 ```
 
-Build
-=====
+
+Re-design the application (optional)
+=========================
+1. Copy and edit `app.codegen/app.jdl` with [JDL Studio](https://start.jhipster.tech/jdl-studio/) 
+1. Save updated `app.codegen/app.jdl`
+
+
+Build the code-generated application jar (optional)
+========================================
 ```shell
-app> 
-  mkdir build && \
-  cd "$_" && \
-  jhipster --no-insight jdl ../app.jdl && \
-  ./mvnw -Pprod,api-docs verify -DskipTests && \
-  cd .. && \
-  docker buildx build --platform linux/amd64 --tag ekr26/tinkoff-edu-app:1.0.0 .
-
-app>
-  rm -rf build
+mkdir build.temp && \
+cd "$_" && \
+jhipster --no-insight jdl ../app.jdl && \
+./mvnw -Pprod,api-docs verify -DskipTests && \
+cd .. && \
+cp build.temp/target/app-0.0.1-SNAPSHOT.jar build/app.jar && \
+rm -rf build.temp
 ```
+OR download [pre-built jar](https://www.dropbox.com/s/gkeyi3c5ydnlyzl/app.jar?dl=0) to `app.codegen/build`
 
-Push
-====
+Build the Docker image (optional)
+======================
 ```shell
-docker push ekr26/tinkoff-edu-app:1.0.0
+docker buildx build --tag ekr26/tinkoff-edu-app:1.0.0 .
 ```
 
 
-Run
-====
-
-Start cluster
---------------
+Running the application cluster
+===============================
+Start
+-----
 ```shell
-app>
-  docker stack deploy --compose-file docker-compose.yml app
+docker stack deploy --compose-file docker-compose.yml --resolve-image never app
 ```
 
-Cluster info
+Cluster info (optional)
 ------------
 ```shell
 docker stack ls
 docker stack ps app
 docker stack services app
-
+docker service ps app_backend
+docker service logs app_backend 
 ```
 
-Stop cluster
-------------
+API info
+--------
+- [Main page](http://localhost:8080)
+- [Swagger UI](http://localhost:8080/admin/docs)
+- [OpenAPI spec](http://localhost:8080/v3/api-docs/springdocDefault)
+
+Stop the cluster and clean up
+-----------------------------
 ```shell
 docker stack rm app
+docker volume rm app_db
+docker rmi ekr26/tinkoff-edu-app:1.0.0
 ```

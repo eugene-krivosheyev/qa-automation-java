@@ -1,18 +1,18 @@
 application {
   config {
     baseName app
-    packageName com.tinkoff.edu
     applicationType monolith
+    reactive false
+    packageName com.tinkoff.edu
     serviceDiscoveryType no
     authenticationType jwt
-    prodDatabaseType postgresql 
+    prodDatabaseType postgresql
     devDatabaseType h2Disk
     cacheProvider no
     buildTool maven
     enableSwaggerCodegen true
     clientFramework react
     testFrameworks []
-    reactive false
     enableTranslation true
     nativeLanguage en
     languages [ru]
@@ -21,19 +21,14 @@ application {
 }
 
 
-entity Region {
-	regionName String unique required minlength(5) maxlength(20)
-}
-
 entity Country {
-	countryName String unique required minlength(5) maxlength(20)
+	countryName String unique required minlength(2) maxlength(2)
 }
-
 
 entity Location {
-    postalCode String unique required minlength(6) maxlength(6),
-	streetAddress String required minlength(5) maxlength(200),
-	city String required minlength(5) maxlength(140),
+    postalCode String unique required minlength(6) maxlength(6)
+	streetAddress String required minlength(5) maxlength(200)
+	city String required minlength(5) maxlength(140)
 	province String maxlength(140)
 }
 
@@ -41,63 +36,25 @@ entity Department {
 	departmentName String unique required minlength(5) maxlength(100)
 }
 
-entity Task {
-	title String required minlength(5) maxlength(50),
-	description String,
-	attach TextBlob
-}
-
-entity Employee {
-	firstName String required minlength(5) maxlength(50),
-	lastName String required minlength(5) maxlength(50),
-	email String unique required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) minlength(5) maxlength(50),
-	phone String unique required pattern(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/),
-	hireDate Instant required,
-	salary BigDecimal
-}
-
-entity Job {
-	jobTitle String unique required minlength(5) maxlength(50),
-	minSalary BigDecimal required min(12792),
-	maxSalary BigDecimal
-}
-
-entity JobHistory {
-	startDate Instant required,
-	endDate Instant,
-	language Language
-}
-
 enum Language {
     RU("RUSSIAN"), EN("ENGLISH"), ES("SPANISH")
 }
 
-
-relationship OneToOne {
-	Country{region} to Region,
-	Location{country} to Country,
-	Department{location} to Location,
-    JobHistory{job required} to Job,
-    JobHistory{department required} to Department,
-    JobHistory{employee required} to Employee
-}
-
-relationship ManyToMany {
-	Job{task(title)} to Task{job required}
+entity Employee {
+	firstName String required minlength(5) maxlength(50)
+	lastName String required minlength(5) maxlength(50)
+	email String unique required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) minlength(5) maxlength(50)
+	phone String unique required pattern(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/)
+	hireDate Instant required
+	salary BigDecimal
+	language Language
 }
 
 relationship OneToMany {
-	Employee to Job{employee},
-	Department to Employee{department}
+	Country to Location
+	Location to Department
+	Department to Employee
 }
 
-relationship ManyToOne {
-	Employee{manager} to Employee
-}
-
-filter JobHistory, Task
-
-paginate JobHistory, Employee with infinite-scroll
-paginate Job with pagination
-
-service all with serviceImpl except Employee, Job
+paginate Employee with pagination
+filter Country
