@@ -1,18 +1,16 @@
 package com.tcs.edu.service;
 
 import com.tcs.edu.decorator.MessageDecorator;
+import com.tcs.edu.decorator.Severity;
 import com.tcs.edu.decorator.SeverityMessageDecorator;
 import com.tcs.edu.decorator.TypographicMessageDecorator;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.repository.MessageRepository;
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
- * {@code OrderedDistinctedMessageService} processes decorated messages with typography and severity labels to print.
+ * {@code OrderedDistinctedMessageService} processes decorated messages with typography and severity labels to storage.
  * Allows to specify the order and/or filtering for repetitions.
  *
  * @author Zakhar Starokozhev
@@ -36,7 +34,7 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
         } catch (IllegalArgumentException e) {
             throw new LogException("Message processing error", e);
         }
-        proceedToPrint(messages);
+        proceedToRepository(messages);
     }
 
     public void process(Order order, Message... messages) throws LogException {
@@ -50,6 +48,18 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
     public void process(Order order, Doubling doubling, Message... messages) throws LogException {
         messages = processReverse(order, messages);
         process(processUnique(doubling, messages));
+    }
+
+    public Collection<Message> findAll() {
+        return repository.findAll();
+    }
+
+    public Collection<Message> findAllBySeverity(Severity by) {
+        return repository.findAllBySeverity(by);
+    }
+
+    public Message findByPrimaryKey(UUID id) {
+        return repository.findByPrimaryKey(id);
     }
 
     /**
@@ -93,7 +103,12 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
         }
     }
 
-    private void proceedToPrint(Message... messages) {
+    /**
+     * Put decorated messages to storage (i.e. repository)
+     *
+     * @param messages - message to be stored in repository
+     */
+    private void proceedToRepository(Message... messages) {
         for (Message message : messages) {
             message = new SeverityMessageDecorator().decorate(message);
             message = decorator.decorate(message);

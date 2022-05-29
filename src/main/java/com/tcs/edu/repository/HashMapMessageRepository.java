@@ -1,10 +1,14 @@
 package com.tcs.edu.repository;
 
+import com.tcs.edu.decorator.Severity;
 import com.tcs.edu.domain.Message;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import static java.util.stream.Collectors.toList;
 
 public class HashMapMessageRepository implements MessageRepository {
     private final Map<UUID, Message> messages = new HashMap<>();
@@ -20,4 +24,16 @@ public class HashMapMessageRepository implements MessageRepository {
     public Message findByPrimaryKey(UUID key) {
         return messages.get(key);
     }
+
+    @Override
+    public Collection<Message> findAll() {
+        return messages.values();
+    }
+
+    @Override
+    public Collection<Message> findAllBySeverity(Severity by) {
+        return messages.values().stream().filter(message -> message.getSeverity() == by).collect(toList());
+    }
+
+
 }
