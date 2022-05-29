@@ -13,6 +13,9 @@ import java.util.UUID;
 public class Message {
     private final String body;
     private final Severity severityLevel;
+    /**
+     * mutable {@code UUID} for specific message
+     */
     private UUID id;
 
     /**
