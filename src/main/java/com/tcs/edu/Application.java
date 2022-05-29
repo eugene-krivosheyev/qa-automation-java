@@ -5,6 +5,8 @@ import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.printer.ConsolePrinter;
 import com.tcs.edu.printer.MessagePrinter;
+import com.tcs.edu.repository.HashMapMessageRepository;
+import com.tcs.edu.repository.MessageRepository;
 import com.tcs.edu.service.LogException;
 import com.tcs.edu.service.MessageService;
 import com.tcs.edu.service.OrderedDistinctedMessageService;
@@ -17,9 +19,9 @@ import static com.tcs.edu.service.Order.DESC;
 
 class Application {
     public static void main(String[] args) {
-        MessagePrinter printer = new ConsolePrinter();
+        MessageRepository repository = new HashMapMessageRepository();
         MessageDecorator decorator = new TimestampMessageDecorator();
-        MessageService service = new OrderedDistinctedMessageService(decorator, printer);
+        MessageService service = new OrderedDistinctedMessageService(decorator, repository);
         //-----------------------------------------------------------------------------------------
         Message message1 = new Message(MAJOR, "Первый");
         Message message2 = new Message(REGULAR, "Второй");

@@ -4,7 +4,7 @@ import com.tcs.edu.decorator.MessageDecorator;
 import com.tcs.edu.decorator.SeverityMessageDecorator;
 import com.tcs.edu.decorator.TypographicMessageDecorator;
 import com.tcs.edu.domain.Message;
-import com.tcs.edu.printer.MessagePrinter;
+import com.tcs.edu.repository.MessageRepository;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -19,15 +19,15 @@ import java.util.Set;
  */
 public final class OrderedDistinctedMessageService extends ValidatedMessageService implements MessageService {
     private final MessageDecorator decorator;
-    private final MessagePrinter printer;
+    private final MessageRepository repository;
 
     /**
-     * @param decorator {@link MessageDecorator} specific addition to decorate process
-     * @param printer   {@link MessagePrinter} variation of output process
+     * @param decorator  {@link MessageDecorator} specific addition to decorate process
+     * @param repository {@link MessageRepository} storage for processed messages
      */
-    public OrderedDistinctedMessageService(MessageDecorator decorator, MessagePrinter printer) {
+    public OrderedDistinctedMessageService(MessageDecorator decorator, MessageRepository repository) {
         this.decorator = Objects.requireNonNull(decorator, "Service decorator must be not NULL");
-        this.printer = Objects.requireNonNull(printer, "Service printer must be not NULL");
+        this.repository = Objects.requireNonNull(repository, "Service repository must be not NULL");
     }
 
     public void process(Message... messages) throws LogException {
@@ -98,7 +98,7 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
             message = new SeverityMessageDecorator().decorate(message);
             message = decorator.decorate(message);
             message = new TypographicMessageDecorator().decorate(message);
-            printer.print(message);
+            repository.create(message);
         }
     }
 }

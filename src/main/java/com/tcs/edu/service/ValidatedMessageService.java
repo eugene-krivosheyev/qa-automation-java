@@ -33,7 +33,7 @@ public abstract class ValidatedMessageService {
         } else if (message.getBody() == null || message.getSeverity() == null) {
             throw new IllegalArgumentException("Current Message value contains null");
         } else if (message.getBody().isEmpty()) {
-            throw new IllegalArgumentException("Empty message passed");
+            throw new IllegalArgumentException("Empty Message passed");
         }
     }
 
