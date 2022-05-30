@@ -4,6 +4,7 @@ import com.tcs.edu.decorator.MessageDecorator;
 import com.tcs.edu.domain.Doubling;
 import com.tcs.edu.domain.Message;
 import com.tcs.edu.domain.MessageOrder;
+import com.tcs.edu.domain.Severity;
 import com.tcs.edu.exception.LogException;
 
 import java.util.Collection;
@@ -36,5 +37,9 @@ public class RepositoryMessageService extends ValidatedService implements Messag
 
     public Collection<Message> findAll() {
         return messageRepository.findAll();
+    }
+
+    public Collection<Message> findBySeverity(Severity by) {
+        return messageRepository.findBySeverity(by);
     }
 }
