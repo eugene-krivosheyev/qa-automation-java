@@ -6,6 +6,8 @@ import com.tcs.edu.domain.Message;
 import com.tcs.edu.domain.MessageOrder;
 import com.tcs.edu.exception.LogException;
 
+import java.util.UUID;
+
 public class RepositoryMessageService extends ValidatedService implements MessageService {
 
     private MessageRepository messageRepository;
@@ -25,5 +27,9 @@ public class RepositoryMessageService extends ValidatedService implements Messag
             isArgValid(message);
             messageRepository.create(message);
         }
+    }
+
+    public Message findByPrimaryKey(UUID key) {
+        return messageRepository.findByPrimaryKey(key);
     }
 }
