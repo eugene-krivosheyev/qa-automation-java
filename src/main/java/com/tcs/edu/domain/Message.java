@@ -3,6 +3,7 @@ package com.tcs.edu.domain;
 import com.tcs.edu.decorator.Severity;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * The {@code Message} corries a message line with a specific severity level.
@@ -12,6 +13,10 @@ import java.util.Objects;
 public class Message {
     private final String body;
     private final Severity severityLevel;
+    /**
+     * mutable {@code UUID} for specific message
+     */
+    private UUID id;
 
     /**
      * @param level {@link Severity} - impact of the message content to the system
@@ -42,6 +47,14 @@ public class Message {
         return severityLevel;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID newId) {
+        id = newId;
+    }
+
     @Override
     public String toString() {
         return body;
@@ -52,11 +65,13 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return Objects.equals(body, message.body) && severityLevel == message.severityLevel;
+        return Objects.equals(body, message.body)
+                && severityLevel == message.severityLevel
+                && Objects.equals(id, message.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(body, severityLevel);
+        return Objects.hash(body, severityLevel, id);
     }
 }
