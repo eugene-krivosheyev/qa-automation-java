@@ -58,7 +58,7 @@ public final class OrderedDistinctedMessageService extends ValidatedMessageServi
         return repository.findAllBySeverity(by);
     }
 
-    public Message findByPrimaryKey(UUID id) {
+    public Message findById(UUID id) {
         return repository.findByPrimaryKey(id);
     }
 

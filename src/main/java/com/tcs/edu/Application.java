@@ -3,7 +3,7 @@ package com.tcs.edu;
 import com.tcs.edu.decorator.MessageDecorator;
 import com.tcs.edu.decorator.TimestampMessageDecorator;
 import com.tcs.edu.domain.Message;
-import com.tcs.edu.repository.HashMapMessageRepository;
+import com.tcs.edu.repository.InMemoryMessageRepositoryImpl;
 import com.tcs.edu.repository.MessageRepository;
 import com.tcs.edu.service.MessageService;
 import com.tcs.edu.service.OrderedDistinctedMessageService;
@@ -15,7 +15,7 @@ import static com.tcs.edu.decorator.Severity.*;
 class Application {
     public static void main(String[] args) {
         MessageDecorator decorator = new TimestampMessageDecorator();
-        MessageRepository repository = new HashMapMessageRepository();
+        MessageRepository repository = new InMemoryMessageRepositoryImpl();
         MessageService service = new OrderedDistinctedMessageService(decorator, repository);
         //-----------------------------------------------------------------------------------------
         Message message1 = new Message(MAJOR, "Первый");
@@ -36,6 +36,6 @@ class Application {
         System.out.println("Сообщение по ключу, например:");
         UUID key = service.findAll().stream().
                 filter(message -> message.getSeverity() == MAJOR).findFirst().get().getId();
-        System.out.println(key + " -> " + service.findByPrimaryKey(key));
+        System.out.println(key + " -> " + service.findById(key));
     }
 }

@@ -48,5 +48,5 @@ public interface MessageService {
      * @param id - unique id of message logged by service
      * @return - specific message matching id passed
      */
-    Message findByPrimaryKey(UUID id);
+    Message findById(UUID id);
 }

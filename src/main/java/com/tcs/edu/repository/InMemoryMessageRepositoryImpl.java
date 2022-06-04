@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import static java.util.stream.Collectors.toList;
 
-public class HashMapMessageRepository implements MessageRepository {
+public class InMemoryMessageRepositoryImpl implements MessageRepository {
     private final Map<UUID, Message> messages = new HashMap<>();
 
     @Override
