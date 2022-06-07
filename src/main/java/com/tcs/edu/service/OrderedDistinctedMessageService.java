@@ -99,7 +99,7 @@ public class OrderedDistinctedMessageService extends ValidatedService implements
         try {
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
-            throw new LogException("Massages to print are invalid", e);
+            throw new LogException("Messages to print are invalid", e);
         }
         if (Doubling.DOUBLES.equals(doubling)) {
             if (MessageOrder.ASC.equals(messageOrder)) {

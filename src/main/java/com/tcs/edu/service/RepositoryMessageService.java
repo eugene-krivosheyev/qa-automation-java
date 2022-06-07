@@ -23,7 +23,7 @@ public class RepositoryMessageService extends ValidatedService implements Messag
         try {
             isArgsValid(messages);
         } catch (IllegalArgumentException e) {
-            throw new LogException("Massages to print are invalid", e);
+            throw new LogException("Messages to print are invalid", e);
         }
         for (Message message : messages) {
             isArgValid(message);
