@@ -516,6 +516,11 @@ Java REST API Testing <sup>1</sup>
 Testing DB applications <sup>1</sup>
 -----------------------
 
+### Running App with external DB
+- [ ] Externalizing App configuration for external DB
+- [ ] Running containerized DB
+- [ ] Running containerized App
+
 ### DBMS overview <sup>0.2</sup>
 - [x] Application testing architecture
 - [x] Test scopes
@@ -528,6 +533,11 @@ Testing DB applications <sup>1</sup>
 - [x] updates
 - [x] selects
 - [x] joins
+
+### DB overview with IDEA
+- [ ] DB client at IDEA
+- [ ] Connecting
+- [ ] Overview
 
 ### JDBC intro <sup>0.7</sup>
 - [ ] Driver
@@ -545,6 +555,7 @@ Building CI/CD pipeline with GitLab <sup>1</sup>
 - [ ] Why CI/CD?
 - [ ] Pipeline overview
 - [ ] IaaC
+- [ ] [Install Gitlab locally](https://docs.gitlab.com/ee/install/docker.html)
 
 ### GitLab CI pipeline running and monitoring <sup>0.4</sup>
 - [ ] Creating project and pipeline
