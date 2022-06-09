@@ -6,35 +6,26 @@ services:
     build: .
     ports:
       - "8080:8080"
-#    depends_on:
-#      - db
-#    networks:
-#      app:
-#    environment:
-#      SPRING_PROFILES_ACTIVE: prod
-#      SPRING_DATASOURCE_URL: "jdbc:postgresql://db/app-db"
-#      SPRING_DATASOURCE_USERNAME: app-db-admin
-#      SPRING_DATASOURCE_PASSWORD: P@ssw0rd
-#      SPRING_SECURITY_USER_PASSWORD: P@ssw0rd
-#
-#  db:
-#    image: postgres:11-alpine
-#    ports:
-#      - "5432:5432"
-#    deploy:
-#      restart_policy:
-#        condition: any
-#    networks:
-#      app:
-#    volumes:
-#      - db:/var/lib/postgresql/data
-#    environment:
-#      POSTGRES_DB: app-db
-#      POSTGRES_USER: app-db-admin
-#      POSTGRES_PASSWORD: P@ssw0rd
-#
-#volumes:
-#  db:
-#
-#networks:
-#  app:
+    depends_on:
+      - db
+    networks:
+      app:
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db/app-db"
+      SPRING_DATASOURCE_USERNAME: app-db-admin
+      SPRING_DATASOURCE_PASSWORD: P@ssw0rd
+
+  db:
+    image: postgres:11-alpine
+    ports:
+      - "5432:5432"
+    networks:
+      app:
+    environment:
+      POSTGRES_DB: app-db
+      POSTGRES_USER: app-db-admin
+      POSTGRES_PASSWORD: P@ssw0rd
+
+networks:
+  app:

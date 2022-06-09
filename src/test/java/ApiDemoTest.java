@@ -37,7 +37,7 @@ public class ApiDemoTest {
         given()
                 .contentType("application/json")
                 .body("{\n" +
-                        "  \"countryName\": \"WQ\"\n" +
+                        "  \"countryName\": \"00\"\n" +
                         "}")
         .when()
                 .post("/api/countries")
