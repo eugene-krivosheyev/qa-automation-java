@@ -552,22 +552,20 @@ Building CI/CD pipeline with GitLab <sup>1</sup>
 -----------------------------------
 
 ### CI/CD overview <sup>0.4</sup>
-- [ ] Why CI/CD?
-- [ ] Pipeline overview
-- [ ] IaaC
-- [ ] [Install Gitlab locally](https://docs.gitlab.com/ee/install/docker.html)
+- [ ] [CI/CD pipeline overview](https://paper.dropbox.com/doc/Delivery-Pipeline-ci-cd-devops--BjFQrnzacCxT_5vhahCW~cFCAg-OBLCVRSkMek24U7IXIHbq)
+- [ ] [GitLab concepts](https://docs.gitlab.com/ee/ci/)
+- [ ] [Pipeline overview](https://docs.gitlab.com/ee/ci/pipelines/)
+
+### GitLab CI pipeline developing overview <sup>0.2</sup>
+- [ ] Creating project and pipeline
+- [ ] Pipeline definition overview
+- [ ] Demo for `gitlab-ci.yml`
+- [ ] Triggers
 
 ### GitLab CI pipeline running and monitoring <sup>0.4</sup>
-- [ ] Creating project and pipeline
-- [ ] Triggers
-- [ ] Pipeline definition overview
 - [ ] Running pipeline
 - [ ] Run status
 - [ ] Logs and troubleshooting
-
-### GitLab CI pipeline developing overview <sup>0.2</sup>
-- [ ] Pipeline types
-- [ ] Demo for `gitlab-ci.yml`
 
 ---
 

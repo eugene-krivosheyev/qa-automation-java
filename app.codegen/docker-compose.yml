@@ -12,7 +12,7 @@ services:
       app:
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://db/app-db"
+      SPRING_DATASOURCE_URL: 'jdbc:postgresql://db/app-db'
       SPRING_DATASOURCE_USERNAME: app-db-admin
       SPRING_DATASOURCE_PASSWORD: P@ssw0rd
 
