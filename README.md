@@ -557,9 +557,9 @@ Building CI/CD pipeline with GitLab <sup>1</sup>
 - [ ] [Pipeline overview](https://docs.gitlab.com/ee/ci/pipelines/)
 
 ### GitLab CI pipeline developing overview <sup>0.2</sup>
+- [ ] [Demo for `gitlab-ci.yml`](https://gitlab.com/demo-group67/demo-project/-/pipelines)
 - [ ] Creating project and pipeline
 - [ ] Pipeline definition overview
-- [ ] Demo for `gitlab-ci.yml`
 - [ ] Triggers
 
 ### GitLab CI pipeline running and monitoring <sup>0.4</sup>
