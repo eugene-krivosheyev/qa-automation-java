@@ -571,18 +571,33 @@ Building CI/CD pipeline with GitLab <sup>1</sup>
 
 Командный проект <sup>3 часа, 1 неделя</sup>
 ----------------
+Here you get both:
+- [ ] Mandatory tasks
+- [x] Optional tasks
 
-### Given GitLab repo
-- [ ] Java REST API backend codebase
-- [ ] DDL
+### Given:
+- All the skills and codebase you made yourself with previous practice
+- [Java REST API backend codebase](https://github.com/eugene-krivosheyev/spring-petclinic-rest)
+- [Spring application main configuration](https://github.com/eugene-krivosheyev/spring-petclinic-rest/blob/main/src/main/resources/application.properties)
+- [Spring application configuration profile named `postgres`](https://github.com/eugene-krivosheyev/spring-petclinic-rest/blob/main/src/main/resources/application-postgres.properties) with default values
+- [DDL схемы БД](https://github.com/eugene-krivosheyev/spring-petclinic-rest/tree/main/src/main/resources/db/postgres)
+- [Maven build script](https://github.com/eugene-krivosheyev/spring-petclinic-rest/blob/main/pom.xml)
+- [Docker image description](https://github.com/eugene-krivosheyev/spring-petclinic-rest/blob/main/Dockerfile)
 
-### When attendees
-- [ ] Develop maven build script
-- [ ] Make backend application and DB dockerized 
-- [ ] Develop GitLab build pipeline
-- [ ] Develop REST API autotests with DB fixtures
-- [x] Find and fix bugs in backend java code
-- [ ] Make PRs for code review
+### When attendees:
+- [ ] Run backend application storing its data with PostgreSQL both dockerized
+- [ ] Check database schema provisioning with any suitable DB client  
+- [ ] Document run instructions with `README.md`
+- [x] Implement run with `docker-compose.yml`
+- [ ] Develop REST API autotests with quality criteria
+- self-describing
+- isolated
+- coverage of CRUD main flows for core domain entities/resources
+- [ ] Describe bugs found in backend business-logic with `FIXME.md`
+- [x] Implement correct TO-BE scenarios as `@Disabled` auto-tests with `@DisplayName` and `/** Javadoc comments */` describing bugs found  
+- [x] Fix bugs in backend java code
+- [x] Develop GitLab build pipeline
 
-### Then mentors
-- [ ] Review and feedback PRs
+### Then:
+- [ ] Attendees make PRs for code review
+- [ ] Mentors make code review and give feedback 
