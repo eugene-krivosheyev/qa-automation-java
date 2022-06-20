@@ -599,5 +599,12 @@ Here you get both:
 - [x] Develop GitLab build pipeline
 
 ### Then:
-- [ ] Attendees make PRs for code review
-- [ ] Mentors make code review and give feedback 
+- [ ] Attendees push to `main` branch for code review
+- [ ] Mentors make code review and give feedback with comments and points:
+- Documented run instructions with `README.md`: 1 point
+- Implement run with `docker-compose.yml`: 2 points
+- Develop REST API autotests: 0.5 points for each `@Test`
+- Describe bugs found in backend business-logic with `FIXME.md`: 0.5 points for each bug described
+- Implement correct TO-BE scenarios: 0.5 points for each `@Test`
+- Fix bugs in backend java code: 2 points for each bug fix
+- Develop GitLab build pipeline: 3 points
