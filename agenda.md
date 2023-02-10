@@ -1,3 +1,6 @@
+Agenda <sup>v2.0</sup>
+======
+
 # Codebase management with git
 - Local GIT versioning workflow
 - Remote GIT versioning workflow
