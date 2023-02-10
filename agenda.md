@@ -1,5 +1,5 @@
-Agenda <sup>v2.0</sup>
-======
+QA Automation with Java: REST API Testing <sup>v3-RC1</sup>
+=======================
 
 # Codebase management with git
 - Local GIT versioning workflow
@@ -8,7 +8,6 @@ Agenda <sup>v2.0</sup>
 
 # Java Application Building
 - Java platform overview
-- Simple app lifecycle
 - Maven build lifecycle
 - Maven dependency management
 
@@ -41,35 +40,24 @@ Agenda <sup>v2.0</sup>
 - Strings
 - Wrappers
 
-# Java Application Development with OOAD
-- еще раз про инкапсуляцию
-- Polymorphism with interfaces and (abstract) classes
-- Inheritance with (abstract) classes concept
-- Object type and operations overriding
-- Generics
-
 # Exceptions
 - Exception concept & Handling exceptions
 - Exceptions type system
 
 # Collections and Streams
 - Key Collections API overview
-- Lambda syntax overview
-- Stream API
 
 # Developing autotests with JUnit
 - JUnit framework overview
-- Run JUnit  tests with maven
+- Run JUnit tests with maven
 - Test design
 - Fixture reuse
 - Testing alternate flows
-- Advanced Junit: Assertion libraries
-- Advanced Junit: Test doublers with Mockito
 
 # Docker for QA
 - Docker overview
 - Docker Image
-- Docker container
+- Docker Container
 - Configuration externalization
 - Orchestration
 
@@ -87,3 +75,36 @@ Agenda <sup>v2.0</sup>
 - CI/CD overview
 - GitLab CI pipeline developing overview
 - GitLab CI pipeline running and monitoring
+
+---
+
+QA Automation with Java: REST API Bugfixing
+=======================
+# Java Application Development with OOAD
+- Encapsulation Recap
+- Polymorphism with interfaces and (abstract) classes
+- Inheritance with (abstract) classes concept
+- Object type and operations overriding
+- Generics
+
+# Stream API
+- Lambda syntax overview
+- Stream API
+
+# Developing autotests with JUnit
+- Advanced Junit: Assertion libraries
+- Advanced Junit: Test doublers with Mockito
+- Managing test environment with TestContainers
+
+# Spring frameworks overview
+- Why Spring Core?
+- Why Spring MVC?
+- Why Spring Boot?
+- Overview and running Spreing MVC Boot application
+
+# Backend Development with Spring frameworks
+- Controllers
+- Services
+- Repositories
+- Data JPA Repositories
+- Configuration
